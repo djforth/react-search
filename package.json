@@ -1,0 +1,70 @@
+{
+  "name": "react-search",
+  "version": "0.0.0",
+  "description": "React Bootstrap search for Morse CMS's",
+  "main": "index.js",
+  "scripts": {
+    "build": "babel  -x '.js' --source-maps --stage 0 src -d lib",
+    "build:watch": "babel  -x '.js' -w --source-maps --stage 0 src -d lib",
+    "lint": "eslint src/**",
+    "lint:tests": "eslint spec/**",
+    "test": "npm run lint && ./node_modules/.bin/karma start --browsers PhantomJS --single-run",
+    "test:watch": "karma start --browsers PhantomJS",
+    "test:ie9": "karma start --single-run --browsers \"IE9 - Win7\"",
+    "test:ie10": "karma start --single-run --browsers \"IE10 - Win7\"",
+    "test:mac": "karma start --single-run --browsers Chrome,Firefox,Safari,Opera"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/djforth/react-search.git"
+  },
+  "author": "A Stainforth",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/djforth/react-search/issues"
+  },
+  "homepage": "https://github.com/djforth/react-search#readme",
+  "devDependencies": {
+    "babel": "^5.8.19",
+    "babel-eslint": "^4.0.5",
+    "babelify": "^6.1.3",
+    "browserify": "^11.0.0",
+    "eslint": "^0.24.1",
+    "eslint-plugin-react": "^3.1.0",
+    "jasmine-core": "^2.3.4",
+    "jasmine-es6-promise-matchers": "^2.0.0",
+    "karma": "^0.12.31",
+    "karma-browserify": "^4.0.0",
+    "karma-chrome-launcher": "^0.1.7",
+    "karma-coverage": "^0.2.7",
+    "karma-firefox-launcher": "^0.1.4",
+    "karma-ie-launcher": "^0.1.5",
+    "karma-ievms": "0.0.4",
+    "karma-jasmine": "^0.3.5",
+    "karma-opera-launcher": "^0.1.0",
+    "karma-phantomjs-launcher": "^0.1.4",
+    "karma-safari-launcher": "^0.1.1",
+    "karma-story-reporter": "^0.3.1",
+    "phantomjs": "^1.9.17",
+    "react-jasmine": "git://github.com/djforth/react-jasmine.git",
+    "react-tools": "^0.13.3",
+    "rewireify": "^0.2.2",
+    "sinon": "^1.15.4",
+    "uglifyify": "^3.0.1",
+    "watchify": "^3.3.0"
+  },
+  "dependencies": {
+    "ajax-es6-module": "git://github.com/djforth/ajax-es6-module.git",
+    "classnames": "^2.1.3",
+    "datamanager": "git://github.com/djforth/datamanager.git",
+    "flux": "^2.0.3",
+    "immutable": "^3.7.4",
+    "lodash": "^3.10.0",
+    "morse-bootstrap-react": "git://github.com/djforth/morse-bootstrap-react.git",
+    "morse-react-mixins": "git://github.com/djforth/morse-react-mixins.git",
+    "react": "^0.13.3",
+    "react-bootstrap": "^0.24.2",
+    "react-mixin": "^1.7.0",
+    "viewport-detection-es6": "git://github.com/djforth/viewport-detection-es6.git"
+  }
+}

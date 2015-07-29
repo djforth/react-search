@@ -1,0 +1,219 @@
+const EventEmitter  = require("events").EventEmitter;
+const assign        = require("react/lib/Object.assign");
+const _             = require("lodash");
+
+const DataDispatcher = require("../dispatcher/data_dispatcher");
+const DataAction  = require("../actions/data_actions");
+const FilterStore = require("./filter_store");
+
+const DataFcty = require("../factories/data_fcty");
+
+let data =  new DataFcty();
+// console.count("Data")
+
+
+var searchVal;
+var pagination = 50;
+var page       = 1;
+var itemNo     = 0;
+var cache;
+var selected = [];
+
+const registeredCallback = function(payload) {
+  var action = payload.action;
+
+  switch(action.type) {
+    case "DELETE_ITEM":
+      console.log(action);
+      DataStore.deleteItem(action.id, action.flash);
+      DataStore.emitChange("delete");
+      break;
+
+    case "KEY_UPDATE":
+      DataStore.emitChange("search");
+      break;
+
+    case "FILTER_SEARCH":
+      DataStore.emitChange("search");
+      break;
+
+    case "PAGE_UPDATE":
+      DataStore.setPage(action.data);
+      DataStore.emitChange("pagination");
+      break;
+
+    case "RECEIVE_DATA":
+      DataStore.emitChange("fetched");
+      break;
+
+    case "SEARCH_DATA":
+      console.log("search actioned", action.data);
+      DataStore.setSearchVal(action.data);
+      DataStore.emitChange("search");
+      break;
+
+    case "SET_SELECTED":
+      DataStore.setSelected(action.id, action.selected);
+      DataStore.emitChange("change");
+      break;
+  }
+};
+
+const store = {
+  flash      :null,
+  searchVal  :null,
+  pagination : 50,
+  page       : 1,
+  itemNo     : 0,
+  cache      : null,
+  selected   : [],
+  data       : new DataFcty(),
+
+  emitChange(event) {
+    this.emit(event);
+  },
+
+  /**
+   * @param {function} callback
+   */
+  addChangeListener(event, callback) {
+    this.on(event, callback);
+  },
+
+  removeChangeListener(event, callback) {
+    this.removeListener(event, callback);
+  },
+
+  deleteItem(id, fl){
+    console.log("deleting");
+    if(fl.type === "notice"){
+      this.data.remove(id);
+    }
+
+    this.flash = fl;
+  },
+
+  fetchData(){
+    return this.data.fetch()
+      .then(
+        this.processData.bind(this)
+      )
+      .catch((err)=>{
+        let error = new Error(err);
+        throw error;
+      });
+  },
+
+  get(id) {
+    return this.data.findById(id);
+  },
+
+  getAll() {
+    this.cache = this.data.getAll();
+    return this.cache.slice(0, this.pagination - 1);
+  },
+
+  getFlash(){
+    return this.flash;
+  },
+
+  getByIds(ids) {
+    return this.data.filterByIds(ids);
+  },
+
+  getCurrentData(){
+    return this.data.getAll();
+  },
+
+
+  getKeys(){
+    return this.data.getKeys();
+  },
+
+  getPage(){
+    let i  = this.page - 1;
+    let st = i * this.pagination;
+    let fn = (st + pagination) - 1;
+
+    return {st:st, fn:fn};
+  },
+
+  getPagination(){
+    let no = this.itemNo / this.pagination;
+    if( no < 1 ){
+      return 0;
+    } else {
+      return Math.ceil(no);
+    }
+  },
+
+  getSearchData(){
+    this.page = 1;
+    let keys    = FilterStore.getSelectedKeys();
+    let filters = FilterStore.getFilters();
+
+    let search = this.data.search(this.searchVal, keys, filters);
+    this.itemNo = search.size;
+    this.cache  = search;
+
+    return search.slice(0, this.pagination - 1);
+  },
+
+  paginationData(){
+    let page = this.getPage();
+    return this.cache.slice(page.st, page.fn);
+  },
+
+  processData(){
+    if(!_.isEmpty(this.selected)){
+      this.data.addSelected(this.selected);
+    }
+
+    let d = this.data.getAll();
+    this.itemNo = d.size;
+
+    // simulate success callback
+    DataAction.receiveAll(d);
+
+    return d;
+  },
+
+  setApi(uri){
+    this.data.url = uri;
+  },
+
+  setPage(p){
+    this.page = p;
+  },
+
+  setSearchVal(val){
+    this.searchVal = val;
+  },
+
+  selectedIds(ids){
+    this.selected = ids;
+  },
+
+  setSelected(id, selected=true){
+
+    this.data.update(id, {selected:selected});
+    if(this.cache){
+      this.cache = this.cache.map((c)=>{
+        if(c){
+          if(c && c.get("id") === id){
+            c = c.set("selected", selected);
+          }
+          return c;
+        }
+      });
+    }
+
+  }
+};
+
+const DataStore = assign({}, EventEmitter.prototype, store);
+DataStore.setMaxListeners(0);
+
+DataStore.dispatchToken = DataDispatcher.register(registeredCallback);
+
+module.exports = DataStore;
