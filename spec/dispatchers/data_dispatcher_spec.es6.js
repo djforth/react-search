@@ -24,7 +24,11 @@ describe("DataDispatcher", function() {
     },
 
     {
+      handler:"handleFetchData",
+      source:"FETCH_DATA"
+    },
 
+    {
       handler:"handleFilterUpdate",
       source:"FILTER_UPDATE"
     },

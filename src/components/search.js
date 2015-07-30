@@ -5,6 +5,7 @@ const _     = require("lodash");
 
 //Flux
 const DataStore      = require("../stores/data_store");
+const DataActions   = require("../actions/data_actions");
 const FilterActions = require("../actions/filter_actions");
 
 // Morse Libraies
@@ -33,6 +34,9 @@ class Search extends React.Component{
 
     this.setState({
       device:device,
+      loading:true,
+      loading_txt:"Starting data load",
+      percent: 0,
       visible:this.props[device]
     });
     detect.trackSize(function(device, size){
@@ -52,8 +56,9 @@ class Search extends React.Component{
 
 
     //Get Data
-    DataStore.setApi(this.props.dataApi);
-    DataStore.fetchData();
+    this.setLoading();
+    // DataStore.setApi(this.props.dataApi);
+    // DataStore.fetchData();
   }
 
 
@@ -61,6 +66,19 @@ class Search extends React.Component{
     this.setState({
       activePage: selectedEvent.eventKey
     });
+  }
+
+  loading(){
+    if(this.state.loading){
+      return (
+        <div className="loader">
+          <h5>{this.state.loading_txt}</h5>
+          <ProgressBar label="Loading Data" now={this.state.percent} key={"loader"} />
+        </div>
+      );
+    } else {
+      return "";
+    }
   }
 
   render() {
@@ -72,6 +90,28 @@ class Search extends React.Component{
         <Pagination key={_.uniqueId("pagination")} />
       </div>
     );
+  }
+
+  setLoading(){
+
+    let FakeLoading = window.setInterval(()=>{
+      if(this.percent < 50){
+        this.percent++;
+      }
+
+      this.setState({percent:this.percent, loading:true, loading_txt:"Waiting for Server to respond"});
+    }, 1000)
+
+    //Get Data
+    DataActions.fetchData((p)=>{
+      clearInterval(FakeLoading);
+      if(p.percent >= 100){
+        this.setState({loading:false, percent:p.percent})
+      } else {
+        this.percent = (percent > p.percent) ? this.percent : p.percent
+        this.setState({percent:this.percent, loading_txt:"Loading Data"});
+      }
+    }, this.props.dataApi);
   }
 
 }

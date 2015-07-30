@@ -9,6 +9,14 @@ module.exports = {
     });
   },
 
+  fetchData:(progress, api)=>{
+    DataDispatcher.handleFetchData({
+      type: "FETCH_DATA",
+      api:api,
+      progress:progress
+    });
+  },
+
   filterChange:()=>{
     DataDispatcher.handleFilterUpdate({
       type: "FILTER_SEARCH"

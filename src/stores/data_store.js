@@ -33,6 +33,12 @@ const registeredCallback = function(payload) {
       DataStore.emitChange("search");
       break;
 
+    case "FETCH_DATA":
+      DataStore.setApi(action.api);
+      DataStore.fetchData(action.progress)
+      DataStore.emitChange("fetching");
+      break;
+
     case "FILTER_SEARCH":
       DataStore.emitChange("search");
       break;
@@ -93,8 +99,8 @@ const store = {
     this.flash = fl;
   },
 
-  fetchData(){
-    return this.data.fetch()
+  fetchData(progress){
+    return this.data.fetch(progress)
       .then(
         this.processData.bind(this)
       )

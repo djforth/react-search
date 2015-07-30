@@ -14,9 +14,7 @@ class PaginationHolder extends React.Component{
   }
 
   componentDidMount() {
-
     DataStore.addChangeListener("search", this._onUpdate.bind(this));
-
     DataStore.addChangeListener("fetched", this._onUpdate.bind(this));
   }
 
@@ -54,7 +52,6 @@ class PaginationHolder extends React.Component{
   }
 
   render() {
-
     return (
       <div className={this.hidePagination()}>
         <Pagination

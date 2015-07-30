@@ -20,6 +20,14 @@ const DataDispatcher = assign(new Dispatcher(), {
     this.dispatch(payload);
   },
 
+  handleFetchData: function(action) {
+    var payload = {
+      source: "FETCH_DATA",
+      action: action
+    };
+    this.dispatch(payload);
+  },
+
   handleFilterUpdate: function(action){
     var payload = {
       source: "FILTER_UPDATE",

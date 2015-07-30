@@ -27,6 +27,16 @@ describe("DataStore", function() {
     },
 
     {
+      func:"fetchData",
+      action:{
+        type:"FETCH_DATA",
+        api:"api",
+        progress:"progress"
+      },
+      change:"fetching"
+    },
+
+    {
       func:null,
       action:{
         type:"FILTER_SEARCH"
@@ -186,6 +196,12 @@ describe("DataStore", function() {
         });
         store.data.url = "http://phillcollins.com";
         spyOn(store.data, "fetch").and.returnValue(promise);
+      });
+
+      it("should pass progress function to fetch", function() {
+        let spyProgress = jasmine.createSpy("progress");
+        store.fetchData(spyProgress);
+        expect(store.data.fetch).toHaveBeenCalledWith(spyProgress);
       });
 
       it("should fetch data", function(done) {

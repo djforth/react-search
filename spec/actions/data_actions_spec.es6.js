@@ -46,6 +46,17 @@ describe("DataAction", function() {
     },
 
     {
+      action:"fetchData",
+      handler:"handleFetchData",
+      args:["progress", "api"],
+      dispactchArgs:{
+        type:"FETCH_DATA",
+        api:"api",
+        progress:"progress"
+      }
+    },
+
+    {
       action:"pageChange",
       handler:"handlePageUpdate",
       args:["foo"],
