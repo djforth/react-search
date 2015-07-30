@@ -45,11 +45,11 @@ const registeredCallback = function(payload) {
   }
 };
 
-var keys     = [];
-var selected = "all";
-var filters  = [];
-var changed  = true;
-var cache;
+// var keys     = [];
+// var selected = "all";
+// var filters  = [];
+// var changed  = true;
+// var cache;
 // const store =  { };
 
 const store =  {
@@ -80,7 +80,7 @@ const store =  {
     if(filter){
       filter.setSelected(id, checked);
     }
-    changed  = true;
+    this.changed  = true;
   },
 
   fetchData(){

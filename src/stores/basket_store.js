@@ -4,11 +4,11 @@ const assign        = require("react/lib/Object.assign");
 const DataStore = require("../stores/data_store");
 
 const DataFcty = require("../factories/data_fcty");
-let basket =  new DataFcty();
+// let basket =  new DataFcty();
 
 const BasketDispatcher = require("../dispatcher/basket_dispatcher");
 
-var basket_ids = [];
+// var basket_ids = [];
 
 const registeredCallback = function(payload) {
   let action = payload.action;
@@ -73,7 +73,6 @@ const store = {
   },
 
   addSelected(ids){
-    console.debug(this.basket_ids, ids);
     this.basket_ids = ids;
     DataStore.selectedIds(ids);
   }

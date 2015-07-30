@@ -38,7 +38,7 @@ class DataItems extends React.Component {
         });
       }
 
-      // this.size   = size;
+      this.size   = size;
 
     });
 

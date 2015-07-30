@@ -4,7 +4,7 @@ const _     = require("lodash");
 
 
 //Flux
-const DataStore      = require("../stores/data_store");
+// const DataStore      = require("../stores/data_store");
 const DataActions   = require("../actions/data_actions");
 const FilterActions = require("../actions/filter_actions");
 
@@ -100,15 +100,15 @@ class Search extends React.Component{
       }
 
       this.setState({percent:this.percent, loading:true, loading_txt:"Waiting for Server to respond"});
-    }, 1000)
+    }, 1000);
 
     //Get Data
     DataActions.fetchData((p)=>{
       clearInterval(FakeLoading);
       if(p.percent >= 100){
-        this.setState({loading:false, percent:p.percent})
+        this.setState({loading:false, percent:p.percent});
       } else {
-        this.percent = (percent > p.percent) ? this.percent : p.percent
+        this.percent = (this.percent > p.percent) ? this.percent : p.percent;
         this.setState({percent:this.percent, loading_txt:"Loading Data"});
       }
     }, this.props.dataApi);

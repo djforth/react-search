@@ -8,23 +8,22 @@ const FilterStore = require("./filter_store");
 
 const DataFcty = require("../factories/data_fcty");
 
-let data =  new DataFcty();
+// let data =  new DataFcty();
 // console.count("Data")
 
 
-var searchVal;
-var pagination = 50;
-var page       = 1;
-var itemNo     = 0;
-var cache;
-var selected = [];
+// var searchVal;
+// var pagination = 50;
+// var page       = 1;
+// var itemNo     = 0;
+// var cache;
+// var selected = [];
 
 const registeredCallback = function(payload) {
   var action = payload.action;
 
   switch(action.type) {
     case "DELETE_ITEM":
-      console.log(action);
       DataStore.deleteItem(action.id, action.flash);
       DataStore.emitChange("delete");
       break;
@@ -35,7 +34,7 @@ const registeredCallback = function(payload) {
 
     case "FETCH_DATA":
       DataStore.setApi(action.api);
-      DataStore.fetchData(action.progress)
+      DataStore.fetchData(action.progress);
       DataStore.emitChange("fetching");
       break;
 
@@ -53,7 +52,6 @@ const registeredCallback = function(payload) {
       break;
 
     case "SEARCH_DATA":
-      console.log("search actioned", action.data);
       DataStore.setSearchVal(action.data);
       DataStore.emitChange("search");
       break;
@@ -91,7 +89,6 @@ const store = {
   },
 
   deleteItem(id, fl){
-    console.log("deleting");
     if(fl.type === "notice"){
       this.data.remove(id);
     }
@@ -139,7 +136,7 @@ const store = {
   getPage(){
     let i  = this.page - 1;
     let st = i * this.pagination;
-    let fn = (st + pagination) - 1;
+    let fn = (st + this.pagination) - 1;
 
     return {st:st, fn:fn};
   },

@@ -45,8 +45,8 @@ describe("BasketStore", function() {
 
     beforeEach(()=>{
       store  = BasketStore.__get__("store");
-      basket = BasketStore.__get__("basket");
-      basket_ids  = BasketStore.__get__("basket_ids");
+      // basket = BasketStore.__get__("basket");
+      // basket_ids  = BasketStore.__get__("basket_ids");
       DataStore = BasketStore.__get__("DataStore");
     })
 

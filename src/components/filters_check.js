@@ -1,6 +1,6 @@
 //Libraries
 const React = require("react/addons");
-const _     = require("lodash");
+// const _     = require("lodash");
 
 //Component
 const CheckBox = require("./check_box");
