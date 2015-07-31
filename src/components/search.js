@@ -13,9 +13,10 @@ const ViewportDetect = require("viewport-detection-es6");
 
 
 //Components
-const DataHead =  require("./data_head");
-const Filters  =  require("./filters");
-const Pagination = require("./pagination");
+const DataHead    =  require("./data_head");
+const Filters     =  require("./filters");
+const Pagination  = require("./pagination");
+const ProgressBar = require("react-bootstrap/lib/ProgressBar.js");
 
 class Search extends React.Component{
 
@@ -86,6 +87,7 @@ class Search extends React.Component{
       <div>
         <Filters filterApi={this.props.filterApi} keys={this.props.searchable} key={"filters"} />
         <DataHead device={this.state.device} keys={this.state.visible} css={this.props.css} key={_.uniqueId("samplehead")} />
+        {this.loading()}
         { this.props.children }
         <Pagination key={_.uniqueId("pagination")} />
       </div>
