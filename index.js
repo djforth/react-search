@@ -19,8 +19,8 @@ exports.Dispatcher = {
 }
 
 // Factories
-const DataFactory   = require("./lib/factory/data_fcty");
-const FilterFactory = require("./lib/factory/filter_fcty");
+const DataFactory   = require("./lib/factories/data_fcty");
+const FilterFactory = require("./lib/factories/filters_fcty");
 
 exports.Factories = {
   Data    : DataFactory,
@@ -42,9 +42,9 @@ const DataHead     = require("./lib/components/data_head");
 const DataItems    = require("./lib/components/data_items");
 const DataItem     = require("./lib/components/data_item");
 const Filters      = require("./lib/components/filters");
-const FilterCheck  = require("./lib/components/filter_check");
-const FilterRadio  = require("./lib/components/filter_radio");
-const FilterSelect = require("./lib/components/filter_select");
+const FilterCheck  = require("./lib/components/filters_check");
+const FilterRadio  = require("./lib/components/filters_radio");
+const FilterSelect = require("./lib/components/filters_select");
 const Keys         = require("./lib/components/keys");
 const Pagination   = require("./lib/components/pagination");
 const Search       = require("./lib/components/search");

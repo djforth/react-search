@@ -13,7 +13,7 @@ const ViewportDetect = require("viewport-detection-es6");
 
 
 //Components
-const DataHead =  require("./dataHead");
+const DataHead =  require("./data_head");
 const Filters  =  require("./filters");
 const Pagination = require("./pagination");
 
