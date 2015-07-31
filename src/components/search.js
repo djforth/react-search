@@ -23,7 +23,7 @@ class Search extends React.Component{
   constructor(props) {
     super(props);
     this.active = [{active:false}];
-    // this._select.bind(this);
+    this.percent = 0;
     this.state = {data:[], keys:[], visible:[], device:"desktop"};
   }
 
