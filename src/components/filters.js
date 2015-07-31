@@ -12,7 +12,7 @@ const DataActions = require("../actions/data_actions");
 const FiltersCheck  = require("./filters_check");
 const FiltersSelect = require("./filters_select");
 const FiltersRadio  = require("./filters_radio");
-const SearchFilter  = require("./search_filter");
+const SearchFilter  = require("./searchfilter");
 
 //Mixins
 const cssMixins  = require("morse-react-mixins").css_mixins;
