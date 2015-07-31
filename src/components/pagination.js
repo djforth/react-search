@@ -3,7 +3,7 @@ const React = require("react/addons");
 // const _     = require("lodash");
 const Pagination = require("react-bootstrap/lib/Pagination");
 
-const DataStore      = require("../stores/data_store");
+const DataStore   = require("../stores/data_store");
 const DataActions = require("../actions/data_actions");
 
 class PaginationHolder extends React.Component{
