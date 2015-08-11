@@ -10,6 +10,17 @@ describe("DataStore", function() {
 
   let options = [
     {
+      func:"setDateRanges",
+      action:{
+        type:"ADD_DATE_RANGE",
+        key:"foo",
+        st:"bar",
+        fn:"bar bar"
+      },
+      args:["foo", "bar", "bar bar"],
+      change:"search"
+    },
+    {
       func:"deleteItem",
       action:{
         type:"DELETE_ITEM",
@@ -41,6 +52,16 @@ describe("DataStore", function() {
       action:{
         type:"FILTER_SEARCH"
       },
+      change:"search"
+    },
+
+    {
+      func:"removeDateRange",
+      action:{
+        type:"REMOVE_DATE_RANGE",
+        key:"foo"
+      },
+      args:"foo",
       change:"search"
     },
 
@@ -183,6 +204,28 @@ describe("DataStore", function() {
       it("should set selectedIds", function() {
         store.selectedIds(ids);
         expect(store.selected).toEqual(ids);
+      });
+
+
+    });
+
+    describe('dateRanges', function() {
+      it("should not set dateRanges if not dates passed", function() {
+        store.setDateRanges("require_by", new Date(2015, 0, 18), "foo")
+        expect(store.dateRanges.require_by).toBeUndefined()
+      });
+
+      it("should not set dateRanges if not dates passed", function() {
+        store.setDateRanges("require_by", new Date(2015, 0, 18), new Date(2015, 1, 18))
+        expect(store.dateRanges.require_by.st).toEqual(new Date(2015, 0, 18));
+        expect(store.dateRanges.require_by.fn).toEqual(new Date(2015, 1, 18));
+      });
+
+      it("should remove date range", function() {
+        store.dateRanges.require_by = {st:new Date(2015, 0, 18), fn:new Date(2015, 1, 18)}
+
+        store.removeDateRange("require_by")
+        expect(store.dateRanges.require_by).toBeUndefined()
       });
     });
 

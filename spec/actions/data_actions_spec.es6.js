@@ -8,6 +8,17 @@ describe("DataAction", function() {
 
   let options = [
     {
+      action:"addDateRange",
+      handler:"handleAddDateRange",
+      args:["foo", "bar", "foobar"],
+      dispactchArgs:{
+        type : "ADD_DATE_RANGE",
+        key  : "foo",
+        st   : "bar",
+        fn   : "foobar"
+      }
+    },
+    {
       action:"deleteItem",
       handler:"handleDelete",
       args:[1, "Success!"],
@@ -33,6 +44,16 @@ describe("DataAction", function() {
       dispactchArgs:{
         type:"RECEIVE_DATA",
         data:"foo"
+      }
+    },
+
+    {
+      action:"removeDateRange",
+      handler:"handleRemoveDateRange",
+      args:["foo"],
+      dispactchArgs:{
+        type : "REMOVE_DATE_RANGE",
+        key  : "foo"
       }
     },
 

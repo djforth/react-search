@@ -1,6 +1,15 @@
 const DataDispatcher = require("../dispatcher/data_dispatcher");
 
 module.exports = {
+  addDateRange:(key, st, fn)=>{
+    DataDispatcher.handleAddDateRange({
+      type: "ADD_DATE_RANGE",
+      key : key,
+      st  : st,
+      fn  : fn
+    });
+  },
+
   deleteItem:(id, flash)=>{
     DataDispatcher.handleDelete({
       type: "DELETE_ITEM",
@@ -40,6 +49,13 @@ module.exports = {
     DataDispatcher.handleServerAction({
       type: "RECEIVE_DATA",
       data: data
+    });
+  },
+
+  removeDateRange:(key)=>{
+    DataDispatcher.handleRemoveDateRange({
+      type: "REMOVE_DATE_RANGE",
+      key : key
     });
   },
 

@@ -8,7 +8,11 @@ describe("DataDispatcher", function() {
 
   let options = [
     {
+      handler : "handleAddDateRange",
+      source  : "ADD_DATE_RANGE"
+    },
 
+    {
       handler:"handleDelete",
       source:"DELETE_ITEM"
     },
@@ -36,6 +40,11 @@ describe("DataDispatcher", function() {
     {
       handler:"handlePageUpdate",
       source:"PAGE_UPDATE"
+    },
+
+    {
+      handler : "handleRemoveDateRange",
+      source  : "REMOVE_DATE_RANGE"
     },
 
     {

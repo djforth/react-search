@@ -43,18 +43,91 @@ class DataFcty extends DataManager {
     this.url = uri;
   }
 
-  checkCache(val, keys){
-    if (_.isEmpty(this.cache)){
+  checkCachedDateRanges(dateRanges){
+    let check = this.checkEmptyOrCached(dateRanges, "dateRanges");
+
+    if(_.isBoolean(check)){
+      return check;
+    }
+
+    check = true;
+    let cacheDR = this.cache.dateRanges;
+    _.forIn(dateRanges, (v, k)=>{
+      let dr = cacheDR[k];
+
+      if(v.st !== dr.st || v.fn !== dr.fn){
+        check = false;
+        return false;
+      }
+    });
+
+    return check;
+  }
+
+  checkCacheFilters(filters){
+
+    let check = this.checkEmptyOrCached(filters, "filters");
+
+    if(_.isBoolean(check)){
+      return check;
+    }
+
+    check = true;
+    _.forEach(filters, (f)=>{
+      let cached = this.getFilterByKey("filter_by", f.filter_by);
+
+      if(!f.selected.equals(cached.selected)){
+        check = false;
+        return false;
+      }
+    });
+
+    return check;
+  }
+
+
+  checkCacheText(val, keys){
+    let checkKeys = this.checkEmptyOrCached(keys, "keys");
+    if (_.isBoolean(checkKeys)){
+      return checkKeys;
+    }
+
+    if(!this.cache.text){
       return false;
     }
+
     // console.log(this.cache)
     return  this.cache.text === val && (_.difference(keys, this.cache.keys).length === 0);
   }
 
+  checkDates(date, range){
+    let test = false;
+    if(_.isDate(date)){
+      if((date > range.st) && (date.range.fn)){
+        test = true;
+      }
+    }
+
+    return test;
+
+  }
+
+  checkEmptyOrCached(items, key){
+    if(_.isEmpty(items) || !items){
+      return true;
+    }
+
+    if(!this.cache[key]){
+      return false;
+    }
+
+    return null;
+  }
+
+
+
   checkFilters(opts, filter){
-    // let check = false;
-    // _.forEach(filters, (filter)=>{
-    // console.count()
+
     let selected = this.getIds(filter.selected);
     let ids = opts.get(filter.filter_by);
 
@@ -74,39 +147,46 @@ class DataFcty extends DataManager {
     return false;
   }
 
-  checkCacheFilters(filters){
 
-    if(!this.cache.filters){
-      return false;
-    }
+  dateRangeSearch(search, dateRanges){
+    this.cache.dateRanges       = dateRanges;
+    if(!_.isEmpty(dateRanges)){
+      search = search.filter((d)=>{
+        let checked = false;
+        _.forIn(dateRanges, (dr, key)=>{
+          if(this.checkDates(d.get(key), dr)){
+            checked = true;
+            return false;
+          }
+        });
 
-    // f = this.cache.filters
-    let check = true;
-    _.forEach(filters, (f)=>{
-      let cached = _.find(this.cache.filters, (c)=>{
-        return c.filter_by === f.filter_by;
+        return checked;
       });
-
-      if(!f.selected.equals(cached.selected)){
-        check = false;
-      }
-    }.bind(this));
-
-    return check;
+    }
+    this.cache.dateRangesSearch = search;
+    return search;
   }
 
-  filterSearch(filters){
+
+
+  filterSearch(search, filters){
     this.cache.filters = filters;
+
     filters = _.where(filters, {all:false});
-    let search = this.data;
+    // let search = this.data;
 
     if(filters.length > 0){
-      _.forEach(filters, (filter)=>{
-        search = search.filter((d)=>{
-          return this.checkFilters(d.get("filters"), filter);
-        }.bind(this));
+      search = search.filter((d)=>{
+        let checked = false;
+        _.forEach(filters, (filter)=>{
+          if(this.checkFilters(d.get("filters"), filter)){
+            checked = true;
+            return false;
+          }
+        });
 
-      }.bind(this));
+        return checked;
+      });
     }
 
     this.cache.filterSearch = search;
@@ -121,6 +201,12 @@ class DataFcty extends DataManager {
       });
     }
     return null;
+  }
+
+  getFilterByKey(key, keyComp){
+    return _.find(this.cache.filters, (c)=>{
+      return c[key] === keyComp;
+    });
   }
 
   getIds(selected){
@@ -166,22 +252,66 @@ class DataFcty extends DataManager {
     return true;
   }
 
-  search(val, keys, filters){
-    let search;
-    if(this.checkCache(val, keys) && this.checkCacheFilters(filters)){
+  search(...args){
+    let values = this.setValues.apply(this, args);
+
+    //Cache Checks
+    let cachedTxt  = this.checkCacheText(values.text, values.keys);
+    let cachedFltr = this.checkCacheFilters(values.filters);
+    let cachedDR   = this.checkCachedDateRanges(values.dateRanges);
+
+    if(cachedTxt && cachedFltr && cachedDR){
       return this.cache.fullSearch;
     }
+    let search = this.data;
     //Runs filters over data
-    search = (this.checkCacheFilters(filters)) ? this.cache.filterSearch : this.filterSearch(filters);
+    if(!_.isEmpty(values.filters)){
+      search = (cachedFltr) ? this.cache.filterSearch : this.filterSearch(search, values.filters);
+    }
+
+    //Runs Date Range search
+    if(!_.isEmpty(values.dateRanges)){
+      search = (cachedFltr && cachedDR) ? this.cache.dateRangesSearch : this.dateRangeSearch(search, values.dateRanges);
+    }
 
     //Runs Search over data
-    if(!_.isEmpty(val)){
-      search =  this.getSearch(search, val, keys);
+    if(!_.isEmpty(values.text)){
+      search =  this.getSearch(search, values.text, values.keys);
     }
 
     this.cache.fullSearch = search; // Caches search
     return search;
 
+  }
+
+  setValues(...args){
+    let values = {};
+     _.forEach(args, (arg)=>{
+      if(_.isString(arg)){
+        values.text = arg;
+      }
+
+      if(_.isArray(arg)){
+        let fst = _.first(arg);
+        if( _.isString(fst) ){
+          values.keys = arg;
+        }
+
+        if( _.isObject(fst) ){
+          values.filters = arg;
+        }
+      }
+
+      if( _.isObject(arg) && !_.isArray(arg)){
+        values.dateRanges = arg;
+      }
+    });
+    _.defaults(values,
+      { "text": "" },
+      { "keys": [] },
+      { "filters": [] },
+      { "dateRanges":{} });
+    return values;
   }
 }
 

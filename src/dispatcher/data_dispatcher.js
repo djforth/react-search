@@ -3,6 +3,14 @@ const assign     = require("react/lib/Object.assign");
 
 const DataDispatcher = assign(new Dispatcher(), {
 
+  handleAddDateRange: function(action) {
+    var payload = {
+      source: "ADD_DATE_RANGE",
+      action: action
+    };
+    this.dispatch(payload);
+  },
+
   handleDelete: function(action){
     var payload = {
       source: "DELETE_ITEM",
@@ -63,6 +71,14 @@ const DataDispatcher = assign(new Dispatcher(), {
       action: action
     };
 
+    this.dispatch(payload);
+  },
+
+  handleRemoveDateRange: function(action) {
+    var payload = {
+      source: "REMOVE_DATE_RANGE",
+      action: action
+    };
     this.dispatch(payload);
   },
 

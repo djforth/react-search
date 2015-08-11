@@ -23,6 +23,11 @@ const registeredCallback = function(payload) {
   var action = payload.action;
 
   switch(action.type) {
+    case "ADD_DATE_RANGE":
+      DataStore.setDateRanges(action.key, action.st, action.fn);
+      DataStore.emitChange("search");
+      break;
+
     case "DELETE_ITEM":
       DataStore.deleteItem(action.id, action.flash);
       DataStore.emitChange("delete");
@@ -51,6 +56,11 @@ const registeredCallback = function(payload) {
       DataStore.emitChange("fetched");
       break;
 
+    case "REMOVE_DATE_RANGE":
+      DataStore.removeDateRange(action.key);
+      DataStore.emitChange("search");
+      break;
+
     case "SEARCH_DATA":
       DataStore.setSearchVal(action.data);
       DataStore.emitChange("search");
@@ -72,6 +82,7 @@ const store = {
   cache      : null,
   selected   : [],
   data       : new DataFcty(),
+  dateRanges : {},
 
   emitChange(event) {
     this.emit(event);
@@ -151,7 +162,7 @@ const store = {
   },
 
   getSearchData(){
-    this.page = 1;
+    this.page   = 1;
     let keys    = FilterStore.getSelectedKeys();
     let filters = FilterStore.getFilters();
 
@@ -181,8 +192,21 @@ const store = {
     return d;
   },
 
+  removeDateRange(key){
+    this.dateRanges = _.omit(this.dateRanges, key);
+  },
+
   setApi(uri){
     this.data.url = uri;
+  },
+
+  setDateRanges(key, st, fn){
+    if(_.isDate(st) && _.isDate(fn)){
+      this.dateRanges[key] = {
+        st:st,
+        fn:fn
+      };
+    }
   },
 
   setPage(p){
