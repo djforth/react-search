@@ -59,6 +59,7 @@ describe("DataItem", function() {
     beforeEach(()=>{
 
       td = TestUtils.findRenderedDOMComponentWithClass(dataitem, "tr");
+      console.log("td", td.getDOMNode())
     });
 
 
@@ -67,7 +68,7 @@ describe("DataItem", function() {
       ()=>{
         return td;
       },
-      {type:"className", className:"class1"},
+      {type:"class", className:"class1"},
       {
         attributes:[
           {key:"class", value:"class1"}
@@ -80,7 +81,7 @@ describe("DataItem", function() {
       ()=>{
         return td;
       },
-      {type:"className", className:"class2"},
+      {type:"class", className:"class2"},
       {
         attributes:[
           {key:"class", value:"class2"}

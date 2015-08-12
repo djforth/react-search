@@ -1,19 +1,23 @@
 
 
 // Actions
+const ColumsActions = require("./lib/actions/columns_actions");
 const DataActions   = require("./lib/actions/data_actions");
 const FilterActions = require("./lib/actions/filter_actions");
 
 exports.Actions = {
-  Data:DataActions,
-  Filters:FilterActions
+  Columns : ColumsActions,
+  Data    : DataActions,
+  Filters : FilterActions
 }
 
 // Dispatchers
+const ColumnsDispatcher   = require("./lib/dispatcher/columns_dispatcher");
 const DataDispatcher   = require("./lib/dispatcher/data_dispatcher");
 const FilterDispatcher = require("./lib/dispatcher/filter_dispatcher");
 
 exports.Dispatcher = {
+  Columns : ColumsDispatcher,
   Data    : DataDispatcher,
   Filters : FilterDispatcher
 }
@@ -28,10 +32,12 @@ exports.Factories = {
 }
 
 // Stores
-const DataStores   = require("./lib/stores/data_store");
-const FilterStores = require("./lib/stores/filter_store");
+const ColumnsStores = require("./lib/stores/columns_store");
+const DataStores    = require("./lib/stores/data_store");
+const FilterStores  = require("./lib/stores/filter_store");
 
 exports.Stores = {
+  Columns : ColumnsStores,
   Data    : DataStores,
   Filters : FilterStores
 }

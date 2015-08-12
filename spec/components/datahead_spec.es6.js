@@ -51,33 +51,31 @@ describe("DataHead", function() {
       tr = TestUtils.findRenderedDOMComponentWithClass(th, "tr");
     });
 
+    // componentHelper.checkRender(
+    //   ()=>{
+    //     return tr;
+    //   },
+    //   {type:"className", className:"class1"},
+    //   {
+    //     attributes:[
+    //       {key:"class", value:"class1"}
+    //     ],
+    //     textNode:"foo"
+    //   }
+    // );
 
-
-    componentHelper.checkRender(
-      ()=>{
-        return tr;
-      },
-      {type:"className", className:"class1"},
-      {
-        attributes:[
-          {key:"class", value:"class1"}
-        ],
-        textNode:"foo"
-      }
-    );
-
-    componentHelper.checkRender(
-      ()=>{
-        return tr;
-      },
-      {type:"className", className:"class2"},
-      {
-        attributes:[
-          {key:"class", value:"class2"}
-        ],
-        textNode:"bar"
-      }
-    );
+    // componentHelper.checkRender(
+    //   ()=>{
+    //     return tr;
+    //   },
+    //   {type:"className", className:"class2"},
+    //   {
+    //     attributes:[
+    //       {key:"class", value:"class2"}
+    //     ],
+    //     textNode:"bar"
+    //   }
+    // );
 
     it("should have called checkCss & capitalize", function() {
       expect(datahead.checkCss.calls.count()).toEqual(2);

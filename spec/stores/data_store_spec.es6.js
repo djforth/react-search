@@ -4,7 +4,7 @@ const Immutable = require("immutable");
 const DataStore = require("../../src/stores/data_store");
 
 const storeHelper    = require("react-jasmine").storeHelpers;
-const defaultsHelper = require("react-jasmine").checkDefaults
+const defaultsHelper = require("react-jasmine").checkDefaults;
 
 describe("DataStore", function() {
 
@@ -181,6 +181,15 @@ describe("DataStore", function() {
         let data = store.getKeys();
         expect(store.data.getKeys).toHaveBeenCalled();
         expect(data).toEqual("foo")
+      });
+
+      it("getDateFmt and return correct formatted date", function() {
+        spyOn(store.data, "formatDate").and.returnValue("18/01/2015");
+        let data = immutableData.first()
+        let fmt = store.getDateFmt(data, "foo")
+
+        expect(store.data.formatDate).toHaveBeenCalledWith(data, "foo", "%d/%m/%Y");
+        expect(fmt).toEqual("18/01/2015");
       });
     });
 

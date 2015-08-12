@@ -3,8 +3,9 @@ const assign        = require("react/lib/Object.assign");
 const _             = require("lodash");
 
 const DataDispatcher = require("../dispatcher/data_dispatcher");
-const DataAction  = require("../actions/data_actions");
-const FilterStore = require("./filter_store");
+const DataAction     = require("../actions/data_actions");
+const FilterStore    = require("./filter_store");
+// const ColumnsStore   = require("./columns_store");
 
 const DataFcty = require("../factories/data_fcty");
 
@@ -139,6 +140,9 @@ const store = {
     return this.data.getAll();
   },
 
+  getDateFmt(item, key, fmt="%d/%m/%Y"){
+    return this.data.formatDate(item, key, fmt)
+  },
 
   getKeys(){
     return this.data.getKeys();
