@@ -17,7 +17,7 @@ const DataDispatcher   = require("./lib/dispatcher/data_dispatcher");
 const FilterDispatcher = require("./lib/dispatcher/filter_dispatcher");
 
 exports.Dispatcher = {
-  Columns : ColumsDispatcher,
+  Columns : ColumnsDispatcher,
   Data    : DataDispatcher,
   Filters : FilterDispatcher
 }
