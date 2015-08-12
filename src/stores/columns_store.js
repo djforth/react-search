@@ -57,7 +57,7 @@ const store = {
 
   getKeyAndTitle(){
     return _.map(this.visible_columns, (col)=> this.reduceObj(col, ["key", "title"]))
-  }
+  },
 
   getDateColumns(){
     let dates = _.chain(this.columns)
@@ -97,7 +97,7 @@ const store = {
 
   getVisible(){
     return this.visible_columns;
-  }
+  },
 
   reduceObj(obj, values){
     let reduced = _.omit(obj, (v, k)=>{
