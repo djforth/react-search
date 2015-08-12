@@ -141,7 +141,7 @@ const store = {
   },
 
   getDateFmt(item, key, fmt="%d/%m/%Y"){
-    return this.data.formatDate(item, key, fmt)
+    return this.data.formatDate(item, key, fmt);
   },
 
   getKeys(){

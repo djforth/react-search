@@ -6,7 +6,6 @@ const _ = require("lodash");
 const textMixins = require("morse-react-mixins").text_mixins;
 const ColumnsDispatcher = require("../dispatcher/columns_dispatcher");
 
-var columns_ids = [];
 
 const registeredCallback = function(payload) {
   let action = payload.action;
@@ -88,36 +87,35 @@ const store = {
   },
 
   getTitleForKey(key){
-    let item = _.find(this.columns, (col)=>col.key===key);
-    return item.title
+    let item = _.find(this.columns, (col)=> col.key === key );
+    return item.title;
   },
 
   reduceObj(obj, values){
     let reduced = _.omit(obj, (v, k)=>{
-      return !_.includes(values, k)
+      return !_.includes(values, k);
     });
     return reduced;
   },
 
   setVisibleColumns(device){
-    let check = {}
+    let check = {};
     check[device] = true;
     this.visible_columns = _.where(this.columns, check);
   },
 
   setTitles(columns){
-    var that = this;
     columns = _.map(columns, function(col){
       // console.log(that.capitalize)
       if(!_.has(col, "title")){
         let title = this.capitalize(col.key);
-        _.set(col, "title", title)
+        _.set(col, "title", title);
       }
 
-      return col
+      return col;
     }.bind(this));
 
-    return columns
+    return columns;
   }
 };
 
