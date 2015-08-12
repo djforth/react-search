@@ -55,6 +55,10 @@ const store = {
     return _.pluck(this.visible_columns, "key");
   },
 
+  getKeyAndTitle(){
+    return _.map(this.visible_columns, (col)=> this.reduceObj(col, ["key", "title"]))
+  }
+
   getDateColumns(){
     let dates = _.chain(this.columns)
       .filter((col)=>(col.type === "date" || col.type === "dateTime"))
@@ -90,6 +94,10 @@ const store = {
     let item = _.find(this.columns, (col)=> col.key === key );
     return item.title;
   },
+
+  getVisible(){
+    return this.visible_columns;
+  }
 
   reduceObj(obj, values){
     let reduced = _.omit(obj, (v, k)=>{
