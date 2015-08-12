@@ -7,7 +7,7 @@ describe("ColumnsAction", function() {
 
   let options = [
     {
-      action:"addDateRange",
+      action:"addingColumns",
       handler:"handleAddingColumns",
       args:["foo"],
       dispactchArgs:{

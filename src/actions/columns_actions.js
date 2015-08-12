@@ -1,7 +1,7 @@
 const ColumnsDispatcher = require("../dispatcher/columns_dispatcher");
 
 module.exports = {
-  addDateRange:(cols)=>{
+  addingColumns:(cols)=>{
     ColumnsDispatcher.handleAddingColumns({
       type    : "ADDING_COLUMNS",
       columns : cols

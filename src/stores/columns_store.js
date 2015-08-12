@@ -56,7 +56,7 @@ const store = {
   },
 
   getKeyAndTitle(){
-    return _.map(this.visible_columns, (col)=> this.reduceObj(col, ["key", "title"]))
+    return _.map(this.visible_columns, (col)=> this.reduceObj(col, ["key", "title"]));
   },
 
   getDateColumns(){
