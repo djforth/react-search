@@ -38,7 +38,7 @@ class Keys extends React.Component {
 
     this.active = this.toggleCss(this.active);
     this.setState({active:this.getClasses(this.active)});
-    FilterActions.changeKey(this.props.item);
+    FilterActions.changeKey(this.props.item.key);
     DataActions.keyUpdate();
   }
 
@@ -54,7 +54,7 @@ class Keys extends React.Component {
 
   render() {
     return (
-      <li className={this.state.active} ><a href="#" onClick={this._select.bind(this)} key={_.uniqueId()}>{this.capitalize(this.props.item)}</a></li>
+      <li className={this.state.active} ><a href="#" onClick={this._select.bind(this)} key={_.uniqueId()}>{this.props.item.title}</a></li>
     );
   }
 }

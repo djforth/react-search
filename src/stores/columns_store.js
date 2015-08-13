@@ -133,5 +133,6 @@ Object.assign(store, textMixins);
 const ColumnsStore = assign({}, EventEmitter.prototype, store);
 
 ColumnsStore.dispatchToken = ColumnsDispatcher.register(registeredCallback);
+ColumnsStore.setMaxListeners(0);
 
 module.exports = ColumnsStore;
