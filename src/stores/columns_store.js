@@ -68,7 +68,11 @@ const store = {
       items = _.first(this.columns);
     }
 
-    return items;
+    if(items){
+      return items;
+    }
+
+    return {cols:[], visible:[]}
   },
 
   getKeys(id){
