@@ -176,13 +176,13 @@ describe('ColumnsStore', function() {
         store.columns = [
           {
             id:1,
-            col:final,
+            cols:final,
             visible:tablet
           }
         ]
         spyOn(store, "getColumn").and.returnValue({
           id:1,
-          col:final,
+          cols:final,
           visible:tablet
         });
         // store.columns         = final;

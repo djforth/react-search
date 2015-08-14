@@ -86,7 +86,7 @@ const store = {
   },
 
   getDateColumns(id){
-    let column = this.getColumn(id).col;
+    let column = this.getColumn(id).cols;
     let dates = _.chain(column)
       .filter((col)=>(col.type === "date" || col.type === "dateTime"))
       .map((col)=> this.reduceObj(col, ["key", "title", "type", "fmt"]))
@@ -96,7 +96,7 @@ const store = {
   },
 
   getSearchable(id){
-    let column = this.getColumn(id).col;
+    let column = this.getColumn(id).cols;
     let searchables = _.chain(column)
       .filter((col)=>col.searchable)
       .map((col)=> this.reduceObj(col, ["key", "title"]))
@@ -107,7 +107,7 @@ const store = {
 
   getShowable(id){
     let column = this.getColumn(id);
-    let showables = _.chain(column.col)
+    let showables = _.chain(column.cols)
       .filter((col)=>{
         return col.show && !_.includes(column.visible, col);
       })
@@ -117,7 +117,7 @@ const store = {
   },
 
   getSortable(id){
-    let column = this.getColumn(id).col;
+    let column = this.getColumn(id).cols;
     let sortables = _.chain(column)
       .filter((col)=>col.sortable)
       .map((col)=> this.reduceObj(col, ["key", "title"]))
@@ -132,7 +132,7 @@ const store = {
   },
 
   getTitleForKey(key, id){
-    let column = this.getColumn(id).col;
+    let column = this.getColumn(id).cols;
     let item = _.find(column, (col)=> col.key === key );
     return item.title;
   },
