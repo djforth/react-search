@@ -59,7 +59,7 @@ describe("DataItem", function() {
     beforeEach(()=>{
 
       td = TestUtils.findRenderedDOMComponentWithClass(dataitem, "tr");
-      console.log("td", td.getDOMNode())
+
     });
 
 

@@ -438,9 +438,5 @@ describe("DataStore", function() {
         expect(data.selected).toBeTruthy()
       });
     });
-
-
-
-
   });
 });

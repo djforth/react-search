@@ -11,7 +11,7 @@ const registeredCallback = function(payload) {
   let action = payload.action;
   switch(action.type) {
     case "ADDING_COLUMNS":
-      ColumnsStore.addColumns(action.columns);
+      ColumnsStore.addColumns(action.columns, action.id);
       ColumnsStore.emitChange("adding");
       break;
 
@@ -41,26 +41,49 @@ const store = {
     this.removeListener(event, callback);
   },
 
-  addColumns(c){
-    this.columns = this.setTitles(c);
-    this.setVisibleColumns(this.device);
+  addColumns(c, id){
+    id   = id || _.uniqueId();
+    let cols = this.setTitles(c);
+    this.columns.push({id:id, cols:cols, visible:this.setVisibleColumns(cols)});
+
+    return id;
   },
 
   changeDevice(d){
     this.device = d;
-    this.setVisibleColumns(d);
+    this.columns = _.map(this.columns, (col)=>{
+      col.visible = this.setVisibleColumns(col.cols);
+      return col;
+    });
+
   },
 
-  getKeys(){
-    return _.pluck(this.visible_columns, "key");
+  getColumn(id){
+    let items;
+    if(id){
+      items =  _.find(this.columns, (col)=>{
+        return col.id === id;
+      });
+    } else {
+      items = _.first(this.columns);
+    }
+
+    return items;
   },
 
-  getKeyAndTitle(){
-    return _.map(this.visible_columns, (col)=> this.reduceObj(col, ["key", "title"]));
+  getKeys(id){
+    let visible = this.getColumn(id).visible;
+    return _.pluck(visible, "key");
   },
 
-  getDateColumns(){
-    let dates = _.chain(this.columns)
+  getKeyAndTitle(id){
+    let visible = this.getColumn(id).visible;
+    return _.map(visible, (col)=> this.reduceObj(col, ["key", "title"]));
+  },
+
+  getDateColumns(id){
+    let column = this.getColumn(id).col;
+    let dates = _.chain(column)
       .filter((col)=>(col.type === "date" || col.type === "dateTime"))
       .map((col)=> this.reduceObj(col, ["key", "title", "type", "fmt"]))
       .value();
@@ -68,8 +91,9 @@ const store = {
     return dates;
   },
 
-  getSearchable(){
-    let searchables = _.chain(this.columns)
+  getSearchable(id){
+    let column = this.getColumn(id).col;
+    let searchables = _.chain(column)
       .filter((col)=>col.searchable)
       .map((col)=> this.reduceObj(col, ["key", "title"]))
       .value();
@@ -77,8 +101,20 @@ const store = {
     return searchables;
   },
 
-  getSortable(){
-    let sortables = _.chain(this.columns)
+  getShowable(id){
+    let column = this.getColumn(id);
+    let showables = _.chain(column.col)
+      .filter((col)=>{
+        return col.show && !_.includes(column.visible, col);
+      })
+      .map((col)=> this.reduceObj(col, ["key", "title"]))
+      .value();
+    return showables;
+  },
+
+  getSortable(id){
+    let column = this.getColumn(id).col;
+    let sortables = _.chain(column)
       .filter((col)=>col.sortable)
       .map((col)=> this.reduceObj(col, ["key", "title"]))
       .value();
@@ -86,17 +122,19 @@ const store = {
     return sortables;
   },
 
-  getTitles(){
-    return _.pluck(this.visible_columns, "title");
+  getTitles(id){
+    let visible = this.getColumn(id).visible;
+    return _.pluck(visible, "title");
   },
 
-  getTitleForKey(key){
-    let item = _.find(this.columns, (col)=> col.key === key );
+  getTitleForKey(key, id){
+    let column = this.getColumn(id).col;
+    let item = _.find(column, (col)=> col.key === key );
     return item.title;
   },
 
-  getVisible(){
-    return this.visible_columns;
+  getVisible(id){
+    return this.getColumn(id).visible;
   },
 
   reduceObj(obj, values){
@@ -106,10 +144,10 @@ const store = {
     return reduced;
   },
 
-  setVisibleColumns(device){
+  setVisibleColumns(cols){
     let check = {};
-    check[device] = true;
-    this.visible_columns = _.where(this.columns, check);
+    check[this.device] = true;
+    return _.where(cols, check);
   },
 
   setTitles(columns){

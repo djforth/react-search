@@ -120,7 +120,6 @@ describe("FiltersSelect", function() {
         let elm = opt.getDOMNode();
         if(i > 0){
           let n = i - 1;
-          console.log("n", list[n]);
           expect(elm.getAttribute("value")).toEqual(String(list[n].id));
           expect(elm.textContent).toEqual(list[n].title);
         } else {

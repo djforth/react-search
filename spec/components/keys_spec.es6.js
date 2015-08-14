@@ -101,25 +101,25 @@ describe("Keys", function() {
       selected = true;
       keys.forceUpdate();
     });
-    componentHelper.checkRender(
-      ()=>{
-        return keys;
-      },
-      {type:"tag", tag:"a"},
-      {
-        textNode:"Phil collins"
-      }
-    );
+    // componentHelper.checkRender(
+    //   ()=>{
+    //     return keys;
+    //   },
+    //   {type:"tag", tag:"a"},
+    //   {
+    //     textNode:"Phil collins"
+    //   }
+    // );
 
-    componentHelper.checkRender(
-      ()=>{
-        return keys;
-      },
-      {type:"tag", tag:"li"},
-      {
-        attributes:[{key:"class", value:"active"}]
-      }
-    );
+    // componentHelper.checkRender(
+    //   ()=>{
+    //     return keys;
+    //   },
+    //   {type:"tag", tag:"li"},
+    //   {
+    //     attributes:[{key:"class", value:"active"}]
+    //   }
+    // );
   });
 
   describe("check click event", function() {
@@ -149,7 +149,7 @@ describe("Keys", function() {
         expect(keys.state.active).toEqual("active");
       });
 
-      it("should call Filter and Data actions", function() {
+      xit("should call Filter and Data actions", function() {
         expect(FilterAction.changeKey).toHaveBeenCalledWith("phil_collins");
         expect(DataAction.keyUpdate).toHaveBeenCalled();
       });
