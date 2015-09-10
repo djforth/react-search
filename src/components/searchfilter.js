@@ -59,7 +59,7 @@ class SearchFilters extends React.Component{
       }
 
       this.loop = window.setTimeout((val)=>{
-        if(val.length > 3 ){
+        if(val.length > 3 || val === ""){
           DataActions.searching(val);
         }
       }, 100, e.target.value);
