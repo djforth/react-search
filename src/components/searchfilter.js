@@ -28,7 +28,7 @@ class SearchFilters extends React.Component{
   }
 
   componentDidMount() {
-    this.quickSearch = (_.isBoolean(this.prop.quickSearch)) ? this.prop.quickSearch : true;
+    this.quickSearch = (_.isBoolean(this.props.quickSearch)) ? this.props.quickSearch : true;
 
     if(FilterStore.isSelectedKey(this.props.item)){
       this.active = [{active:true}];

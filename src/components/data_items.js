@@ -82,19 +82,27 @@ class DataItems extends React.Component {
   }
 
   _onChange(){
-    this.setState({data:DataStore.paginationData()});
+    if (this.isMounted()) {
+      this.setState({data:DataStore.paginationData()});
+    }
   }
 
   _onPagination() {
-    this.setState({data:DataStore.paginationData()});
+    if (this.isMounted()) {
+      this.setState({data:DataStore.paginationData()});
+    }
   }
 
   _onSearch() {
-    this.setState({data:DataStore.getSearchData()});
+    if (this.isMounted()) {
+      this.setState({data:DataStore.getSearchData()});
+    }
   }
 
   _onLoaded(){
-    this.setState({data:DataStore.getAll(), keys:DataStore.getKeys()});
+    if (this.isMounted()) {
+      this.setState({data:DataStore.getAll(), keys:DataStore.getKeys()});
+    }
   }
 }
 

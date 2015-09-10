@@ -18,7 +18,9 @@ class DataItem extends React.Component {
   }
 
   componentDidMount() {
-    this.setState({data:DataStore.get(this.props.id)});
+    if (this.isMounted()) {
+      this.setState({data:this.props.data});
+    }
   }
 
   renderTd(){
