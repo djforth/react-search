@@ -46,6 +46,7 @@ class SearchFilters extends React.Component{
   }
 
   _onAdd(){
+    console.log('keys', ColumnsStore.getSearchable());
     this.setState({
       keys:ColumnsStore.getSearchable()
     });
