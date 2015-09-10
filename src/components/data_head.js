@@ -1,6 +1,8 @@
 const React           = require("react/addons");
 const _               = require("lodash");
 
+const ColumnsStore   = require("../stores/columns_store");
+
 //Mixins
 const cssMixins  = require("morse-react-mixins").css_mixins;
 const textMixins = require("morse-react-mixins").text_mixins;
@@ -8,6 +10,16 @@ const textMixins = require("morse-react-mixins").text_mixins;
 class DataHead extends React.Component {
   constructor(props) {
     super(props);
+  }
+
+  componentDidMount() {
+    this.setState({columns:ColumnsStore.getVisible()});
+
+    ColumnsStore.addChangeListener("change", this._onChange.bind(this));
+  }
+
+  componentWillUnmount() {
+    ColumnsStore.removeChangeListener("change", this._onChange);
   }
 
   renderTh(){
@@ -30,6 +42,13 @@ class DataHead extends React.Component {
         </div>
       </div>
     );
+  }
+
+  _onChange(){
+    let columns = ColumnsStore.getKeyAndTitle();
+    this.setState({
+      columns:columns
+    });
   }
 }
 

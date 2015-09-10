@@ -3,6 +3,7 @@ const React           = require("react/addons");
 const _               = require("lodash");
 
 const DataStore      = require("../stores/data_store");
+const ColumnsStore   = require("../stores/columns_store");
 
 //Mixins
 const cssMixins  = require("morse-react-mixins").css_mixins;
@@ -18,7 +19,15 @@ class DataItem extends React.Component {
   }
 
   componentDidMount() {
+    this.mounted = true;
     this.setState({data:this.props.data});
+
+    ColumnsStore.addChangeListener("change", this._onChange.bind(this));
+  }
+
+  componentWillUnmount() {
+    this.mounted = false;
+    ColumnsStore.removeChangeListener("change", this._onChange);
   }
 
   renderTd(){
@@ -48,6 +57,15 @@ class DataItem extends React.Component {
         {this.renderTd()}
       </div>
     );
+  }
+
+   _onChange(){
+    if(this.mounted){
+      this.setState({
+        columns:ColumnsStore.getVisible()
+      });
+    }
+
   }
 }
 
