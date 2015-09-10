@@ -94,6 +94,7 @@ class DataItem extends React.Component {
 
   _onChange(){
     if(this.mounted){
+      console.log('mounted', ColumnsStore.getVisible());
       this.setState({
         columns:ColumnsStore.getVisible()
       });
