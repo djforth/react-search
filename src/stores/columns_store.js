@@ -72,7 +72,7 @@ const store = {
       return items;
     }
 
-    return {cols:[], visible:[]}
+    return {cols:[], visible:[]};
   },
 
   getKeys(id){

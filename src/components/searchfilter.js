@@ -28,6 +28,8 @@ class SearchFilters extends React.Component{
   }
 
   componentDidMount() {
+    this.quickSearch = (_.isBoolean(this.prop.quickSearch)) ? this.prop.quickSearch : true;
+
     if(FilterStore.isSelectedKey(this.props.item)){
       this.active = [{active:true}];
       this.setState({active:this.getClasses(this.active)});
@@ -41,9 +43,21 @@ class SearchFilters extends React.Component{
   }
 
   _onChange(e){
-    _.defer((val)=>{
-      DataActions.searching(val);
-    }, e.target.value);
+    if(this.quickSearch){
+      if(this.loop){
+        window.clearInterval(this.loop);
+      }
+
+      this.loop = window.setInterval((val)=>{
+        if(val.length > 3 ){
+          DataActions.searching(val);
+        }
+      }, 500, e.target.value);
+    }
+
+    // _.defer((val)=>{
+    //   DataActions.searching(val);
+    // }, e.target.value);
   }
 
   _openDropdown(){
@@ -58,7 +72,7 @@ class SearchFilters extends React.Component{
 
   _preventSubmit(e){
     e.preventDefault();
-    // console.log("submiting");
+    console.log("submiting", e);
   }
 
   renderKeys(){
