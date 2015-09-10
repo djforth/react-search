@@ -111,7 +111,7 @@ class SearchFilters extends React.Component{
                         <span className="sr-only">Toggle Dropdown</span>
                       </button>
                       <ul className="dropdown-menu">
-                        <Keys item="all" />
+                        <Keys item={{key:"all", title:"All"}} />
                         <li role="separator" className="divider"></li>
                         {this.renderKeys()}
                       </ul>
