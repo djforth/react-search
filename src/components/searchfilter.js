@@ -4,6 +4,7 @@ const _ = require("lodash");
 
 const DataActions    = require("../actions/data_actions");
 const FilterStore    = require("../stores/filter_store");
+const ColumnsStore   = require("../stores/columns_store");
 
 //Mixins
 const cssMixins  = require("morse-react-mixins").css_mixins;
@@ -36,10 +37,18 @@ class SearchFilters extends React.Component{
     }
 
     FilterStore.addChangeListener("change_key", this._openDropdown.bind(this));
+    ColumnsStore.addChangeListener("adding", this._onAdd.bind(this));
   }
 
   componentWillUnmount() {
     FilterStore.removeChangeListener("change_key", this._openDropdown);
+    ColumnsStore.removeChangeListener("adding", this._onAdd);
+  }
+
+  _onAdd(){
+    this.setState({
+      keys:ColumnsStore.getSearchable()
+    });
   }
 
   _onChange(e){
@@ -77,8 +86,8 @@ class SearchFilters extends React.Component{
   }
 
   renderKeys(){
-    if(this.props.keys){
-      let items = this.props.keys.map(function(k){
+    if(this.state.keys){
+      let items = this.state.keys.map(function(k){
         return (<Keys item={k} />);
         });
 

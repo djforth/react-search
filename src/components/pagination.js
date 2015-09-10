@@ -14,11 +14,13 @@ class PaginationHolder extends React.Component{
   }
 
   componentDidMount() {
+    this.mounted = true;
     DataStore.addChangeListener("search", this._onUpdate.bind(this));
     DataStore.addChangeListener("fetched", this._onUpdate.bind(this));
   }
 
   componentWillUnmount() {
+    this.mounted = false;
     DataStore.removeChangeListener("search", this._onUpdate);
     DataStore.removeChangeListener("fetched", this._onUpdate);
   }
@@ -36,11 +38,13 @@ class PaginationHolder extends React.Component{
     let items      = DataStore.getPagination();
     let prevNext   = items > 0;
     let maxButtons =  (items <= 10) ?  items : 10;
-    this.setState({
-      items:items,
-      maxButtons:maxButtons,
-      prevNext:prevNext
-    });
+    if(this.mounted){
+      this.setState({
+        items:items,
+        maxButtons:maxButtons,
+        prevNext:prevNext
+      });
+    }
   }
 
   hidePagination(){

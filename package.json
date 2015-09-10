@@ -4,6 +4,8 @@
   "description": "React Bootstrap search for Morse CMS's",
   "main": "index.js",
   "scripts": {
+    "bundle":"npm test && npm run build",
+    "bundle:watch":"npm run test:watch && npm run build:watch",
     "build": "babel  -x '.js' --source-maps --stage 0 src -d lib",
     "build:watch": "babel  -x '.js' -w --source-maps --stage 0 src -d lib",
     "lint": "eslint src/**",

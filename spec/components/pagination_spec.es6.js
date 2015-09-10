@@ -63,6 +63,10 @@ describe("Pagination", function() {
       let events =["search", "fetched"];
       storeListeners.checkListeners(DataStore, "addChangeListener", events );
     });
+
+    it("should set mounted variable", function() {
+      expect(pagination.mounted).toBeTruthy()
+    });
   });
 
   describe("check componentWillUnmmont spies", function() {
@@ -70,6 +74,11 @@ describe("Pagination", function() {
       pagination.componentWillUnmount();
       let events =["search", "fetched"];
       storeListeners.checkListeners(DataStore, "removeChangeListener", events );
+    });
+
+    it("should set mounted variable", function() {
+      pagination.componentWillUnmount();
+      expect(pagination.mounted).toBeFalsy()
     });
   });
 

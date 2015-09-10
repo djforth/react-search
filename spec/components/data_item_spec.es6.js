@@ -17,7 +17,7 @@ describe("DataItem", function() {
     spy = jasmine.createSpyObj("DataStore", ["get"])
     spy.get.and.returnValue(data);
     revert = DataItem.__set__("DataStore", spy);
-    dataitem = TestUtils.renderIntoDocument(<DataItem id="1" css={css} keys={keys} /> );
+    dataitem = TestUtils.renderIntoDocument(<DataItem data={data} css={css} keys={keys} /> );
 
     spyOn(dataitem, "checkCss").and.callThrough();
 
@@ -34,15 +34,15 @@ describe("DataItem", function() {
     expect(dataitem).toBeTruthy();
   });
 
-  it("should call dataStore", function() {
-    expect(spy.get).toHaveBeenCalledWith("1");
-  });
+  // it("should call dataStore", function() {
+  //   expect(spy.get).toHaveBeenCalledWith("1");
+  // });
 
   describe("props and state defaults", function() {
     var propsDefaults = {
         css  : css,
         keys : keys,
-        id   : "1"
+        data : data
       };
 
     var stateDefaults = {

@@ -5,8 +5,13 @@ const _     = require("lodash");
 
 //Flux
 // const DataStore      = require("../stores/data_store");
-const DataActions   = require("../actions/data_actions");
-const FilterActions = require("../actions/filter_actions");
+const DataActions    = require("../actions/data_actions");
+const FilterActions  = require("../actions/filter_actions");
+const ColumnsActions = require("../actions/columns_actions");
+
+const ColumnsStore  = require("../stores/columns_store");
+const DataStore     = require("../stores/data_store");
+const FilterStore   = require("../stores/filter_store");
 
 // Morse Libraies
 const ViewportDetect = require("viewport-detection-es6");
@@ -30,22 +35,26 @@ class Search extends React.Component{
 
   componentDidMount() {
     const detect = new ViewportDetect();
-    let device = detect.getDevice();
+    this.device = detect.getDevice();
     this.size  = detect.windowSize();
-
+    let colsId = ColumnsActions.addingColumns(this.props.columns);
+    ColumnsActions.changeDevice(this.device);
     this.setState({
-      device:device,
+      // device:device,
       loading:true,
       loading_txt:"Starting data load",
       percent: 0,
-      visible:this.props[device]
+      colsId:colsId
+      // visible:this.props[device]
     });
     detect.trackSize(function(device, size){
-      if(this.state.device !== device){
-        this.setState({
-          device:device,
-          visible:this.props[device]
-        });
+      if(this.device !== device){
+        this.device =  device;
+        ColumnsActions.changeDevice(device);
+        // this.setState({
+        //   device:device,
+        //   visible:this.props[device]
+        // });
       }
 
       this.size   = size;
@@ -53,13 +62,10 @@ class Search extends React.Component{
     }.bind(this));
 
     //Adds Keys
-    FilterActions.setKeys(this.props.searchable);
+    let keys = ColumnsStore.getSearchable();
+    FilterActions.setKeys(_.pluck(keys, "key"));
 
-
-    //Get Data
     this.setLoading();
-    // DataStore.setApi(this.props.dataApi);
-    // DataStore.fetchData();
   }
 
 

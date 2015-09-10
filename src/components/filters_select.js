@@ -22,34 +22,34 @@ class FiltersSelect extends React.Component {
   }
 
   renderOptions(){
-      if(this.props.filter) {
-        let opts  = this.props.filter.getAll();
+    if(this.props.filter) {
+      let opts  = this.props.filter.getAll();
 
-        let items = opts.map(function(f){
+      let items = opts.map(function(f){
 
-            if (this.state.selected === f.get("id")) {
-              return (<option
-                key={_.uniqueId()}
-                value={f.get("id")}
-                selected
-                >
-                  {f.get("title")}
-                </option>
-              );
-            } else {
-              return (<option
-                key={_.uniqueId()}
-                value={f.get("id")}
-                >
-                  {f.get("title")}
-                </option>
-              );
-            }
+          if (this.state.selected === f.get("id")) {
+            return (<option
+              key={_.uniqueId()}
+              value={f.get("id")}
+              selected
+              >
+                {f.get("title")}
+              </option>
+            );
+          } else {
+            return (<option
+              key={_.uniqueId()}
+              value={f.get("id")}
+              >
+                {f.get("title")}
+              </option>
+            );
+          }
 
-        }.bind(this));
+      }.bind(this));
 
-        return items;
-      }
+      return items;
+    }
 
   }
 
