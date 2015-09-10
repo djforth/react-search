@@ -10,6 +10,8 @@ const textMixins = require("morse-react-mixins").text_mixins;
 class DataHead extends React.Component {
   constructor(props) {
     super(props);
+
+    this.state = {columns:[]};
   }
 
   componentDidMount() {
@@ -23,15 +25,19 @@ class DataHead extends React.Component {
   }
 
   renderTh(){
-    let th = _.map(this.props.keys, function(t, i){
-      return (
-        <div className={this.checkCss(this.props.css, t)} key={i}>
-          {this.capitalize(t)}
-        </div>
-      );
-    }.bind(this));
+    if(this.state.columns){
+      let th = _.map(this.state.columns, function(col, i){
+        return (
+          <div className={this.checkCss(this.props.css, col.key)} key={i}>
+            {col.title}
+          </div>
+        );
+      }.bind(this));
 
-    return th;
+      return th;
+    }
+
+    return "";
   }
 
   render() {

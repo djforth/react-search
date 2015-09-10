@@ -7,16 +7,31 @@ const Immutable = require("immutable");
 // Test Helpers
 const TestUtils       = React.addons.TestUtils;
 const componentHelper = require("react-jasmine").componentHelpers;
+const storeListeners = require("react-jasmine").checkListeners
 
 describe("DataItem", function() {
-  let dataitem, cssMixins, spy, revert;
+  let dataitem, cssMixins, spy, revert, ColumnsStore;;
   let data = Immutable.fromJS({foo:"Phil", bar:"Collins"})
   let keys = ["foo", "bar"];
   let css  = {foo:"class1", default:"class2"}
+  let columns = [
+    {key:"foo", title:"Foooo"},
+    {key:"Bar", title:"Baaaaar"}
+  ]
+  let colStubs = [
+    {title:"addChangeListener"},
+    {title:"removeChangeListener"},
+    {title:"getKeyAndTitle", returnValue:columns}
+  ]
   beforeEach(() => {
     spy = jasmine.createSpyObj("DataStore", ["get"])
     spy.get.and.returnValue(data);
     revert = DataItem.__set__("DataStore", spy);
+
+    //Spy on Store
+    ColumnsStore = DataItem.__get__("ColumnsStore");
+    storeListeners.stubStore(ColumnsStore, colStubs);
+
     dataitem = TestUtils.renderIntoDocument(<DataItem data={data} css={css} keys={keys} /> );
 
     spyOn(dataitem, "checkCss").and.callThrough();
@@ -54,7 +69,7 @@ describe("DataItem", function() {
     }, propsDefaults, stateDefaults);
   });
 
-  describe("Name of the group", function() {
+  xdescribe("Name of the group", function() {
     let td;
     beforeEach(()=>{
 
