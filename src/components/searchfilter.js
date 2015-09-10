@@ -45,14 +45,14 @@ class SearchFilters extends React.Component{
   _onChange(e){
     if(this.quickSearch){
       if(this.loop){
-        window.clearInterval(this.loop);
+        window.clearTimeout(this.loop);
       }
 
-      this.loop = window.setInterval((val)=>{
+      this.loop = window.setTimeout((val)=>{
         if(val.length > 3 ){
           DataActions.searching(val);
         }
-      }, 500, e.target.value);
+      }, 100, e.target.value);
     }
 
     // _.defer((val)=>{
@@ -71,8 +71,9 @@ class SearchFilters extends React.Component{
   }
 
   _preventSubmit(e){
-    e.preventDefault();
     console.log("submiting", e);
+    e.preventDefault();
+
   }
 
   renderKeys(){
