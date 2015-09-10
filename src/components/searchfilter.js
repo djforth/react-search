@@ -62,7 +62,7 @@ class SearchFilters extends React.Component{
         if(val.length > 3 || val === ""){
           DataActions.searching(val);
         }
-      }, 100, e.target.value);
+      }, 300, e.target.value);
     }
 
     // _.defer((val)=>{
