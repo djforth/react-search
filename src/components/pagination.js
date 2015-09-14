@@ -40,6 +40,7 @@ class PaginationHolder extends React.Component{
     let maxButtons =  (items <= 10) ?  items : 10;
     if(this.mounted){
       this.setState({
+        activePage:1,
         items:items,
         maxButtons:maxButtons,
         prevNext:prevNext

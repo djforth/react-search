@@ -169,7 +169,7 @@ const store = {
     this.page   = 1;
     let keys    = FilterStore.getSelectedKeys();
     let filters = FilterStore.getFilters();
-    console.log("keys", keys)
+    // console.log("keys", keys)
     let search = this.data.search(this.searchVal, keys, filters);
     this.itemNo = search.size;
     this.cache  = search;

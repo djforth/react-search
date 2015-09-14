@@ -24,9 +24,9 @@ describe("DataItem", function() {
     {title:"getKeyAndTitle", returnValue:columns}
   ]
   beforeEach(() => {
-    spy = jasmine.createSpyObj("DataStore", ["get"])
-    spy.get.and.returnValue(data);
-    revert = DataItem.__set__("DataStore", spy);
+    // spy = jasmine.createSpyObj("DataStore", ["get"])
+    // spy.get.and.returnValue(data);
+    // revert = DataItem.__set__("DataStore", spy);
 
     //Spy on Store
     ColumnsStore = DataItem.__get__("ColumnsStore");
@@ -42,7 +42,7 @@ describe("DataItem", function() {
 
   afterEach(function() {
     dataitem.checkCss.calls.reset();
-    revert();
+    // revert();
   });
 
   it("renders", () => {

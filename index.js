@@ -45,8 +45,8 @@ exports.Stores = {
 // Compontents
 const CheckBox     = require("./lib/components/check_box");
 const DataHead     = require("./lib/components/data_head");
-const DataItems    = require("./lib/components/data_items");
 const DataItem     = require("./lib/components/data_item");
+const DataItems    = require("./lib/components/data_items");
 const Filters      = require("./lib/components/filters");
 const FilterCheck  = require("./lib/components/filters_check");
 const FilterRadio  = require("./lib/components/filters_radio");
@@ -72,3 +72,13 @@ exports.Components = {
   SearchFilter : SearchFilter
 }
 
+
+const GenericItem   = require("./lib/generic_search/generic_item");
+const GenericItems  = require("./lib/generic_search/generic_items");
+const GenericSearch = require("./lib/generic_search/generic_search");
+
+exports.Generic = {
+  Items : GenericItems,
+  Item  : GenericItem,
+  Search: GenericSearch
+}

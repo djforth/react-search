@@ -2,7 +2,7 @@ const React           = require("react/addons");
 // const PureRenderMixin = React.addons.PureRenderMixin;
 const _               = require("lodash");
 
-const DataStore      = require("../stores/data_store");
+// const DataStore      = require("../stores/data_store");
 const ColumnsStore   = require("../stores/columns_store");
 
 //Mixins
@@ -66,11 +66,10 @@ class DataItem extends React.Component {
   renderTd(){
 
     let item = this.state.data;
-
+    console.log(this.state.data, this.state.columns)
     if(item && this.state.columns){
 
        let td = _.map(this.state.columns, function(col){
-
          return (
             <div className={this.checkCss(this.props.css, col.key)} key={_.uniqueId("dataItem")}>
               {this.displayData(item, col)}
@@ -94,7 +93,6 @@ class DataItem extends React.Component {
 
   _onChange(){
     if(this.mounted){
-      console.log('mounted', ColumnsStore.getVisible());
       this.setState({
         columns:ColumnsStore.getVisible()
       });

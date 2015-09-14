@@ -1,0 +1,13 @@
+// See Material Design colour palette - http://www.google.com/design/spec/style/color.html#color-color-palette
+$deep_purple_500:#673AB7;
+$deep_purple_800:#4527A0;
+$deep_purple_50:#EDE7F6;
+
+// Also see http://getbootstrap.com/customize/ sub @ for $ for sass though
+
+//Navbar overrides
+$navbar-inverse-bg: $deep_purple_500;
+$navbar-inverse-link-color:$deep_purple_50;
+$navbar-inverse-brand-color: $deep_purple_50;
+$navbar-inverse-link-active-bg:$deep_purple_800;
+$navbar-border-radius:0;

@@ -238,18 +238,20 @@ class DataFcty extends DataManager {
       });
       return all.valueSeq().toJS().join(" ");
     } else {
-      return data.get(keys);
+      let k = (_.isArray(keys)) ? _.first(keys) : keys;
+      return data.get(k);
     }
   }
 
   searchTxt(regex, data, keys){
+    // console.log("keys", keys)
     let values = this.getValues(data, keys);
-
+    // console.log("values", values)
     if(values){
       return (String(values).search(regex) > -1);
     }
 
-    return true;
+    return false;
   }
 
   search(...args){

@@ -1,0 +1,35 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_self
+ */
+@import "bower_components/bourbon/app/assets/stylesheets/_bourbon.scss";
+// @import "compass";
+@import "bower_components/bootswatch/paper/_variables.scss";
+@import "settings/bootstrap_overrides";
+$icon-font-path: "bower_components/bootstrap-sass/assets/fonts/bootstrap/";
+@import "bower_components/bootstrap-sass/assets/stylesheets/bootstrap-sprockets";
+@import "bower_components/bootstrap-sass/assets/stylesheets/bootstrap";
+
+@import "bower_components/bootswatch/paper/_bootswatch.scss";
+@import "common/icons";
+@import "common/utilities";
+@import "common/search_fake_tables";
+// Settings and mixins
+// @import "settings/colors.scss";
+
+// Common styles
+// @import "common/header.scss";
+
+
+//Specific styles - Please keep to minimum
+
