@@ -40,6 +40,16 @@ describe("filterStore", function() {
     },
 
     {
+      func:"fetchData",
+      action:{
+        type : "FETCH",
+        api  : "foo"
+      },
+      args: ["foo"],
+      change:"fetching"
+    },
+
+    {
       func:"selected",
       action:{
         type:"SELECT_FILTER" ,
@@ -263,6 +273,7 @@ describe("filterStore", function() {
           });
 
           ajax.url = "http://phillcollins.com";
+          spyOn(store, "setApi")
           spyOn(ajax, "fetch").and.returnValue(promise);
           spyOn(store, "processFilters").and.returnValue(["foo"]);
           spyOn(action, "receiveAll");
@@ -270,7 +281,7 @@ describe("filterStore", function() {
 
         it("should fetch data", function(done) {
 
-          store.fetchData().then((data)=>{
+          store.fetchData(ajax.url).then((data)=>{
             expect(store.processFilters).toHaveBeenCalledWith("success");
             expect(action.receiveAll).toHaveBeenCalledWith(["foo"]);
             expect(data).toEqual(["foo"]);

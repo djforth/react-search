@@ -104,7 +104,7 @@ class SearchFilters extends React.Component{
               <div className="input-group vPad20">
                   <input type="text" className="form-control" placeholder="Search for..." onChange={this._onChange.bind(this)} />
                   <span className={this.state.dropdown}>
-                      <button className="btn btn-primary" type="button"><span className="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                      <button className="btn btn-primary" type="button"><span className="glyphicon glyphicon-search" aria-hidden="true">search</span></button>
                       <button type="button" className="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded={this.state.expanded} onClick={this._openDropdown.bind(this)} >
                         {this.capitalize(this.state.selectedkey)}
                         &nbsp;<span className="caret"></span>

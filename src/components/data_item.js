@@ -31,7 +31,6 @@ class DataItem extends React.Component {
   }
 
   getFmt(col){
-
     if(_.has(col, "fmt")){
       return col.fmt;
     }
@@ -53,8 +52,8 @@ class DataItem extends React.Component {
   displayData(item, col){
     let key  = col.key;
     let data = item.get(col.key);
-    if(_.isDate(data)){
 
+    if(_.isDate(data)){
       data = item.get(`${key}Df`);
       let fmt = this.getFmt(col);
       return data.formatDate(fmt);
@@ -63,18 +62,19 @@ class DataItem extends React.Component {
     return data;
   }
 
+  renderColumn(col, item){
+    return (
+      <div className={this.checkCss(this.props.css, col.key)} key={_.uniqueId("dataItem")}>
+        {this.displayData(item, col)}
+      </div>
+    );
+  }
+
   renderTd(){
-
     let item = this.state.data;
-    console.log(this.state.data, this.state.columns)
-    if(item && this.state.columns){
-
+    if(this.state.data && this.state.columns){
        let td = _.map(this.state.columns, function(col){
-         return (
-            <div className={this.checkCss(this.props.css, col.key)} key={_.uniqueId("dataItem")}>
-              {this.displayData(item, col)}
-            </div>
-            );
+         return this.renderColumn(col, item)
       }.bind(this));
 
       return td;

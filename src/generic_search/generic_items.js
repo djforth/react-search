@@ -28,6 +28,7 @@ class GenericItems extends DataItems {
               keys    = {this.state.visible}
               key     = {k.get("id")}
               tooltip = {this.props.tooltip}
+              buttons = {this.props.buttons}
             />
             );
          }

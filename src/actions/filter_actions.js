@@ -25,6 +25,13 @@ module.exports = {
     });
   },
 
+  fetchFilters:(api)=>{
+    FilterDispatcher.handleFetchFilters({
+      type : "FETCH",
+      api  : api
+    });
+  },
+
   selectFilter:(filterBy, id)=>{
     FilterDispatcher.handleSelectFilter({
       type: "SELECT_FILTER",

@@ -19,6 +19,11 @@ describe("FilterDispatcher", function() {
     },
 
     {
+      handler:"handleFetchFilters",
+      source:"FETCH"
+    },
+
+    {
 
       handler:"handleCheckFilter",
       source:"CHECK_FILTER"

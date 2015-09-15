@@ -27,6 +27,12 @@ const registeredCallback = function(payload) {
       FilterStore.emitChange("filter_change");
       break;
 
+    case "FETCH":
+      // FilterStore.setApi(action.api);
+      FilterStore.fetchData(action.api);
+      FilterStore.emitChange("fetching");
+      break;
+
     case "RECEIVE_DATA":
       // _data = action.data;
       FilterStore.emitChange("fetched");
@@ -83,7 +89,8 @@ const store =  {
     this.changed  = true;
   },
 
-  fetchData(){
+  fetchData(api){
+    this.setApi(api);
     return ajaxPromises.fetch().then((data)=>{
       this.filters = this.processFilters(data);
       FilterAction.receiveAll(this.filters);

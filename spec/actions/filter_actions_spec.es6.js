@@ -39,6 +39,16 @@ describe("FilterAction", function() {
     },
 
     {
+      action:"fetchFilters",
+      handler:"handleFetchFilters",
+      args:["foo"],
+      dispactchArgs:{
+        type : "FETCH",
+        api  : "foo"
+      }
+    },
+
+    {
       action:"selectFilter",
       handler:"handleSelectFilter",
       args:["foo", 1],

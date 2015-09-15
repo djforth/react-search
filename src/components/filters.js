@@ -1,17 +1,19 @@
 //Libraries
 const React = require("react/addons");
 const _     = require("lodash");
-// const cx    = require("classnames");
 
 //Flux
 // const DataStore      = require("../../stores/dataStore");
-const FilterStore = require("../stores/filter_store");
-const DataActions = require("../actions/data_actions");
+const FilterStore   = require("../stores/filter_store");
+const FilterActions = require("../actions/filter_actions");
+const DataActions   = require("../actions/data_actions");
 
 //components
 const FiltersCheck  = require("./filters_check");
+const FiltersDate   = require("./filters_date");
 const FiltersSelect = require("./filters_select");
 const FiltersRadio  = require("./filters_radio");
+
 const SearchFilter  = require("./searchfilter");
 
 //Mixins
@@ -22,44 +24,41 @@ class Filters extends React.Component {
   constructor(props) {
     super(props);
     this.chevron =  ["glyphicon", {"glyphicon-chevron-up":true}, {"glyphicon-chevron-down":false}];
-    this.panel     = ["panel-body", {"hide":true}];
+    this.panel     = ["panel-body", "collapse", {"in":false}];
     this.state = {filters:null, chevron: this.getClasses(this.chevron), panel:this.getClasses(this.panel)};
   }
 
   componentDidMount() {
 
     //Data Changers
-    FilterStore.addChangeListener("change", this._onChange.bind(this));
-    FilterStore.addChangeListener("fetched", this._onLoaded.bind(this));
+    FilterStore.addChangeListener("change", this._onUpdate.bind(this));
+    FilterStore.addChangeListener("fetched", this._onUpdate.bind(this));
 
     //Get Data
-    // console.log("filterApi", this.props.filterApi)
-    FilterStore.setApi(this.props.filterApi);
-    FilterStore.fetchData();
+    FilterActions.fetchFilters(this.props.filterApi);
   }
 
   componentWillUnmount() {
-    FilterStore.removeChangeListener("change", this._onChange);
-    FilterStore.removeChangeListener("fetched", this._onLoaded);
+    FilterStore.removeChangeListener("change", this._onUpdate);
+    FilterStore.removeChangeListener("fetched", this._onUpdate);
   }
 
   renderFilters(){
 
     if(this.state.filters){
-      // console.log("filterStore",this.state.filters.toJS());
-       let items = _.map(this.state.filters, function(f){
-        let elm;
-        switch(f.getDetails("input_type")){
-          case "checkbox":
-            elm = <FiltersCheck filter={f} key={_.uniqueId("check")} />;
-          break;
+      let items = _.map(this.state.filters, function(f){
+      let elm;
+      switch(f.getDetails("input_type")){
+        case "checkbox":
+          elm = <FiltersCheck filter={f} key={_.uniqueId("check")} />;
+        break;
 
-          case "radio":
-            elm = <FiltersRadio filter={f} key={_.uniqueId("radio")} />;
-          break;
-          default:
-            elm = <FiltersSelect filter={f} key={_.uniqueId("select")} />;
-        }
+        case "radio":
+          elm = <FiltersRadio filter={f} key={_.uniqueId("radio")} />;
+        break;
+        default:
+          elm = <FiltersSelect filter={f} key={_.uniqueId("select")} />;
+      }
 
         return elm;
       });
@@ -74,7 +73,7 @@ class Filters extends React.Component {
 
     return (
       <div className="search-filter">
-        <SearchFilter keys={this.props.keys} key="SearchFilter" />
+        <SearchFilter key="SearchFilter" />
         <div className="panel panel-default">
           <div className="panel-heading">
             Filters
@@ -108,14 +107,14 @@ class Filters extends React.Component {
   }
 
 
-  _onChange() {
+  _onUpdate() {
     this.setState({filters:FilterStore.getAll()});
   }
 
-  _onLoaded(){
-    this.setState({filters:FilterStore.getAll()});
+  // _onLoaded(){
+  //   this.setState({filters:FilterStore.getAll()});
 
-  }
+  // }
 
 }
 

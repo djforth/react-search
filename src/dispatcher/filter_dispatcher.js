@@ -24,6 +24,15 @@ const FilterDispatcher = assign(new Dispatcher(), {
     this.dispatch(payload);
   },
 
+  handleFetchFilters: function(action) {
+    var payload = {
+      source: "FETCH",
+      action: action
+    };
+
+    this.dispatch(payload);
+  },
+
    handleSelectFilter: function(action) {
     var payload = {
       source: "SELECT_FILTER",
