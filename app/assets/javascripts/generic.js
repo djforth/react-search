@@ -74,17 +74,19 @@ exports.Components = {
   SearchFilter: SearchFilter
 };
 
+var GenericExpander = require("./lib/generic_search/generic_expander");
 var GenericItem = require("./lib/generic_search/generic_item");
 var GenericItems = require("./lib/generic_search/generic_items");
 var GenericSearch = require("./lib/generic_search/generic_search");
 
 exports.Generic = {
+  Expander: GenericExpander,
   Items: GenericItems,
   Item: GenericItem,
   Search: GenericSearch
 };
 
-},{"./lib/actions/columns_actions":2,"./lib/actions/data_actions":3,"./lib/actions/filter_actions":4,"./lib/components/check_box":6,"./lib/components/data_head":8,"./lib/components/data_item":9,"./lib/components/data_items":10,"./lib/components/filters":11,"./lib/components/filters_check":12,"./lib/components/filters_radio":14,"./lib/components/filters_select":15,"./lib/components/keys":16,"./lib/components/pagination":17,"./lib/components/search":18,"./lib/components/searchfilter":19,"./lib/dispatcher/columns_dispatcher":20,"./lib/dispatcher/data_dispatcher":21,"./lib/dispatcher/filter_dispatcher":22,"./lib/factories/data_fcty":23,"./lib/factories/filters_fcty":24,"./lib/generic_search/generic_item":26,"./lib/generic_search/generic_items":27,"./lib/generic_search/generic_search":28,"./lib/stores/columns_store":29,"./lib/stores/data_store":30,"./lib/stores/filter_store":31}],2:[function(require,module,exports){
+},{"./lib/actions/columns_actions":2,"./lib/actions/data_actions":3,"./lib/actions/filter_actions":4,"./lib/components/check_box":6,"./lib/components/data_head":8,"./lib/components/data_item":9,"./lib/components/data_items":10,"./lib/components/filters":11,"./lib/components/filters_check":12,"./lib/components/filters_radio":14,"./lib/components/filters_select":15,"./lib/components/keys":16,"./lib/components/pagination":17,"./lib/components/search":18,"./lib/components/searchfilter":19,"./lib/dispatcher/columns_dispatcher":20,"./lib/dispatcher/data_dispatcher":21,"./lib/dispatcher/filter_dispatcher":22,"./lib/factories/data_fcty":23,"./lib/factories/filters_fcty":24,"./lib/generic_search/generic_expander":25,"./lib/generic_search/generic_item":26,"./lib/generic_search/generic_items":27,"./lib/generic_search/generic_search":28,"./lib/stores/columns_store":29,"./lib/stores/data_store":30,"./lib/stores/filter_store":31}],2:[function(require,module,exports){
 "use strict";
 
 var ColumnsDispatcher = require("../dispatcher/columns_dispatcher");

@@ -72,13 +72,14 @@ exports.Components = {
   SearchFilter : SearchFilter
 }
 
-
+const GenericExpander  = require("./lib/generic_search/generic_expander");
 const GenericItem   = require("./lib/generic_search/generic_item");
 const GenericItems  = require("./lib/generic_search/generic_items");
 const GenericSearch = require("./lib/generic_search/generic_search");
 
 exports.Generic = {
-  Items : GenericItems,
-  Item  : GenericItem,
-  Search: GenericSearch
+  Expander : GenericExpander,
+  Items    : GenericItems,
+  Item     : GenericItem,
+  Search   : GenericSearch
 }
