@@ -33,3 +33,10 @@ $icon-font-path: "/assets/fonts/bootstrap/";
 
 //Specific styles - Please keep to minimum
 
+.form-group{
+  hr{
+    border-bottom: none !important;
+    border-top: none !important;
+  }
+}
+

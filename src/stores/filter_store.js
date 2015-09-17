@@ -16,10 +16,16 @@ const registeredCallback = function(payload) {
   var action = payload.action;
   switch(action.type) {
 
+    case "CHANGE_DATE":
+      FilterStore.setDate(action);
+      FilterStore.emitChange("change_date");
+      break;
+
     case "CHANGE_KEY":
       FilterStore.setSelected(action.data);
       FilterStore.emitChange("change_key");
       break;
+
 
     case "CHECK_FILTER":
       // _data = action.data;
@@ -51,15 +57,9 @@ const registeredCallback = function(payload) {
   }
 };
 
-// var keys     = [];
-// var selected = "all";
-// var filters  = [];
-// var changed  = true;
-// var cache;
-// const store =  { };
-
 const store =  {
   keys         : [],
+  dates        : {},
   selectedKey  : "all",
   filters      : [],
   changed      : true,
@@ -110,6 +110,10 @@ const store =  {
     return this.filters;
   },
 
+  getDates() {
+    return this.dates
+  },
+
   getAllKeys() {
     return this.keys;
   },
@@ -144,6 +148,19 @@ const store =  {
 
   isSelectedKey(k){
     return this.selectedKey === k;
+  },
+
+  setDate(dr){
+    if(!_.has(this.dates, dr.key)){
+      this.dates[dr.key] = {}
+    }
+
+    if(dr.pos === "start"){
+      this.dates[dr.key].st = dr.date;
+    } else {
+      this.dates[dr.key].fn = dr.date;
+    }
+    console.log("dates", this.dates)
   },
 
   setKeys(ks){

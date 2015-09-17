@@ -17,6 +17,18 @@ describe("FilterAction", function() {
     },
 
     {
+      action:"changeDate",
+      handler:"handleChangeDate",
+      args:["foo", new Date(2015,0,18)],
+      dispactchArgs:{
+        type :"CHANGE_DATE",
+        date : new Date(2015,0,18),
+        key  : "foo",
+        pos  : "start"
+      }
+    },
+
+    {
       action:"changeKey",
       handler:"handleKeyUpdate",
       args:["foo"],

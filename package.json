@@ -1,6 +1,6 @@
 {
   "name": "react-search",
-  "version": "1.0.19",
+  "version": "1.0.20",
   "description": "React Bootstrap search for Morse CMS's",
   "main": "index.js",
   "scripts": {

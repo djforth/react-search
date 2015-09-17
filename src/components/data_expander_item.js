@@ -1,5 +1,6 @@
 //Libraries
-const _               = require("lodash");
+const React = require("react/addons");
+const _     = require("lodash");
 
 // Flux
 // const DataStore      = require("../stores/data_store");
@@ -51,10 +52,11 @@ class DataExpanderItem extends DataItem {
   }
 
   renderAll() {
-    let data = this.state.data;
+    let data = this.props.data;
 
     if(data) {
       let visible  = ColumnsStore.getShowable();
+      console.log('visible', visible);
       let included = _.pluck(visible, "key");
 
       let li = _.map(visible, (col) => {

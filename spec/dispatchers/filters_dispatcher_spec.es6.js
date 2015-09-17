@@ -24,6 +24,11 @@ describe("FilterDispatcher", function() {
     },
 
     {
+      handler:"handleChangeDate",
+      source:"CHANGE_DATE"
+    },
+
+    {
 
       handler:"handleCheckFilter",
       source:"CHECK_FILTER"

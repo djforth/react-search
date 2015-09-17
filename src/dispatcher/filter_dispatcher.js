@@ -15,6 +15,15 @@ const FilterDispatcher = assign(new Dispatcher(), {
     this.dispatch(payload);
   },
 
+  handleChangeDate: function(action) {
+    var payload = {
+      source: "CHANGE_DATE",
+      action: action
+    };
+
+    this.dispatch(payload);
+  },
+
   handleCheckFilter: function(action) {
     var payload = {
       source: "CHECK_FILTER",

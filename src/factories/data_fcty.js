@@ -52,6 +52,7 @@ class DataFcty extends DataManager {
 
     check = true;
     let cacheDR = this.cache.dateRanges;
+
     _.forIn(dateRanges, (v, k)=>{
       let dr = cacheDR[k];
 
@@ -102,8 +103,10 @@ class DataFcty extends DataManager {
 
   checkDates(date, range){
     let test = false;
+    // console.log(date, range)
     if(_.isDate(date)){
-      if((date > range.st) && (date.range.fn)){
+      // console.log((date > range.st), (date < range.fn));
+      if((date > range.st) && (date < range.fn)){
         test = true;
       }
     }
@@ -149,7 +152,7 @@ class DataFcty extends DataManager {
 
 
   dateRangeSearch(search, dateRanges){
-    this.cache.dateRanges       = dateRanges;
+    this.cache.dateRanges       = _.cloneDeep(dateRanges);
     if(!_.isEmpty(dateRanges)){
       search = search.filter((d)=>{
         let checked = false;
@@ -163,6 +166,7 @@ class DataFcty extends DataManager {
         return checked;
       });
     }
+
     this.cache.dateRangesSearch = search;
     return search;
   }

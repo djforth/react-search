@@ -43,19 +43,32 @@ class Filters extends React.Component {
     FilterStore.removeChangeListener("fetched", this._onUpdate);
   }
 
-  renderFilters(){
+  renderDateRanges(){
+    let dr = ""
+    if(this.props.date_ranges){
+      dr = _.map(this.props.date_ranges, (date_range)=>{
+        return <FiltersDate date_range = {date_range} key={_.uniqueId("dates")} />
+      })
 
+    }
+
+    return dr
+  }
+
+  renderFilters(){
     if(this.state.filters){
       let items = _.map(this.state.filters, function(f){
       let elm;
       switch(f.getDetails("input_type")){
         case "checkbox":
+          console.log('checkbox', f.get('title'));
           elm = <FiltersCheck filter={f} key={_.uniqueId("check")} />;
         break;
 
         case "radio":
           elm = <FiltersRadio filter={f} key={_.uniqueId("radio")} />;
         break;
+
         default:
           elm = <FiltersSelect filter={f} key={_.uniqueId("select")} />;
       }
@@ -82,6 +95,7 @@ class Filters extends React.Component {
             </a>
           </div>
           <div className={this.state.panel}>
+            {this.renderDateRanges()}
             {this.renderFilters()}
             <div className="pad20 clearfix">
               <button type="button" onClick={this._onFilter} className="btn btn-success pull-right"><span className="glyphicon glyphicon-plus"></span> Add Filters</button>

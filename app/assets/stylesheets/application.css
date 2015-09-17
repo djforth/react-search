@@ -6920,4 +6920,8 @@ img {
     padding-right: 5px;
     margin-right: 5px; }
 
+.form-group hr {
+  border-bottom: none !important;
+  border-top: none !important; }
+
 /*# sourceMappingURL=application.css.map */

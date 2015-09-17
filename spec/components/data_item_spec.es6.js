@@ -170,7 +170,7 @@ describe("DataItem", function() {
   describe('render functions', function() {
     describe('renderTd with no data or columns', function() {
       it("should return empty string if no data", function() {
-        dataitem.state.data = null;
+        dataitem.props.data = null;
         expect(dataitem.renderTd()).toEqual("");
       });
 

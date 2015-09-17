@@ -89,7 +89,7 @@ class SearchFilters extends React.Component{
   renderKeys(){
     if(this.state.keys){
       let items = this.state.keys.map(function(k){
-        return (<Keys item={k} />);
+        return (<Keys item={k} key={_.uniqueId("key")} />);
         });
 
         return items;

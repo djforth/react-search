@@ -166,11 +166,12 @@ const store = {
   },
 
   getSearchData(){
-    this.page   = 1;
-    let keys    = FilterStore.getSelectedKeys();
-    let filters = FilterStore.getFilters();
+    this.page      = 1;
+    let keys       = FilterStore.getSelectedKeys();
+    let filters    = FilterStore.getFilters();
+    let dateRanges = FilterStore.getDates();
     // console.log("keys", keys)
-    let search = this.data.search(this.searchVal, keys, filters);
+    let search = this.data.search(this.searchVal, keys, filters, dateRanges );
     this.itemNo = search.size;
     this.cache  = search;
 

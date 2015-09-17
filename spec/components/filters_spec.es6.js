@@ -1,4 +1,5 @@
 var React = require("react/addons");
+const _     = require("lodash");
 
 const Filter   = require("../../src/components/filters");
 
@@ -8,7 +9,9 @@ const Immutable = require("immutable");
 const TestUtils       = React.addons.TestUtils;
 const jasmineReactHelpers = require("react-jasmine");
 const componentHelper     = jasmineReactHelpers.componentHelpers;
-const storeListeners      = jasmineReactHelpers.checkListeners
+const storeListeners      = jasmineReactHelpers.checkListeners;
+
+// const
 
 let spys = [
   {
@@ -51,11 +54,20 @@ let columns = [
 describe("Filter", function() {
   let filter, cssMixins, spy, revert, FilterStore, FilterActions, DataActions;
   let data = [
-    {"title":"company","filter_by":"company","input_type":"radio","filter_options":[{"id":2,"title":"Morse Digital"}]},
-    {"title":"company","filter_by":"company","input_type":"checkbox","filter_options":[{"id":2,"title":"Morse Digital"}]},
-    {"title":"company","filter_by":"company","input_type":null,"filter_options":[{"id":2,"title":"Morse Digital"}]}
+    {"title":"radio","filter_by":"company","input_type":"radio","filter_options":[{"id":2,"title":"Morse Digital"}]},
+    {"title":"checkbox","filter_by":"company","input_type":"checkbox","filter_options":[{"id":2,"title":"Morse Digital"}]},
+    {"title":"select","filter_by":"company","input_type":null,"filter_options":[{"id":2,"title":"Morse Digital"}]}
   ];
-  let dataIm = Immutable.fromJS(data)
+  let dataIm = _.map(data, (d)=>{
+    let fcty        = Immutable.fromJS(d);
+    fcty.getDetails = jasmine.createSpy().and.returnValue(d.input_type);
+    return fcty;
+  });
+  // let dataIm = Immutable.fromJS(data);
+
+  let date_ranges = [
+    {key:"request_made", type:"date"}
+  ]
   let stubs = [
     {title:"addChangeListener"},
     {title:"removeChangeListener"},
@@ -82,7 +94,8 @@ describe("Filter", function() {
 
     filter = TestUtils.renderIntoDocument(<Filter
       // dataApi   = "/api/generic/feed.json"
-      filterApi = "/api/generic/filter.json"
+      filterApi   = "/api/generic/filter.json"
+      date_ranges = {date_ranges}
       /> );
 
     spyOn(filter, "checkCss").and.callThrough();
@@ -102,6 +115,7 @@ describe("Filter", function() {
 
   describe("props and state defaults", function() {
     var propsDefaults = {
+        date_ranges:date_ranges,
         filterApi:"/api/generic/filter.json"
       };
 
@@ -189,6 +203,95 @@ describe("Filter", function() {
         expect(filter.setState).toHaveBeenCalledWith({chevron:"glyphicon glyphicon-chevron-down", panel:"panel-body collapse in"});
 
       });
+    });
+
+    // describe("check mocked components", ()=> {
+    //   jasmineReactHelpers.checkSpyWithProps(
+    //   [
+    //     {
+    //       title:"CheckBox",
+    //       props:{
+    //         data: {name:"Phil Collins", id:1},
+    //         filterBy:"band_members"
+    //       }
+    //     }
+    //   ], spied);
+    // });
+
+    describe('check date ranges', function() {
+      let date_filters, daterange, node;
+      beforeEach(function() {
+        date_filters = filter.renderDateRanges();
+        let dr      = React.cloneElement(_.first(date_filters));
+        daterange   = TestUtils.renderIntoDocument(dr);
+        node        = daterange.getDOMNode();
+      });
+
+      it("should have one component", function() {
+        expect(date_filters.length).toEqual(1);
+      });
+
+      describe("check mocked components", ()=> {
+        jasmineReactHelpers.checkSpyWithProps(
+        [
+          {
+            title:"FiltersDate",
+            props:{
+              date_range:date_ranges[0]
+            }
+          }
+        ], spied);
+      });
+
+    });
+
+    describe('check renderFilters', function() {
+      let _filters, _filter_elm, _nodes;
+      beforeEach(function() {
+        filter.state.filters = dataIm;
+        _filters             = filter.renderFilters();
+        // console.log('data', dataIm);
+        _filter_elm = [];
+        _nodes      = [];
+        _.each(_filters, (item)=>{
+          let f  = React.cloneElement(item);
+          let fr = TestUtils.renderIntoDocument(f);
+          _filter_elm.push(fr);
+          _nodes.push(fr.getDOMNode())
+        })
+        // let dr      = React.cloneElement(_.first(date_filters));
+        // daterange   = TestUtils.renderIntoDocument(dr);
+        // node        = daterange.getDOMNode();
+      });
+
+      it("should have one component", function() {
+        expect(_filters.length).toEqual(3);
+      });
+
+      describe("check mocked components", ()=> {
+        jasmineReactHelpers.checkSpyWithProps(
+        [
+          {
+            title:"FiltersRadio",
+            props:{
+              filter:dataIm[0]
+            }
+          },
+          {
+            title:"FiltersCheck",
+            props:{
+              filter:dataIm[1]
+            }
+          },
+          {
+            title:"FiltersSelect",
+            props:{
+              filter:dataIm[2]
+            }
+          }
+        ], spied);
+      });
+
     });
   });
 });

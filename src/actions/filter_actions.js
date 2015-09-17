@@ -1,18 +1,12 @@
 const FilterDispatcher = require("../dispatcher/filter_dispatcher");
 
 module.exports = {
-
-  receiveAll: (data)=> {
-    FilterDispatcher.handleServerAction({
-      type: "RECEIVE_DATA",
-      data: data
-    });
-  },
-
-  changeKey: (data)=> {
-    FilterDispatcher.handleKeyUpdate({
-      type: "CHANGE_KEY",
-      data: data
+  changeDate: (key, date, pos="start")=> {
+    FilterDispatcher.handleChangeDate({
+      type : "CHANGE_DATE",
+      date : date,
+      key  : key,
+      pos  : pos
     });
   },
 
@@ -25,10 +19,24 @@ module.exports = {
     });
   },
 
+  changeKey: (data)=> {
+    FilterDispatcher.handleKeyUpdate({
+      type: "CHANGE_KEY",
+      data: data
+    });
+  },
+
   fetchFilters:(api)=>{
     FilterDispatcher.handleFetchFilters({
       type : "FETCH",
       api  : api
+    });
+  },
+
+  receiveAll: (data)=> {
+    FilterDispatcher.handleServerAction({
+      type: "RECEIVE_DATA",
+      data: data
     });
   },
 

@@ -91,7 +91,7 @@ class Search extends React.Component{
   render() {
     return (
       <div>
-        <Filters filterApi={this.props.filterApi} keys={this.props.searchable} key={"filters"} />
+        <Filters filterApi={this.props.filterApi} date_ranges={this.props.date_ranges} key={"filters"} />
         <DataHead device={this.state.device} keys={this.state.visible} css={this.props.css} key={_.uniqueId("samplehead")} />
         {this.loading()}
         { this.props.children }

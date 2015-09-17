@@ -201,6 +201,22 @@ describe("filterStore", function() {
           expect(keys).toEqual(["foo"]);
         });
       });
+
+      describe('getDates', function() {
+        beforeEach(function() {
+          store.dates = {foo:"foo"}
+        });
+
+        afterEach(()=>{
+          store.dates = {}
+
+        })
+
+        it("should return dates", function() {
+          // store.dates = {foo:"foo"}
+          expect(store.getDates()).toEqual({foo:"foo"});
+        });
+      });
     });
 
     describe("set functions", function() {
@@ -220,6 +236,26 @@ describe("filterStore", function() {
         spyOn(ajaxPromises, "addUrl");
         store.setApi("http://philcollins.co.uk");
         expect(ajaxPromises.addUrl).toHaveBeenCalledWith("http://philcollins.co.uk");
+      });
+
+      describe('date management', function() {
+        it("should add start date", function() {
+          let st = new Date(2015, 0, 18);
+          store.setDate({key:"foo", date:st, pos:"start"})
+
+          let dr = store.dates.foo;
+
+          expect(dr).toEqual({st:st});
+        });
+
+        it("should add end date", function() {
+          store.dates.foo = {st:new Date(2015, 0, 18)}
+          let fn = new Date(2015, 0, 28);
+          store.setDate({key:"foo", date:fn, pos:"end"})
+
+          let dr = store.dates.foo;
+          expect(dr).toEqual({st:new Date(2015, 0, 18), fn:fn});
+        });
       });
 
       describe("selected", function() {
@@ -254,6 +290,8 @@ describe("filterStore", function() {
 
 
     });
+
+
 
 
     describe("fetch and process filters", function() {

@@ -22,20 +22,49 @@ let columns = [
   {key:"actions", title:"Actions", desktop:true, mobile:true, tablet:true}
 ];
 
+columns = columns.map((c)=>{
+  switch(c.key){
+    case "id":
+    case "requester_name":
+    case "expected_returned":
+      c.show = false
+    break;
+    default:
+      c.show = true;
+  }
+
+  return c;
+})
+    //   col[:show] = case col[:key]
+    //     when "id" then false
+    //     when "requester_name" then false
+    //     when "expected_returned" then false
+    //     else true
+    //   end
+
+    //   col
+    // end
+
 let css = {actions:"col-lg-4 col-md-4 col-sm-5 col-xs-5", default: "col-lg-2 col-md-3 col-sm-4 col-xs-5"};
 
 let buttons = [
   {key:"show", title:{text:"View Shopping Request for :replace", replace:"requester_name"}, icon:"tv", text:"", options:{ button_type: "default", placement: "top"}}
 ]
 
+let date_ranges = [
+  {key:"required_by", type:"date"}
+]
+
 React.render(
   <Generic
-    buttons   = {buttons}
-    columns   = {columns}
-    css       = {css}
-    tooltip   = "requester_name"
-    dataApi   = "/api/date/feed.json"
-    filterApi = "/api/date/filter.json"
+    buttons     = {buttons}
+    columns     = {columns}
+    css         = {css}
+    date_ranges = {date_ranges}
+    dataApi     = "/api/date/feed.json"
+    expandable    = {true}
+    filterApi   = "/api/date/filter.json"
+    tooltip     = "requester_name"
 
   />,
   document.getElementById('search')

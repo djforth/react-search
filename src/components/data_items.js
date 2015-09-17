@@ -74,7 +74,7 @@ class DataItems extends React.Component {
 
   render() {
     return (
-      <div>
+      <div key="items">
         {this.renderData()}
       </div>
 

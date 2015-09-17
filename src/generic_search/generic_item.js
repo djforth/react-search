@@ -36,27 +36,33 @@ class GenericItem extends DataItem {
 
   renderTd(){
 
-    let item = this.state.data;
-    if(item && this.state.columns){
+    let item = this.props.data;
+    if(item && item != [] && this.state.columns){
+        // if(item.toJS){
+        //   console.log('item', item.toJS());
+        // }
+
        let td = _.map(this.state.columns, function(col){
          if(col.key === "actions"){
            return (
-            <ul className="actions">
+            <ul className="actions" key="buttons">
               <li>
                 <DeleteBtn
                   tooltip    = {`Delete ${this.getToolTip()}`}
                   callback   = {this.deleteCallBack.bind(this)}
                   delete_msg = {`Are you sure you want to delete ${this.getToolTip()}?`}
                   delete_api  = {this.setDeleteApi()}
+                  key         = {_.uniqueId("delete")}
                   id          = {item.get("id")}
                 />
               </li>
               <li>
                 <IconBtn
-                  icon="edit"
-                  path={this.setEditPath()}
-                  title={`Edit ${this.getToolTip()}`}
-                  options={{ button_type: "default", placement: "top"}}
+                  icon = "edit"
+                  key  = {_.uniqueId("edit")}
+                  path = {this.setEditPath()}
+                  title = {`Edit ${this.getToolTip()}`}
+                  options ={{ button_type: "default", placement: "top"}}
                 />
               </li>
             </ul>

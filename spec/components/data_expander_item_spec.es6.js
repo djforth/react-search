@@ -132,7 +132,7 @@ describe("DataExpander", function() {
     describe('renderAll', function() {
 
       it("should return empty string if no data", function() {
-        dataexpander.state.data = null;
+        dataexpander.props.data = null;
         let a = dataexpander.renderAll();
         expect(a).toEqual("");
       });
@@ -211,7 +211,7 @@ describe("DataExpander", function() {
 
     describe('renderShowButton', function() {
         describe('when active', function() {
-          let item, node
+          let item, node;
           beforeEach(function() {
             dataexpander.state.active = false;
             let c = React.cloneElement(dataexpander.renderShowButton());

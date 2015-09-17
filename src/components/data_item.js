@@ -71,8 +71,8 @@ class DataItem extends React.Component {
   }
 
   renderTd(){
-    let item = this.state.data;
-    if(this.state.data && this.state.columns){
+    let item = this.props.data;
+    if(item && this.state.columns){
        let td = _.map(this.state.columns, function(col){
          return this.renderColumn(col, item)
       }.bind(this));
