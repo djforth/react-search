@@ -75,15 +75,19 @@ const registeredCallback = function(payload) {
 };
 
 const store = {
-  flash      :null,
-  searchVal  :null,
-  pagination : 50,
-  page       : 1,
-  itemNo     : 0,
+
   cache      : null,
-  selected   : [],
   data       : new DataFcty(),
   dateRanges : {},
+  flash      :null,
+  itemNo     : 0,
+  removed    : null,
+  pagination : 50,
+  page       : 1,
+  searchVal  :null,
+  selected   : [],
+
+
 
   emitChange(event) {
     this.emit(event);
@@ -100,13 +104,20 @@ const store = {
     this.removeListener(event, callback);
   },
 
+  checkDeleted(id){
+    return this.removed === id;
+  },
+
   deleteItem(id, fl){
     if(fl.type === "notice"){
+      this.removed = id;
       this.data.remove(id);
     }
 
     this.flash = fl;
   },
+
+
 
   fetchData(progress){
     return this.data.fetch(progress)

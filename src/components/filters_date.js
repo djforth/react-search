@@ -1,5 +1,6 @@
 //Libraries
 const React = require("react/addons");
+const _     = require("lodash");
 
 const FilterActions = require("../actions/filter_actions");
 
@@ -22,9 +23,9 @@ class FiltersDate extends React.Component {
     let date = new Date();
     let year = date.getFullYear();
     date.setFullYear(year - 100);
-    this.start = date;
+    this.start = _.clone(date);
     date.setFullYear(year + 100);
-    this.end   = date;
+    this.end   = _.clone(date);
     this.state = {start:this.start, end:this.end}
   }
 
@@ -38,11 +39,12 @@ class FiltersDate extends React.Component {
     };
   }
 
+
   renderStart(){
     return (
       <div className="col-md-6 col-sm-6 col-xs-6">
         <label>Start Date</label>
-        <DatePicker hintText="Select Start Date" onChange={this._handleFrom.bind(this)} autoOk={true} maxDate={this.state.end} />
+        <DatePicker hintText="Select Start Date" onChange={this._handleFrom.bind(this)} autoOk={true} maxDate={this.state.end}  />
       </div>
     );
   }
@@ -51,7 +53,7 @@ class FiltersDate extends React.Component {
     return (
       <div className="col-md-6 col-sm-6 col-xs-6">
         <label>End Date</label>
-        <DatePicker hintText="Select End Date" onChange={this._handleTo.bind(this)} autoOk={true} minDate={this.state.start}  />
+        <DatePicker hintText="Select End Date" onChange={this._handleTo.bind(this)} autoOk={true} minDate={this.state.start} />
       </div>
     );
   }

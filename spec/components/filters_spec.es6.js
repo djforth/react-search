@@ -259,9 +259,6 @@ describe("Filter", function() {
           _filter_elm.push(fr);
           _nodes.push(fr.getDOMNode())
         })
-        // let dr      = React.cloneElement(_.first(date_filters));
-        // daterange   = TestUtils.renderIntoDocument(dr);
-        // node        = daterange.getDOMNode();
       });
 
       it("should have one component", function() {

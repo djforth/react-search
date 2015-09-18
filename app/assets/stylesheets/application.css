@@ -6914,14 +6914,20 @@ img {
     margin: 10px 0 0; }
 
 .actions {
-  list-style: none; }
+  list-style: none;
+  padding: 0; }
   .actions li {
     display: inline-block;
     padding-right: 5px;
     margin-right: 5px; }
+    .actions li .btn {
+      padding: 5px 10px; }
 
 .form-group hr {
   border-bottom: none !important;
   border-top: none !important; }
+
+.actions {
+  padding: 0; }
 
 /*# sourceMappingURL=application.css.map */

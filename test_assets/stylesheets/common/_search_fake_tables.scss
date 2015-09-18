@@ -53,12 +53,17 @@
 
 .actions{
   list-style: none;
+  padding:0;
 
   li{
     display: inline-block;
 
     padding-right:5px;
     margin-right:5px;
+
+    .btn{
+      padding:5px 10px;
+    }
 
   }
 }

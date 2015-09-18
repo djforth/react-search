@@ -1,6 +1,6 @@
 {
   "name": "react-search",
-  "version": "1.0.20",
+  "version": "1.0.21",
   "description": "React Bootstrap search for Morse CMS's",
   "main": "index.js",
   "scripts": {
@@ -70,7 +70,7 @@
     "flux": "^2.0.3",
     "immutable": "^3.7.4",
     "lodash": "^3.10.0",
-    "material-ui": "^0.11.0",
+    "material-ui": "^0.11.1",
     "morse-bootstrap-react": "git://github.com/djforth/morse-bootstrap-react.git",
     "morse-react-mixins": "git://github.com/djforth/morse-react-mixins.git",
     "react": "^0.13.3",

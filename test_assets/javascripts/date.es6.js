@@ -45,7 +45,7 @@ columns = columns.map((c)=>{
     //   col
     // end
 
-let css = {actions:"col-lg-4 col-md-4 col-sm-5 col-xs-5", default: "col-lg-2 col-md-3 col-sm-4 col-xs-5"};
+let css = {default: "col-lg-2 col-md-3 col-sm-4 col-xs-5"};
 
 let buttons = [
   {key:"show", title:{text:"View Shopping Request for :replace", replace:"requester_name"}, icon:"tv", text:"", options:{ button_type: "default", placement: "top"}}

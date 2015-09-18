@@ -61,7 +61,7 @@ describe("Action Buttons", function() {
 
 
     it("should create title", function() {
-      let title = action_btns.setTitle(config[0]);
+      let title = action_btns.setTitle(config[0].title);
 
       expect(title).toEqual("The awesome Phil Collins")
     });

@@ -2,6 +2,8 @@
 const React = require("react/addons");
 const _     = require("lodash");
 
+//Flux
+const DataAction   = require('../actions/data_actions');
 
 //Mixins
 const textMixins = require("morse-react-mixins").text_mixins;
@@ -19,11 +21,28 @@ class ActionButtons extends React.Component {
     super(props);
   }
 
+  deleteCallBack(flash){
+    // this.removed  = this.toggleCss(this.removed);
+    this.setState({removed:this.getClasses(this.removed)});
+    DataAction.deleteItem(this.props.data.get("id"), flash);
+    if(_.isFunction(this.props.delete_cb)){
+      this.props.delete_cb(this.props.data.get("id"), flash)
+    }
+    // React.unmountComponentAtNode(this.getDOMNode().parentNode)
+  }
+
+
   componentWillMount(){
     this.props.config = _.map(this.props.config, (conf)=>{
-      conf.type      = conf.type || "default";
-      conf.title_str = this.setTitle(conf);
-      conf.path      = this.getPath(conf.key);
+      conf.restful         = conf.restful || "get";
+      if(conf.title){
+        conf.title_str  = this.setTitle(conf.title);
+      }
+      // console.log("msg", conf.delete_msg)
+      if(conf.delete_msg){
+        conf.delete_msg_str = this.setTitle(conf.delete_msg);
+      }
+      conf.path       = this.getPath(conf.key);
       return conf;
     });
   }
@@ -36,23 +55,26 @@ class ActionButtons extends React.Component {
   renderButtons(){
     if(this.props.data){
       let btns = _.map(this.props.config, (config)=>{
-        if(config.type === "delete"){
-          return(<li>
+        if(config.restful === "delete"){
+          return(<li key={_.uniqueId()}>
             <DeleteBtn
-              tooltip    = {config.title_str}
-              callback   = {this.deleteCallBack.bind(this)}
-              delete_msg = {`Are you sure you want to delete ${this.getToolTip()}?`}
-              delete_api  = {this.setDeleteApi()}
-              key         = {_.uniqueId("delete")}
-              id          = {item.get("id")}
-            />
+                  callback   = {this.deleteCallBack.bind(this)}
+                  delete_msg = {config.delete_msg_str}
+                  delete_api = {config.path}
+                  id         = {this.props.data.get("id")}
+                  key        = {_.uniqueId("delete")}
+                  options    = {config.options}
+                  size       = "md-15"
+                  tooltip    = {config.title_str}
+                />
           </li>);
         } else {
-          return(<li>
+          return(<li key={_.uniqueId()}>
             <IconBtn
               icon    = {config.icon}
               path    = {config.path}
               title   = {config.title_str}
+              size    = "md-15"
               options = {config.options}
               key     = {_.uniqueId("action")}
             />
@@ -74,8 +96,7 @@ class ActionButtons extends React.Component {
     );
   }
   // Best performance - http://jsperf.com/test-approach
-  setTitle(config){
-    let obj  = config.title
+  setTitle(obj){
     let keys = _.remove(_.keys(obj), (k)=>{
       return k !== "text"
     });

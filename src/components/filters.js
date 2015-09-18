@@ -61,7 +61,6 @@ class Filters extends React.Component {
       let elm;
       switch(f.getDetails("input_type")){
         case "checkbox":
-          console.log('checkbox', f.get('title'));
           elm = <FiltersCheck filter={f} key={_.uniqueId("check")} />;
         break;
 

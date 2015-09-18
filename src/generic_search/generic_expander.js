@@ -24,7 +24,7 @@ class GenericExpander extends DataExpander {
        let td = _.map(this.state.columns, function(col){
         let key = col.key;
         if(key === "actions"){
-          return <div className={this.props.css.default}>{this.renderAction()}</div>
+          return <div className={this.checkCss(this.props.css, key)}>{this.renderAction()}</div>
         }
 
         return this.renderColumn(col, item)
@@ -36,7 +36,7 @@ class GenericExpander extends DataExpander {
   }
 
   render() {
-    console.log("props", this.props)
+    // console.log("props", this.props)
     return (
       <div className={`tr ${this.state.active}`}>
         <div className="clearfix">
