@@ -7,10 +7,14 @@ const DataAction   = require('../actions/data_actions');
 
 //Mixins
 const textMixins = require("morse-react-mixins").text_mixins;
+const cssMixins  = require("morse-react-mixins").css_mixins;
 
 var Buttons     = require('morse-bootstrap-react').Material;
 const DeleteBtn = Buttons.Delete;
 const IconBtn   = Buttons.Icon;
+
+
+// const textMixins = require("morse-react-mixins").text_mixins;
 
 // let buttons = [
 //   {key:"show", title:{text:"View Shopping Request for :replace", replace:"requester_name"}, icon:"tv", text:"", options:{ button_type: "default", placement: "top"}}
@@ -109,8 +113,9 @@ class ActionButtons extends React.Component {
 
     return title;
   }
-
-
 }
+
+Object.assign(ActionButtons.prototype, cssMixins);
+Object.assign(ActionButtons.prototype, textMixins);
 
 module.exports = ActionButtons;
