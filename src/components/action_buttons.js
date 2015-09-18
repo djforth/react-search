@@ -27,7 +27,7 @@ class ActionButtons extends React.Component {
 
   deleteCallBack(flash){
     // this.removed  = this.toggleCss(this.removed);
-    this.setState({removed:this.getClasses(this.removed)});
+    // this.setState({removed:this.getClasses(this.removed)});
     DataAction.deleteItem(this.props.data.get("id"), flash);
     if(_.isFunction(this.props.delete_cb)){
       this.props.delete_cb(this.props.data.get("id"), flash)
