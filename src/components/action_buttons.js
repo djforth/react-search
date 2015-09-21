@@ -21,6 +21,7 @@ class ActionButtons extends React.Component {
   }
 
   deleteCallBack(flash){
+    console.log('id', this.props.data.toJS());
     DataAction.deleteItem(this.props.data.get("id"), flash);
     if(_.isFunction(this.props.delete_cb)){
       this.props.delete_cb(this.props.data.get("id"), flash);
@@ -51,6 +52,10 @@ class ActionButtons extends React.Component {
   renderButtons(){
     if(this.props.data){
       let btns = _.map(this.props.config, (config)=>{
+        if(config.path === "" || _.isNull(config.path)){
+          return ""
+        }
+
         if(config.restful === "delete"){
           return (<li key={_.uniqueId()}>
             <DeleteBtn
@@ -63,6 +68,7 @@ class ActionButtons extends React.Component {
                   size       = "md-15"
                   tooltip    = {config.title_str}
                 />
+
           </li>);
         } else {
           return (<li key={_.uniqueId()}>

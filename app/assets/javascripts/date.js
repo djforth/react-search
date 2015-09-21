@@ -304,18 +304,15 @@ var React = require("react/addons");
 var _ = require("lodash");
 
 //Flux
-var DataAction = require('../actions/data_actions');
+var DataAction = require("../actions/data_actions");
 
 //Mixins
 var textMixins = require("morse-react-mixins").text_mixins;
+var cssMixins = require("morse-react-mixins").css_mixins;
 
-var Buttons = require('morse-bootstrap-react').Material;
+var Buttons = require("morse-bootstrap-react").Material;
 var DeleteBtn = Buttons.Delete;
 var IconBtn = Buttons.Icon;
-
-// let buttons = [
-//   {key:"show", title:{text:"View Shopping Request for :replace", replace:"requester_name"}, icon:"tv", text:"", options:{ button_type: "default", placement: "top"}}
-// ]
 
 var ActionButtons = (function (_React$Component) {
   _inherits(ActionButtons, _React$Component);
@@ -329,13 +326,11 @@ var ActionButtons = (function (_React$Component) {
   _createClass(ActionButtons, [{
     key: "deleteCallBack",
     value: function deleteCallBack(flash) {
-      // this.removed  = this.toggleCss(this.removed);
-      this.setState({ removed: this.getClasses(this.removed) });
+      console.log('id', this.props.data.toJS());
       DataAction.deleteItem(this.props.data.get("id"), flash);
       if (_.isFunction(this.props.delete_cb)) {
         this.props.delete_cb(this.props.data.get("id"), flash);
       }
-      // React.unmountComponentAtNode(this.getDOMNode().parentNode)
     }
   }, {
     key: "componentWillMount",
@@ -347,7 +342,7 @@ var ActionButtons = (function (_React$Component) {
         if (conf.title) {
           conf.title_str = _this.setTitle(conf.title);
         }
-        // console.log("msg", conf.delete_msg)
+
         if (conf.delete_msg) {
           conf.delete_msg_str = _this.setTitle(conf.delete_msg);
         }
@@ -368,6 +363,10 @@ var ActionButtons = (function (_React$Component) {
 
       if (this.props.data) {
         var btns = _.map(this.props.config, function (config) {
+          if (config.path === "" || _.isNull(config.path)) {
+            return "";
+          }
+
           if (config.restful === "delete") {
             return React.createElement("li", { key: _.uniqueId() }, React.createElement(DeleteBtn, {
               callback: _this2.deleteCallBack.bind(_this2),
@@ -424,6 +423,9 @@ var ActionButtons = (function (_React$Component) {
 
   return ActionButtons;
 })(React.Component);
+
+Object.assign(ActionButtons.prototype, cssMixins);
+Object.assign(ActionButtons.prototype, textMixins);
 
 module.exports = ActionButtons;
 
@@ -577,13 +579,13 @@ var ColumnsStore = require("../stores/columns_store");
 
 //Components
 var DataItem = require("./data_item");
-var Buttons = require('morse-bootstrap-react').Material;
-var DeleteBtn = Buttons.Delete;
-var IconBtn = Buttons.Icon;
+// const Buttons   = require("morse-bootstrap-react").Material;
+// const DeleteBtn = Buttons.Delete;
+// const IconBtn   = Buttons.Icon;
 
 // Mixins
 var cssMixins = require("morse-react-mixins").css_mixins;
-var textMixins = require("morse-react-mixins").text_mixins;
+// const textMixins = require("morse-react-mixins").text_mixins;
 
 var DataExpanderItem = (function (_DataItem) {
   _inherits(DataExpanderItem, _DataItem);
@@ -631,8 +633,7 @@ var DataExpanderItem = (function (_DataItem) {
 
       if (data) {
         var visible = ColumnsStore.getShowable();
-        console.log('visible', visible);
-        var included = _.pluck(visible, "key");
+        // let included = _.pluck(visible, "key");
 
         var li = _.map(visible, function (col) {
           return _this.renderItem(col, data);
@@ -672,7 +673,7 @@ var DataExpanderItem = (function (_DataItem) {
       } else {
         buttonText = "More";
       }
-      // console.log('chevron', this.state.chevron);
+
       return React.createElement("div", { className: this.props.css["default"] }, React.createElement("a", { href: "#", onClick: this._onClick.bind(this), className: "btn btn-info" }, buttonText, "  ", React.createElement("i", { className: this.state.chevron })));
     }
   }, {
@@ -690,7 +691,7 @@ Object.assign(DataExpanderItem.prototype, cssMixins);
 module.exports = DataExpanderItem;
 
 
-},{"../stores/columns_store":29,"./data_item":9,"lodash":137,"morse-bootstrap-react":221,"morse-react-mixins":235,"react/addons":308}],8:[function(require,module,exports){
+},{"../stores/columns_store":29,"./data_item":9,"lodash":137,"morse-react-mixins":235,"react/addons":308}],8:[function(require,module,exports){
 "use strict";
 
 var _createClass = (function () {
@@ -1056,6 +1057,7 @@ var DataItems = (function (_React$Component) {
       });
 
       //Data Changers
+      DataStore.addChangeListener("delete", this._onSearch.bind(this));
       DataStore.addChangeListener("search", this._onSearch.bind(this));
       DataStore.addChangeListener("pagination", this._onPagination.bind(this));
       DataStore.addChangeListener("change", this._onChange.bind(this));
@@ -1064,6 +1066,7 @@ var DataItems = (function (_React$Component) {
   }, {
     key: "componentWillUnmount",
     value: function componentWillUnmount() {
+      DataStore.removeChangeListener("delete", this._onSearch);
       DataStore.removeChangeListener("search", this._onSearch);
       DataStore.removeChangeListener("fetched", this._onLoaded);
       DataStore.removeChangeListener("change", this._onChange);
@@ -1101,6 +1104,7 @@ var DataItems = (function (_React$Component) {
   }, {
     key: "_onSearch",
     value: function _onSearch() {
+      // console.log("searching")
       this.setState({ data: DataStore.getSearchData() });
     }
   }, {
@@ -1441,9 +1445,9 @@ var FilterActions = require("../actions/filter_actions");
 var injectTapEventPlugin = require("react-tap-event-plugin");
 injectTapEventPlugin();
 
-var Calendar = require('material-ui/lib/date-picker');
+var Calendar = require("material-ui/lib/date-picker");
 var DatePicker = Calendar.DatePicker;
-var Styles = require('material-ui/lib/styles');
+var Styles = require("material-ui/lib/styles");
 var ThemeManager = new Styles.ThemeManager();
 
 var textMixins = require("morse-react-mixins").text_mixins;
@@ -1455,7 +1459,6 @@ var FiltersDate = (function (_React$Component) {
     _classCallCheck(this, FiltersDate);
 
     _get(Object.getPrototypeOf(FiltersDate.prototype), "constructor", this).call(this, props);
-    // console.log('props', props);
     var date = new Date();
     var year = date.getFullYear();
     date.setFullYear(year - 100);
@@ -1464,10 +1467,6 @@ var FiltersDate = (function (_React$Component) {
     this.end = _.clone(date);
     this.state = { start: this.start, end: this.end };
   }
-
-  // componentDidMount() {
-  //   // DatePicker.focus()
-  // }
 
   _createClass(FiltersDate, [{
     key: "getChildContext",
@@ -1494,7 +1493,6 @@ var FiltersDate = (function (_React$Component) {
   }, {
     key: "_handleFrom",
     value: function _handleFrom(n, date) {
-      // console.log('change', date);
       this.start = date;
       this.setState({ start: date });
       FilterActions.changeDate(this.props.date_range.key, date, "start");
@@ -1502,7 +1500,6 @@ var FiltersDate = (function (_React$Component) {
   }, {
     key: "_handleTo",
     value: function _handleTo(n, date) {
-      // console.log('change', date);
       this.end = date;
       this.setState({ end: date });
       FilterActions.changeDate(this.props.date_range.key, date, "end");
@@ -2064,7 +2061,7 @@ var ColumnsActions = require("../actions/columns_actions");
 
 var ColumnsStore = require("../stores/columns_store");
 var DataStore = require("../stores/data_store");
-var FilterStore = require("../stores/filter_store");
+// const FilterStore   = require("../stores/filter_store");
 
 // Morse Libraies
 var ViewportDetect = require("viewport-detection-es6");
@@ -2101,16 +2098,11 @@ var Search = (function (_React$Component) {
         loading_txt: "Starting data load",
         percent: 0,
         colsId: colsId
-        // visible:this.props[device]
       });
       detect.trackSize((function (device, size) {
         if (this.device !== device) {
           this.device = device;
           ColumnsActions.changeDevice(device);
-          // this.setState({
-          //   device:device,
-          //   visible:this.props[device]
-          // });
         }
 
         this.size = size;
@@ -2121,6 +2113,12 @@ var Search = (function (_React$Component) {
       FilterActions.setKeys(_.pluck(keys, "key"));
 
       this.setLoading();
+      DataStore.addChangeListener("fetched", this._onLoaded.bind(this));
+    }
+  }, {
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {
+      DataStore.removeChangeListener("fetched", this._onLoaded);
     }
   }, {
     key: "handleSelect",
@@ -2167,6 +2165,12 @@ var Search = (function (_React$Component) {
         }
       }, this.props.dataApi);
     }
+  }, {
+    key: "_onLoaded",
+    value: function _onLoaded() {
+      // let items_count = DataStore.getAll();
+      this.setState({ loading: false, percent: 100 });
+    }
   }]);
 
   return Search;
@@ -2175,7 +2179,7 @@ var Search = (function (_React$Component) {
 module.exports = Search;
 
 
-},{"../actions/columns_actions":2,"../actions/data_actions":3,"../actions/filter_actions":4,"../stores/columns_store":29,"../stores/data_store":30,"../stores/filter_store":31,"./data_head":8,"./filters":11,"./pagination":17,"lodash":137,"react-bootstrap/lib/ProgressBar.js":263,"react/addons":308,"viewport-detection-es6":481}],19:[function(require,module,exports){
+},{"../actions/columns_actions":2,"../actions/data_actions":3,"../actions/filter_actions":4,"../stores/columns_store":29,"../stores/data_store":30,"./data_head":8,"./filters":11,"./pagination":17,"lodash":137,"react-bootstrap/lib/ProgressBar.js":263,"react/addons":308,"viewport-detection-es6":481}],19:[function(require,module,exports){
 //Libraries
 "use strict";
 
@@ -2276,7 +2280,6 @@ var SearchFilters = (function (_React$Component) {
   }, {
     key: "_onAdd",
     value: function _onAdd() {
-      console.log('keys', ColumnsStore.getSearchable());
       this.setState({
         keys: ColumnsStore.getSearchable()
       });
@@ -2314,7 +2317,7 @@ var SearchFilters = (function (_React$Component) {
   }, {
     key: "_preventSubmit",
     value: function _preventSubmit(e) {
-      console.log("submiting", e);
+      // console.log("submiting", e);
       e.preventDefault();
     }
   }, {
@@ -3153,11 +3156,11 @@ var React = require("react/addons");
 var _ = require("lodash");
 
 //Flux
-var DataAction = require('../actions/data_actions');
-var ColumnsStore = require('../stores/columns_store');
+// const DataAction   = require("../actions/data_actions");
+// const ColumnsStore = require("../stores/columns_store");
 
 //Components
-var DataExpander = require('../components/data_expander_item');
+var DataExpander = require("../components/data_expander_item");
 
 var Buttons = require("../components/action_buttons");
 
@@ -3207,7 +3210,7 @@ var GenericExpander = (function (_DataExpander) {
 module.exports = GenericExpander;
 
 
-},{"../actions/data_actions":3,"../components/action_buttons":5,"../components/data_expander_item":7,"../stores/columns_store":29,"lodash":137,"react/addons":308}],26:[function(require,module,exports){
+},{"../components/action_buttons":5,"../components/data_expander_item":7,"lodash":137,"react/addons":308}],26:[function(require,module,exports){
 //Libraries
 "use strict";
 
@@ -3291,6 +3294,8 @@ var GenericItem = (function (_DataItem) {
   _createClass(GenericItem, [{
     key: "_deleteCallBack",
     value: function _deleteCallBack(id, flash) {
+      // console.debug("id", id);
+      // console.log("this.removed", this.removed)
       this.removed = this.toggleCss(this.removed);
       this.setState({ removed: this.getClasses(this.removed) });
       React.unmountComponentAtNode(this.getDOMNode().parentNode);
@@ -3353,7 +3358,7 @@ var GenericItem = (function (_DataItem) {
   }, {
     key: "shouldComponentUpdate",
     value: function shouldComponentUpdate(nextProps, nextState) {
-      return this.props.data !== nextProps.data || this.state.columns !== nextState.columns;
+      return this.props.data !== nextProps.data || this.state.columns !== nextState.columns || this.state.removed !== nextState.removed;
     }
   }]);
 
@@ -3422,13 +3427,13 @@ function _inherits(subClass, superClass) {
 var React = require("react/addons");
 
 //Morse Libraries
-var ViewportDetect = require("viewport-detection-es6");
+// const ViewportDetect = require("viewport-detection-es6");
 
 //Components
-var DataItems = require('../components/data_items');
+var DataItems = require("../components/data_items");
 var GenericItem = require("./generic_item");
 var GenericExpander = require("./generic_expander");
-var DataItem = require('../components/data_item');
+// const DataItem        = require("../components/data_item");
 
 var GenericItems = (function (_DataItems) {
   _inherits(GenericItems, _DataItems);
@@ -3469,6 +3474,7 @@ var GenericItems = (function (_DataItems) {
 
       // console.log(this.state.loading)
       if (this.state.data.size <= 0) {
+        console.log('no data');
         return React.createElement("div", { className: "loader", key: "loader" }, React.createElement("h5", null, "Nothing Matches your search"));
       }
       return "";
@@ -3481,7 +3487,7 @@ var GenericItems = (function (_DataItems) {
 module.exports = GenericItems;
 
 
-},{"../components/data_item":9,"../components/data_items":10,"./generic_expander":25,"./generic_item":26,"react/addons":308,"viewport-detection-es6":481}],28:[function(require,module,exports){
+},{"../components/data_items":10,"./generic_expander":25,"./generic_item":26,"react/addons":308}],28:[function(require,module,exports){
 //Libraries
 "use strict";
 
@@ -3541,10 +3547,10 @@ var React = require("react/addons");
 
 var DataStore = require("../stores/data_store");
 
-var Search = require('../components/search');
+var Search = require("../components/search");
 var GenericItems = require("./generic_items");
 
-var MorseBootstrap = require('morse-bootstrap-react');
+var MorseBootstrap = require("morse-bootstrap-react");
 var FlashNotice = MorseBootstrap.FlashNotice;
 
 var GenericSearch = (function (_React$Component) {
@@ -3974,7 +3980,7 @@ var store = {
     var search = this.data.search(this.searchVal, keys, filters, dateRanges);
     this.itemNo = search.size;
     this.cache = search;
-
+    console.log("search", search.first().toJS());
     return search.slice(0, this.pagination - 1);
   },
 
@@ -3989,6 +3995,7 @@ var store = {
     }
 
     var d = this.data.getAll();
+    console.log('d', d.size);
     this.itemNo = d.size;
 
     // simulate success callback
@@ -4217,7 +4224,7 @@ var store = {
     } else {
       this.dates[dr.key].fn = dr.date;
     }
-    console.log("dates", this.dates);
+    // console.log("dates", this.dates)
   },
 
   setKeys: function setKeys(ks) {
@@ -8859,7 +8866,7 @@ var DataManager = (function () {
     value: function getKeys() {
       var hard = arguments[0] === undefined ? false : arguments[0];
 
-      if (!this.keys || hard) {
+      if (this.data.size > 0 && (!this.keys || hard)) {
         var item = this.data.first();
         var k = item.keySeq();
         this.keys = k.toJS();

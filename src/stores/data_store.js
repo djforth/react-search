@@ -185,7 +185,7 @@ const store = {
     let search = this.data.search(this.searchVal, keys, filters, dateRanges );
     this.itemNo = search.size;
     this.cache  = search;
-
+    console.log("search", search.first().toJS())
     return search.slice(0, this.pagination - 1);
   },
 
@@ -200,6 +200,7 @@ const store = {
     }
 
     let d = this.data.getAll();
+    console.log('d', d.size);
     this.itemNo = d.size;
 
     // simulate success callback

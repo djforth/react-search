@@ -92,6 +92,7 @@ class DataItems extends React.Component {
   }
 
   _onSearch() {
+    // console.log("searching")
     this.setState({data:DataStore.getSearchData()});
   }
 

@@ -10,7 +10,7 @@ const FilterActions  = require("../actions/filter_actions");
 const ColumnsActions = require("../actions/columns_actions");
 
 const ColumnsStore  = require("../stores/columns_store");
-// const DataStore     = require("../stores/data_store");
+const DataStore     = require("../stores/data_store");
 // const FilterStore   = require("../stores/filter_store");
 
 // Morse Libraies
@@ -62,6 +62,11 @@ class Search extends React.Component{
     FilterActions.setKeys(_.pluck(keys, "key"));
 
     this.setLoading();
+    DataStore.addChangeListener("fetched", this._onLoaded.bind(this));
+  }
+
+  componentWillUnmount() {
+    DataStore.removeChangeListener("fetched", this._onLoaded);
   }
 
 
@@ -116,6 +121,11 @@ class Search extends React.Component{
         this.setState({percent:this.percent, loading_txt:"Loading Data"});
       }
     }, this.props.dataApi);
+  }
+
+  _onLoaded(){
+    // let items_count = DataStore.getAll();
+    this.setState({loading:false, percent:100});
   }
 
 }

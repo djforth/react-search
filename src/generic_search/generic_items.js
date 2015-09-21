@@ -46,6 +46,7 @@ class GenericItems extends DataItems {
 
     // console.log(this.state.loading)
     if(this.state.data.size <= 0){
+      console.log('no data');
       return (
         <div className="loader" key="loader">
           <h5>Nothing Matches your search</h5>
