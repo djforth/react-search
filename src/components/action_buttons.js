@@ -3,22 +3,17 @@ const React = require("react/addons");
 const _     = require("lodash");
 
 //Flux
-const DataAction   = require('../actions/data_actions');
+const DataAction   = require("../actions/data_actions");
 
 //Mixins
 const textMixins = require("morse-react-mixins").text_mixins;
 const cssMixins  = require("morse-react-mixins").css_mixins;
 
-var Buttons     = require('morse-bootstrap-react').Material;
+var Buttons     = require("morse-bootstrap-react").Material;
 const DeleteBtn = Buttons.Delete;
 const IconBtn   = Buttons.Icon;
 
 
-// const textMixins = require("morse-react-mixins").text_mixins;
-
-// let buttons = [
-//   {key:"show", title:{text:"View Shopping Request for :replace", replace:"requester_name"}, icon:"tv", text:"", options:{ button_type: "default", placement: "top"}}
-// ]
 
 class ActionButtons extends React.Component {
   constructor(props) {
@@ -26,13 +21,10 @@ class ActionButtons extends React.Component {
   }
 
   deleteCallBack(flash){
-    // this.removed  = this.toggleCss(this.removed);
-    // this.setState({removed:this.getClasses(this.removed)});
     DataAction.deleteItem(this.props.data.get("id"), flash);
     if(_.isFunction(this.props.delete_cb)){
-      this.props.delete_cb(this.props.data.get("id"), flash)
+      this.props.delete_cb(this.props.data.get("id"), flash);
     }
-    // React.unmountComponentAtNode(this.getDOMNode().parentNode)
   }
 
 
@@ -42,7 +34,7 @@ class ActionButtons extends React.Component {
       if(conf.title){
         conf.title_str  = this.setTitle(conf.title);
       }
-      // console.log("msg", conf.delete_msg)
+
       if(conf.delete_msg){
         conf.delete_msg_str = this.setTitle(conf.delete_msg);
       }
@@ -60,7 +52,7 @@ class ActionButtons extends React.Component {
     if(this.props.data){
       let btns = _.map(this.props.config, (config)=>{
         if(config.restful === "delete"){
-          return(<li key={_.uniqueId()}>
+          return (<li key={_.uniqueId()}>
             <DeleteBtn
                   callback   = {this.deleteCallBack.bind(this)}
                   delete_msg = {config.delete_msg_str}
@@ -73,7 +65,7 @@ class ActionButtons extends React.Component {
                 />
           </li>);
         } else {
-          return(<li key={_.uniqueId()}>
+          return (<li key={_.uniqueId()}>
             <IconBtn
               icon    = {config.icon}
               path    = {config.path}
@@ -102,14 +94,14 @@ class ActionButtons extends React.Component {
   // Best performance - http://jsperf.com/test-approach
   setTitle(obj){
     let keys = _.remove(_.keys(obj), (k)=>{
-      return k !== "text"
+      return k !== "text";
     });
 
     let title = obj.text;
     _.forEach(keys, (k)=>{
-      let txt = this.props.data.get(obj[k])
+      let txt = this.props.data.get(obj[k]);
       title = title.replace(`:${k}`, txt);
-    })
+    });
 
     return title;
   }

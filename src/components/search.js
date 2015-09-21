@@ -10,8 +10,8 @@ const FilterActions  = require("../actions/filter_actions");
 const ColumnsActions = require("../actions/columns_actions");
 
 const ColumnsStore  = require("../stores/columns_store");
-const DataStore     = require("../stores/data_store");
-const FilterStore   = require("../stores/filter_store");
+// const DataStore     = require("../stores/data_store");
+// const FilterStore   = require("../stores/filter_store");
 
 // Morse Libraies
 const ViewportDetect = require("viewport-detection-es6");
@@ -45,16 +45,12 @@ class Search extends React.Component{
       loading_txt:"Starting data load",
       percent: 0,
       colsId:colsId
-      // visible:this.props[device]
     });
     detect.trackSize(function(device, size){
       if(this.device !== device){
         this.device =  device;
         ColumnsActions.changeDevice(device);
-        // this.setState({
-        //   device:device,
-        //   visible:this.props[device]
-        // });
+
       }
 
       this.size   = size;

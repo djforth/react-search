@@ -3,10 +3,10 @@ const React = require("react/addons");
 
 const DataStore    = require("../stores/data_store");
 
-const Search       = require('../components/search');
+const Search       = require("../components/search");
 const GenericItems = require("./generic_items");
 
-var MorseBootstrap = require('morse-bootstrap-react');
+var MorseBootstrap = require("morse-bootstrap-react");
 const FlashNotice  = MorseBootstrap.FlashNotice;
 
 class GenericSearch extends React.Component {

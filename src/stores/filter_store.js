@@ -111,7 +111,7 @@ const store =  {
   },
 
   getDates() {
-    return this.dates
+    return this.dates;
   },
 
   getAllKeys() {
@@ -152,7 +152,7 @@ const store =  {
 
   setDate(dr){
     if(!_.has(this.dates, dr.key)){
-      this.dates[dr.key] = {}
+      this.dates[dr.key] = {};
     }
 
     if(dr.pos === "start"){
@@ -160,7 +160,7 @@ const store =  {
     } else {
       this.dates[dr.key].fn = dr.date;
     }
-    console.log("dates", this.dates)
+    // console.log("dates", this.dates)
   },
 
   setKeys(ks){

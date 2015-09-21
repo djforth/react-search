@@ -2,13 +2,13 @@
 const React = require("react/addons");
 
 //Morse Libraries
-const ViewportDetect = require("viewport-detection-es6");
+// const ViewportDetect = require("viewport-detection-es6");
 
 //Components
-const DataItems       = require('../components/data_items');
+const DataItems       = require("../components/data_items");
 const GenericItem     = require("./generic_item");
 const GenericExpander = require("./generic_expander");
-const DataItem        = require('../components/data_item');
+// const DataItem        = require("../components/data_item");
 
 class GenericItems extends DataItems {
 

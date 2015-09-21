@@ -47,8 +47,6 @@ class DataItem extends React.Component {
     return "%d/%m/%Y";
   }
 
-
-
   displayData(item, col){
     let key  = col.key;
     let data = item.get(col.key);
@@ -74,7 +72,7 @@ class DataItem extends React.Component {
     let item = this.props.data;
     if(item && this.state.columns){
        let td = _.map(this.state.columns, function(col){
-         return this.renderColumn(col, item)
+         return this.renderColumn(col, item);
       }.bind(this));
 
       return td;

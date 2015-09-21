@@ -101,7 +101,7 @@ describe("DataItems", function() {
     });
 
     it("should call addChangeListener on mounting", function() {
-      let events =["search", "pagination", "change", "fetched"];
+      let events =["search", "pagination", "change", "fetched", "delete"];
       storeListeners.checkListeners(DataStore, "addChangeListener", events );
     });
   });
@@ -109,7 +109,7 @@ describe("DataItems", function() {
   describe("check componentWillUnmmont spies", function() {
     it("should call addRemoveListener on unmounting", function() {
       dataitems.componentWillUnmount();
-      let events =["search", "pagination", "change", "fetched"];
+      let events =["search", "pagination", "change", "fetched", "delete"];
       storeListeners.checkListeners(DataStore, "removeChangeListener", events );
     });
   });

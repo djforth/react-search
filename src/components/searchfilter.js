@@ -46,7 +46,6 @@ class SearchFilters extends React.Component{
   }
 
   _onAdd(){
-    console.log('keys', ColumnsStore.getSearchable());
     this.setState({
       keys:ColumnsStore.getSearchable()
     });
@@ -81,7 +80,7 @@ class SearchFilters extends React.Component{
   }
 
   _preventSubmit(e){
-    console.log("submiting", e);
+    // console.log("submiting", e);
     e.preventDefault();
 
   }

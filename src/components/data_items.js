@@ -43,6 +43,7 @@ class DataItems extends React.Component {
     });
 
     //Data Changers
+    DataStore.addChangeListener("delete", this._onSearch.bind(this));
     DataStore.addChangeListener("search", this._onSearch.bind(this));
     DataStore.addChangeListener("pagination", this._onPagination.bind(this));
     DataStore.addChangeListener("change", this._onChange.bind(this));
@@ -50,6 +51,7 @@ class DataItems extends React.Component {
   }
 
   componentWillUnmount() {
+    DataStore.removeChangeListener("delete", this._onSearch);
     DataStore.removeChangeListener("search", this._onSearch);
     DataStore.removeChangeListener("fetched", this._onLoaded);
     DataStore.removeChangeListener("change", this._onChange);

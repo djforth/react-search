@@ -44,15 +44,15 @@ class Filters extends React.Component {
   }
 
   renderDateRanges(){
-    let dr = ""
+    let dr = "";
     if(this.props.date_ranges){
       dr = _.map(this.props.date_ranges, (date_range)=>{
-        return <FiltersDate date_range = {date_range} key={_.uniqueId("dates")} />
-      })
+        return (<FiltersDate date_range = {date_range} key={_.uniqueId("dates")} />);
+      });
 
     }
 
-    return dr
+    return dr;
   }
 
   renderFilters(){

@@ -9,13 +9,13 @@ const ColumnsStore   = require("../stores/columns_store");
 
 //Components
 const DataItem  = require("./data_item");
-const Buttons   = require('morse-bootstrap-react').Material;
-const DeleteBtn = Buttons.Delete;
-const IconBtn   = Buttons.Icon;
+// const Buttons   = require("morse-bootstrap-react").Material;
+// const DeleteBtn = Buttons.Delete;
+// const IconBtn   = Buttons.Icon;
 
 // Mixins
 const cssMixins  = require("morse-react-mixins").css_mixins;
-const textMixins = require("morse-react-mixins").text_mixins;
+// const textMixins = require("morse-react-mixins").text_mixins;
 
 class DataExpanderItem extends DataItem {
   constructor(props) {
@@ -56,8 +56,7 @@ class DataExpanderItem extends DataItem {
 
     if(data) {
       let visible  = ColumnsStore.getShowable();
-      console.log('visible', visible);
-      let included = _.pluck(visible, "key");
+      // let included = _.pluck(visible, "key");
 
       let li = _.map(visible, (col) => {
         return this.renderItem(col, data);
@@ -99,7 +98,7 @@ class DataExpanderItem extends DataItem {
     } else {
       buttonText = "More";
     }
-    // console.log('chevron', this.state.chevron);
+
     return (
       <div className={this.props.css.default}>
         <a href="#" onClick={this._onClick.bind(this)} className="btn btn-info">

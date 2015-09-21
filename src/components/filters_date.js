@@ -7,9 +7,9 @@ const FilterActions = require("../actions/filter_actions");
 var injectTapEventPlugin = require("react-tap-event-plugin");
 injectTapEventPlugin();
 
-let Calendar     = require('material-ui/lib/date-picker');
-let DatePicker   = Calendar.DatePicker
-let Styles       = require('material-ui/lib/styles');
+let Calendar     = require("material-ui/lib/date-picker");
+let DatePicker   = Calendar.DatePicker;
+let Styles       = require("material-ui/lib/styles");
 let ThemeManager = new Styles.ThemeManager();
 
 const textMixins = require("morse-react-mixins").text_mixins;
@@ -19,26 +19,20 @@ class FiltersDate extends React.Component {
 
   constructor(props) {
     super(props);
-    // console.log('props', props);
     let date = new Date();
     let year = date.getFullYear();
     date.setFullYear(year - 100);
     this.start = _.clone(date);
     date.setFullYear(year + 100);
     this.end   = _.clone(date);
-    this.state = {start:this.start, end:this.end}
+    this.state = {start:this.start, end:this.end};
   }
-
-  // componentDidMount() {
-  //   // DatePicker.focus()
-  // }
 
   getChildContext() {
     return {
       muiTheme: ThemeManager.getCurrentTheme()
     };
   }
-
 
   renderStart(){
     return (
@@ -72,9 +66,8 @@ class FiltersDate extends React.Component {
   }
 
   _handleFrom(n, date){
-    // console.log('change', date);
     this.start = date;
-    this.setState({start:date})
+    this.setState({start:date});
     FilterActions.changeDate(
       this.props.date_range.key,
       date,
@@ -83,7 +76,6 @@ class FiltersDate extends React.Component {
   }
 
   _handleTo(n, date){
-    // console.log('change', date);
     this.end = date;
     this.setState({end:date});
     FilterActions.changeDate(

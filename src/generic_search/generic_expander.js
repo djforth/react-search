@@ -3,11 +3,11 @@ const React = require("react/addons");
 const _     = require("lodash");
 
 //Flux
-const DataAction   = require('../actions/data_actions');
-const ColumnsStore = require('../stores/columns_store');
+// const DataAction   = require("../actions/data_actions");
+// const ColumnsStore = require("../stores/columns_store");
 
 //Components
-const DataExpander = require('../components/data_expander_item');
+const DataExpander = require("../components/data_expander_item");
 
 var Buttons     = require("../components/action_buttons");
 
@@ -24,10 +24,10 @@ class GenericExpander extends DataExpander {
        let td = _.map(this.state.columns, function(col){
         let key = col.key;
         if(key === "actions"){
-          return <div className={this.checkCss(this.props.css, key)}>{this.renderAction()}</div>
+          return (<div className={this.checkCss(this.props.css, key)}>{this.renderAction()}</div>);
         }
 
-        return this.renderColumn(col, item)
+        return this.renderColumn(col, item);
       }.bind(this));
 
       return td;
