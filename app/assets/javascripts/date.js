@@ -127,7 +127,7 @@ module.exports = {
     DataDispatcher.handleDelete({
       type: "DELETE_ITEM",
       flash: flash,
-      id: 1
+      id: id
     });
   },
 
@@ -326,8 +326,9 @@ var ActionButtons = (function (_React$Component) {
   _createClass(ActionButtons, [{
     key: "deleteCallBack",
     value: function deleteCallBack(flash) {
-      console.log('id', this.props.data.toJS());
-      DataAction.deleteItem(this.props.data.get("id"), flash);
+      // console.log('id', this.props.data.get("id"));
+      DataAction.deleteItem(this.props.data.get("id"), { type: "notice" });
+      // DataAction.deleteItem(this.props.data.get("id"), flash);
       if (_.isFunction(this.props.delete_cb)) {
         this.props.delete_cb(this.props.data.get("id"), flash);
       }
@@ -337,7 +338,11 @@ var ActionButtons = (function (_React$Component) {
     value: function componentWillMount() {
       var _this = this;
 
-      this.props.config = _.map(this.props.config, function (conf) {
+      var config = _.map(this.props.config, function (conf) {
+        if (!_this.props.data.get("buttons").has(conf.key)) {
+          return "";
+        }
+
         conf.restful = conf.restful || "get";
         if (conf.title) {
           conf.title_str = _this.setTitle(conf.title);
@@ -349,6 +354,8 @@ var ActionButtons = (function (_React$Component) {
         conf.path = _this.getPath(conf.key);
         return conf;
       });
+
+      this.setState({ config: config });
     }
   }, {
     key: "getPath",
@@ -362,7 +369,7 @@ var ActionButtons = (function (_React$Component) {
       var _this2 = this;
 
       if (this.props.data) {
-        var btns = _.map(this.props.config, function (config) {
+        var btns = _.map(this.state.config, function (config) {
           if (config.path === "" || _.isNull(config.path)) {
             return "";
           }
@@ -1110,6 +1117,7 @@ var DataItems = (function (_React$Component) {
   }, {
     key: "_onLoaded",
     value: function _onLoaded() {
+      // console.log('Loading');
       this.setState({ data: DataStore.getAll(), keys: DataStore.getKeys() });
     }
   }]);
@@ -2069,7 +2077,7 @@ var ViewportDetect = require("viewport-detection-es6");
 //Components
 var DataHead = require("./data_head");
 var Filters = require("./filters");
-var Pagination = require("./pagination");
+var PaginationHolder = require("./pagination");
 var ProgressBar = require("react-bootstrap/lib/ProgressBar.js");
 
 var Search = (function (_React$Component) {
@@ -2087,6 +2095,7 @@ var Search = (function (_React$Component) {
   _createClass(Search, [{
     key: "componentDidMount",
     value: function componentDidMount() {
+      console.log("Search mounting");
       var detect = new ViewportDetect();
       this.device = detect.getDevice();
       this.size = detect.windowSize();
@@ -2118,6 +2127,7 @@ var Search = (function (_React$Component) {
   }, {
     key: "componentWillUnmount",
     value: function componentWillUnmount() {
+      console.log("Search unmounting <<<<<<<<<<< WTF");
       DataStore.removeChangeListener("fetched", this._onLoaded);
     }
   }, {
@@ -2133,13 +2143,13 @@ var Search = (function (_React$Component) {
       if (this.state.loading) {
         return React.createElement("div", { className: "loader" }, React.createElement("h5", null, this.state.loading_txt), React.createElement(ProgressBar, { label: "Loading Data", now: this.state.percent, key: "loader" }));
       } else {
-        return "";
+        return React.createElement(PaginationHolder, { key: "pagination" });
       }
     }
   }, {
     key: "render",
     value: function render() {
-      return React.createElement("div", null, React.createElement(Filters, { filterApi: this.props.filterApi, date_ranges: this.props.date_ranges, key: "filters" }), React.createElement(DataHead, { device: this.state.device, keys: this.state.visible, css: this.props.css, key: _.uniqueId("samplehead") }), this.loading(), this.props.children, React.createElement(Pagination, { key: _.uniqueId("pagination") }));
+      return React.createElement("div", null, React.createElement(Filters, { filterApi: this.props.filterApi, date_ranges: this.props.date_ranges, key: "filters" }), React.createElement(DataHead, { device: this.state.device, keys: this.state.visible, css: this.props.css, key: _.uniqueId("samplehead") }), this.props.children, this.loading());
     }
   }, {
     key: "setLoading",
@@ -2714,16 +2724,13 @@ var DataFcty = (function (_DataManager) {
         return false;
       }
 
-      // console.log(this.cache)
       return this.cache.text === val && _.difference(keys, this.cache.keys).length === 0;
     }
   }, {
     key: "checkDates",
     value: function checkDates(date, range) {
       var test = false;
-      // console.log(date, range)
       if (_.isDate(date)) {
-        // console.log((date > range.st), (date < range.fn));
         if (date > range.st && date < range.fn) {
           test = true;
         }
@@ -2874,11 +2881,24 @@ var DataFcty = (function (_DataManager) {
       }
     }
   }, {
+    key: "remove",
+    value: function remove(id) {
+      // let del = this.findById(id);
+      var del = _get(Object.getPrototypeOf(DataFcty.prototype), "remove", this).call(this, id);
+      var search = this.cache.fullSearch;
+
+      if (del && search) {
+        var i = search.indexOf(del);
+        this.cache.fullSearch = search["delete"](i);
+      }
+
+      return del;
+    }
+  }, {
     key: "searchTxt",
     value: function searchTxt(regex, data, keys) {
-      // console.log("keys", keys)
       var values = this.getValues(data, keys);
-      // console.log("values", values)
+
       if (values) {
         return String(values).search(regex) > -1;
       }
@@ -3271,16 +3291,6 @@ var Buttons = require("../components/action_buttons");
 var GenericItem = (function (_DataItem) {
   _inherits(GenericItem, _DataItem);
 
-  // componentDidMount() {
-  //   super.componentDidMount();
-  //   DataStore.addChangeListener("delete", this._deleteCallBack.bind(this));
-  // }
-
-  // componentWillUnmount() {
-  //   super.componentWillUnmount();
-  //   DataStore.removeChangeListener("delete", this._deleteCallBack);
-  // }
-
   function GenericItem(props) {
     _classCallCheck(this, GenericItem);
 
@@ -3294,18 +3304,10 @@ var GenericItem = (function (_DataItem) {
   _createClass(GenericItem, [{
     key: "_deleteCallBack",
     value: function _deleteCallBack(id, flash) {
-      // console.debug("id", id);
-      // console.log("this.removed", this.removed)
       this.removed = this.toggleCss(this.removed);
       this.setState({ removed: this.getClasses(this.removed) });
-      React.unmountComponentAtNode(this.getDOMNode().parentNode);
+      // React.unmountComponentAtNode(this.getDOMNode().parentNode)
     }
-
-    // getToolTip(){
-    //   let item = this.props.data;
-    //   return item.get(this.props.tooltip);
-    // }
-
   }, {
     key: "renderAction",
     value: function renderAction() {
@@ -3908,9 +3910,14 @@ var store = {
   },
 
   deleteItem: function deleteItem(id, fl) {
+
     if (fl.type === "notice") {
       this.removed = id;
       this.data.remove(id);
+
+      if (this.cache) {
+        this.cache.remove(id);
+      }
     }
 
     this.flash = fl;
@@ -3976,11 +3983,10 @@ var store = {
     var keys = FilterStore.getSelectedKeys();
     var filters = FilterStore.getFilters();
     var dateRanges = FilterStore.getDates();
-    // console.log("keys", keys)
     var search = this.data.search(this.searchVal, keys, filters, dateRanges);
     this.itemNo = search.size;
     this.cache = search;
-    console.log("search", search.first().toJS());
+    // console.log("search", search.size)
     return search.slice(0, this.pagination - 1);
   },
 
@@ -3995,7 +4001,6 @@ var store = {
     }
 
     var d = this.data.getAll();
-    console.log('d', d.size);
     this.itemNo = d.size;
 
     // simulate success callback
@@ -8899,10 +8904,12 @@ var DataManager = (function () {
     key: "remove",
     value: function remove(id) {
       var del = this.findById(id);
-
+      console.log(id, del);
       if (del) {
+        console.log("pre", this.data.size)
         var i = this.data.indexOf(del);
         this.data = this.data["delete"](i);
+        console.log("post", this.data.size)
         return del;
       }
       this.warn("Can't find item");

@@ -655,6 +655,28 @@ describe("DataFcty", function() {
 			});
 		});
 
+		describe('remove functions', function() {
+			beforeEach(()=>{
+	      // spyOn(dataFcty.super, "remove")
+	      dataFcty.data = Immutable.fromJS([{foo:"bar", id:3}, {foo:"bar", id:2}]);
+	      dataFcty.cache.fullSearch = Immutable.fromJS([{foo:"bar", id:3}, {foo:"bar", id:2}]);
+	    });
+
+
+	      it("should return null if not found", function() {
+	        let del = dataFcty.remove(4);
+	        expect(del).toBeNull();
+	      });
+
+	      it("should remove item", function() {
+	        let del = dataFcty.remove(3);
+	        // console.log("data", dataFcty.data.size)
+	        expect(dataFcty.cache.fullSearch.size).toEqual(1);
+	        expect(del.toJS()).toEqual({foo:"bar", id:3});
+	      });
+
+		});
+
 		describe('check text search', function() {
 			let search = ["bar"];
 			let values;

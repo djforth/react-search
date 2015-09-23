@@ -97,6 +97,7 @@ class DataItems extends React.Component {
   }
 
   _onLoaded(){
+    // console.log('Loading');
     this.setState({data:DataStore.getAll(), keys:DataStore.getKeys()});
   }
 }

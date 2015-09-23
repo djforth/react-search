@@ -2,25 +2,16 @@
 const React = require("react/addons");
 const _     = require("lodash");
 
-//Flux
-const DataStore    = require('../stores/data_store');
-const ColumnsStore = require('../stores/columns_store');
+// //Flux
+// const DataStore    = require("../stores/data_store");
+// const ColumnsStore = require("../stores/columns_store");
 
 //Components
-const DataItem   = require('../components/data_item');
+const DataItem   = require("../components/data_item");
 
 var Buttons     = require("../components/action_buttons");
 
 class GenericItem extends DataItem {
-  // componentDidMount() {
-  //   super.componentDidMount();
-  //   DataStore.addChangeListener("delete", this._deleteCallBack.bind(this));
-  // }
-
-  // componentWillUnmount() {
-  //   super.componentWillUnmount();
-  //   DataStore.removeChangeListener("delete", this._deleteCallBack);
-  // }
 
   constructor(props) {
     super(props);
@@ -30,18 +21,11 @@ class GenericItem extends DataItem {
     this.state = {data:[], columns:[], removed:this.getClasses(this.removed)};
   }
 
-  _deleteCallBack(id, flash){
-    // console.debug("id", id);
-    // console.log("this.removed", this.removed)
+  _deleteCallBack(){
     this.removed  = this.toggleCss(this.removed);
     this.setState({removed:this.getClasses(this.removed)});
-    React.unmountComponentAtNode(this.getDOMNode().parentNode)
+    // React.unmountComponentAtNode(this.getDOMNode().parentNode)
   }
-
-  // getToolTip(){
-  //   let item = this.props.data;
-  //   return item.get(this.props.tooltip);
-  // }
 
   renderAction(){
     return (
@@ -52,14 +36,14 @@ class GenericItem extends DataItem {
   renderTd(){
 
     let item = this.props.data;
-    if(item && item != [] && this.state.columns){
+    if(item && item !== [] && this.state.columns){
         // if(item.toJS){
-        //   console.log('item', item.toJS());
+        //   console.log("item", item.toJS());
         // }
 
        let td = _.map(this.state.columns, function(col){
          if(col.key === "actions"){
-           return (<div className={this.checkCss(this.props.css, col.key)} key={_.uniqueId()}>{this.renderAction()}</div>)
+           return (<div className={this.checkCss(this.props.css, col.key)} key={_.uniqueId()}>{this.renderAction()}</div>);
 
          } else {
            return (

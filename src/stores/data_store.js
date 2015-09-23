@@ -109,9 +109,15 @@ const store = {
   },
 
   deleteItem(id, fl){
+
     if(fl.type === "notice"){
       this.removed = id;
       this.data.remove(id);
+
+      if(this.cache){
+        this.cache.remove(id);
+      }
+
     }
 
     this.flash = fl;
@@ -181,11 +187,10 @@ const store = {
     let keys       = FilterStore.getSelectedKeys();
     let filters    = FilterStore.getFilters();
     let dateRanges = FilterStore.getDates();
-    // console.log("keys", keys)
     let search = this.data.search(this.searchVal, keys, filters, dateRanges );
     this.itemNo = search.size;
     this.cache  = search;
-    console.log("search", search.first().toJS())
+    // console.log("search", search.size)
     return search.slice(0, this.pagination - 1);
   },
 
@@ -200,7 +205,6 @@ const store = {
     }
 
     let d = this.data.getAll();
-    console.log('d', d.size);
     this.itemNo = d.size;
 
     // simulate success callback

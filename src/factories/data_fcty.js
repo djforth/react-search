@@ -97,15 +97,12 @@ class DataFcty extends DataManager {
       return false;
     }
 
-    // console.log(this.cache)
     return  this.cache.text === val && (_.difference(keys, this.cache.keys).length === 0);
   }
 
   checkDates(date, range){
     let test = false;
-    // console.log(date, range)
     if(_.isDate(date)){
-      // console.log((date > range.st), (date < range.fn));
       if((date > range.st) && (date < range.fn)){
         test = true;
       }
@@ -247,10 +244,23 @@ class DataFcty extends DataManager {
     }
   }
 
+  remove(id){
+    // let del = this.findById(id);
+    let del =  super.remove(id);
+    let search        = this.cache.fullSearch;
+
+    if(del && search){
+      let i             = search.indexOf(del);
+      this.cache.fullSearch = search.delete(i);
+
+    }
+
+    return del;
+  }
+
   searchTxt(regex, data, keys){
-    // console.log("keys", keys)
     let values = this.getValues(data, keys);
-    // console.log("values", values)
+
     if(values){
       return (String(values).search(regex) > -1);
     }

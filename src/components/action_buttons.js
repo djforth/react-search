@@ -21,8 +21,9 @@ class ActionButtons extends React.Component {
   }
 
   deleteCallBack(flash){
-    console.log('id', this.props.data.toJS());
-    DataAction.deleteItem(this.props.data.get("id"), flash);
+    // console.log('id', this.props.data.get("id"));
+    DataAction.deleteItem(this.props.data.get("id"), {type:"notice"});
+    // DataAction.deleteItem(this.props.data.get("id"), flash);
     if(_.isFunction(this.props.delete_cb)){
       this.props.delete_cb(this.props.data.get("id"), flash);
     }
@@ -30,7 +31,11 @@ class ActionButtons extends React.Component {
 
 
   componentWillMount(){
-    this.props.config = _.map(this.props.config, (conf)=>{
+    let config = _.map(this.props.config, (conf)=>{
+      if(!this.props.data.get("buttons").has(conf.key)){
+        return "";
+      }
+
       conf.restful         = conf.restful || "get";
       if(conf.title){
         conf.title_str  = this.setTitle(conf.title);
@@ -42,6 +47,8 @@ class ActionButtons extends React.Component {
       conf.path       = this.getPath(conf.key);
       return conf;
     });
+
+    this.setState({config:config});
   }
 
   getPath(key){
@@ -51,9 +58,9 @@ class ActionButtons extends React.Component {
 
   renderButtons(){
     if(this.props.data){
-      let btns = _.map(this.props.config, (config)=>{
+      let btns = _.map(this.state.config, (config)=>{
         if(config.path === "" || _.isNull(config.path)){
-          return ""
+          return "";
         }
 
         if(config.restful === "delete"){

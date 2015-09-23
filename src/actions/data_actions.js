@@ -14,7 +14,7 @@ module.exports = {
     DataDispatcher.handleDelete({
       type: "DELETE_ITEM",
       flash: flash,
-      id:1
+      id:id
     });
   },
 

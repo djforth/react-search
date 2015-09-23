@@ -20,7 +20,7 @@ const ViewportDetect = require("viewport-detection-es6");
 //Components
 const DataHead    =  require("./data_head");
 const Filters     =  require("./filters");
-const Pagination  = require("./pagination");
+const PaginationHolder  = require("./pagination");
 const ProgressBar = require("react-bootstrap/lib/ProgressBar.js");
 
 class Search extends React.Component{
@@ -34,6 +34,7 @@ class Search extends React.Component{
 
 
   componentDidMount() {
+    // console.log("Search mounting")
     const detect = new ViewportDetect();
     this.device = detect.getDevice();
     this.size  = detect.windowSize();
@@ -85,7 +86,7 @@ class Search extends React.Component{
         </div>
       );
     } else {
-      return "";
+      return <PaginationHolder  key={"pagination"} />;
     }
   }
 
@@ -94,9 +95,10 @@ class Search extends React.Component{
       <div>
         <Filters filterApi={this.props.filterApi} date_ranges={this.props.date_ranges} key={"filters"} />
         <DataHead device={this.state.device} keys={this.state.visible} css={this.props.css} key={_.uniqueId("samplehead")} />
-        {this.loading()}
+
         { this.props.children }
-        <Pagination key={_.uniqueId("pagination")} />
+        {this.loading()}
+
       </div>
     );
   }
