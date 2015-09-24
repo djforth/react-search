@@ -5,39 +5,44 @@ const Search  = require("../../index")
 const Generic = Search.Generic.Search;
 
 let columns = [
+  // {key:"id"},
+  // {key:"headline", desktop:true, mobile:true, tablet:true, searchable:true},
+  // {key:"boroughs", desktop:true, mobile:false, tablet:false, searchable:true},
+  // {key:"venues", desktop:true, mobile:false, tablet:false, searchable:true},
+  // {key:"published", desktop:true, mobile:false, tablet:false},
+  // {key:"created", desktop:true, mobile:false, tablet:true},
+  // {key:"status", desktop:true, mobile:true, tablet:true},
+  // {key:"actions", desktop:true, mobile:true, tablet:true}
   {key:"id"},
-  {key:"headline", desktop:true, mobile:true, tablet:true, searchable:true},
-  {key:"boroughs", desktop:true, mobile:false, tablet:false, searchable:true},
-  {key:"venues", desktop:true, mobile:false, tablet:false, searchable:true},
-  {key:"published", desktop:true, mobile:false, tablet:false},
-  {key:"created", desktop:true, mobile:false, tablet:true},
-  {key:"status", desktop:true, mobile:true, tablet:true},
-  {key:"actions", desktop:true, mobile:true, tablet:true}
+  {key:"title", desktop:true, mobile:true, tablet:true, searchable:true},
+  {key:"borough", searchable:true, show:true},
+  {key:"county", show:true, searchable:true},
+  {key:"postcode", show:true, searchable:true},
+  {key:"staff", desktop:true, mobile:false, tablet:false, searchable:true},
+  {key:"actions", title:"Actions", desktop:true, mobile:true, tablet:true}
 ];
 
 let css = {
-  actions:"col-lg-2 col-md-2 col-sm-2 col-xs-2",
-  headline:"col-lg-5 col-md-5 col-sm-5 col-xs-5",
-  default: "col-lg-1 col-md-1 col-sm-2 col-xs-2"};
+  title:"col-lg-4 col-md-4 col-sm-4 col-xs-4", staff:"col-lg-4 col-md-4 col-sm-4 col-xs-4",
+  default: "col-lg-2 col-md-3 col-sm-4 col-xs-5"};
 
 
 let buttons = [
-  {key:"delete", restful:"delete", title:{text:"Delete :replace", replace:"headline"}, delete_msg:{text:"Are you sure you want to delete - :replace ?", replace:"headline"},icon:"delete", text:"", options:{ button_type: "danger", placement: "top"}},
-  {key:"edit", title:{text:"Edit :replace", replace:"headline"}, icon:"edit", text:"", options:{ button_type: "default", placement: "top"}}
+  {key:"delete", restful:"delete", title:{text:"Delete :replace", replace:"headline"}, delete_msg:{text:"Are you sure you want to delete - :replace ?", replace:"title"},icon:"delete", text:"", options:{ button_type: "danger", placement: "top"}},
+  {key:"edit", title:{text:"Edit :replace", replace:"title"}, icon:"edit", text:"", options:{ button_type: "default", placement: "top"}}
 ]
 
-let date_ranges = [
-  {key:"published", type:"date"}
-]
+let date_ranges = []
 
 React.render(
   <Generic
     buttons     = {buttons}
     columns     = {columns}
     css         = {css}
+    expandable  = {true}
     date_ranges = {date_ranges}
-    dataApi   = "/api/generic/feed_news.json"
-    filterApi = "/api/generic/filters_news.json"
+    dataApi   = "/api/generic/legacy_feed.json"
+    filterApi = "/api/generic/legacy_filters.json"
   />,
   document.getElementById('search')
 );

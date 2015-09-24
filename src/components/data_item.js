@@ -25,6 +25,8 @@ class DataItem extends React.Component {
     ColumnsStore.addChangeListener("change", this._onChange.bind(this));
   }
 
+
+
   componentWillUnmount() {
     this.mounted = false;
     ColumnsStore.removeChangeListener("change", this._onChange);
@@ -57,7 +59,7 @@ class DataItem extends React.Component {
       return data.formatDate(fmt);
     }
 
-    return data;
+    return <span dangerouslySetInnerHTML={this.rawMarkup(data)} />;
   }
 
   renderColumn(col, item){
@@ -66,6 +68,10 @@ class DataItem extends React.Component {
         {this.displayData(item, col)}
       </div>
     );
+  }
+
+  rawMarkup(data) {
+    return { __html: data };
   }
 
   renderTd(){

@@ -14,8 +14,14 @@ var Buttons     = require("../components/action_buttons");
 class GenericExpander extends DataExpander {
   renderAction(){
     return (
-      <Buttons data={this.props.data} config={this.props.buttons} />
+      <Buttons data={this.props.data} config={this.props.buttons} delete_cb={this._deleteCallBack.bind(this)}  />
     );
+  }
+
+  _deleteCallBack(){
+    this.removed  = this.toggleCss(this.removed);
+    this.setState({removed:this.getClasses(this.removed)});
+    // React.unmountComponentAtNode(this.getDOMNode().parentNode)
   }
 
   renderTd(){

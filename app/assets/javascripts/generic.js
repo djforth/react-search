@@ -327,8 +327,8 @@ var ActionButtons = (function (_React$Component) {
     key: "deleteCallBack",
     value: function deleteCallBack(flash) {
       // console.log('id', this.props.data.get("id"));
-      DataAction.deleteItem(this.props.data.get("id"), { type: "notice" });
-      // DataAction.deleteItem(this.props.data.get("id"), flash);
+      // DataAction.deleteItem(this.props.data.get("id"), {type:"notice"});
+      DataAction.deleteItem(this.props.data.get("id"), flash);
       if (_.isFunction(this.props.delete_cb)) {
         this.props.delete_cb(this.props.data.get("id"), flash);
       }
@@ -924,12 +924,17 @@ var DataItem = (function (_React$Component) {
         return data.formatDate(fmt);
       }
 
-      return data;
+      return React.createElement("span", { dangerouslySetInnerHTML: this.rawMarkup(data) });
     }
   }, {
     key: "renderColumn",
     value: function renderColumn(col, item) {
       return React.createElement("div", { className: this.checkCss(this.props.css, col.key), key: _.uniqueId("dataItem") }, this.displayData(item, col));
+    }
+  }, {
+    key: "rawMarkup",
+    value: function rawMarkup(data) {
+      return { __html: data };
     }
   }, {
     key: "renderTd",
@@ -2095,7 +2100,7 @@ var Search = (function (_React$Component) {
   _createClass(Search, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      console.log("Search mounting");
+      // console.log("Search mounting")
       var detect = new ViewportDetect();
       this.device = detect.getDevice();
       this.size = detect.windowSize();
@@ -2127,7 +2132,6 @@ var Search = (function (_React$Component) {
   }, {
     key: "componentWillUnmount",
     value: function componentWillUnmount() {
-      console.log("Search unmounting <<<<<<<<<<< WTF");
       DataStore.removeChangeListener("fetched", this._onLoaded);
     }
   }, {
@@ -3196,7 +3200,14 @@ var GenericExpander = (function (_DataExpander) {
   _createClass(GenericExpander, [{
     key: "renderAction",
     value: function renderAction() {
-      return React.createElement(Buttons, { data: this.props.data, config: this.props.buttons });
+      return React.createElement(Buttons, { data: this.props.data, config: this.props.buttons, delete_cb: this._deleteCallBack.bind(this) });
+    }
+  }, {
+    key: "_deleteCallBack",
+    value: function _deleteCallBack() {
+      this.removed = this.toggleCss(this.removed);
+      this.setState({ removed: this.getClasses(this.removed) });
+      // React.unmountComponentAtNode(this.getDOMNode().parentNode)
     }
   }, {
     key: "renderTd",
@@ -3279,12 +3290,12 @@ function _inherits(subClass, superClass) {
 var React = require("react/addons");
 var _ = require("lodash");
 
-//Flux
-var DataStore = require('../stores/data_store');
-var ColumnsStore = require('../stores/columns_store');
+// //Flux
+// const DataStore    = require("../stores/data_store");
+// const ColumnsStore = require("../stores/columns_store");
 
 //Components
-var DataItem = require('../components/data_item');
+var DataItem = require("../components/data_item");
 
 var Buttons = require("../components/action_buttons");
 
@@ -3303,7 +3314,7 @@ var GenericItem = (function (_DataItem) {
 
   _createClass(GenericItem, [{
     key: "_deleteCallBack",
-    value: function _deleteCallBack(id, flash) {
+    value: function _deleteCallBack() {
       this.removed = this.toggleCss(this.removed);
       this.setState({ removed: this.getClasses(this.removed) });
       // React.unmountComponentAtNode(this.getDOMNode().parentNode)
@@ -3318,9 +3329,9 @@ var GenericItem = (function (_DataItem) {
     value: function renderTd() {
 
       var item = this.props.data;
-      if (item && item != [] && this.state.columns) {
+      if (item && item !== [] && this.state.columns) {
         // if(item.toJS){
-        //   console.log('item', item.toJS());
+        //   console.log("item", item.toJS());
         // }
 
         var td = _.map(this.state.columns, (function (col) {
@@ -3370,7 +3381,7 @@ var GenericItem = (function (_DataItem) {
 module.exports = GenericItem;
 
 
-},{"../components/action_buttons":5,"../components/data_item":9,"../stores/columns_store":29,"../stores/data_store":30,"lodash":137,"react/addons":308}],27:[function(require,module,exports){
+},{"../components/action_buttons":5,"../components/data_item":9,"lodash":137,"react/addons":308}],27:[function(require,module,exports){
 //Libraries
 "use strict";
 
@@ -3476,7 +3487,6 @@ var GenericItems = (function (_DataItems) {
 
       // console.log(this.state.loading)
       if (this.state.data.size <= 0) {
-        console.log('no data');
         return React.createElement("div", { className: "loader", key: "loader" }, React.createElement("h5", null, "Nothing Matches your search"));
       }
       return "";
@@ -62967,24 +62977,33 @@ var React = require("react/addons");
 var Search = require("../../index");
 var Generic = Search.Generic.Search;
 
-var columns = [{ key: "id" }, { key: "headline", desktop: true, mobile: true, tablet: true, searchable: true }, { key: "boroughs", desktop: true, mobile: false, tablet: false, searchable: true }, { key: "venues", desktop: true, mobile: false, tablet: false, searchable: true }, { key: "published", desktop: true, mobile: false, tablet: false }, { key: "created", desktop: true, mobile: false, tablet: true }, { key: "status", desktop: true, mobile: true, tablet: true }, { key: "actions", desktop: true, mobile: true, tablet: true }];
+var columns = [
+// {key:"id"},
+// {key:"headline", desktop:true, mobile:true, tablet:true, searchable:true},
+// {key:"boroughs", desktop:true, mobile:false, tablet:false, searchable:true},
+// {key:"venues", desktop:true, mobile:false, tablet:false, searchable:true},
+// {key:"published", desktop:true, mobile:false, tablet:false},
+// {key:"created", desktop:true, mobile:false, tablet:true},
+// {key:"status", desktop:true, mobile:true, tablet:true},
+// {key:"actions", desktop:true, mobile:true, tablet:true}
+{ key: "id" }, { key: "title", desktop: true, mobile: true, tablet: true, searchable: true }, { key: "borough", searchable: true, show: true }, { key: "county", show: true, searchable: true }, { key: "postcode", show: true, searchable: true }, { key: "staff", desktop: true, mobile: false, tablet: false, searchable: true }, { key: "actions", title: "Actions", desktop: true, mobile: true, tablet: true }];
 
 var css = {
-  actions: "col-lg-2 col-md-2 col-sm-2 col-xs-2",
-  headline: "col-lg-5 col-md-5 col-sm-5 col-xs-5",
-  "default": "col-lg-1 col-md-1 col-sm-2 col-xs-2" };
+  title: "col-lg-4 col-md-4 col-sm-4 col-xs-4", staff: "col-lg-4 col-md-4 col-sm-4 col-xs-4",
+  "default": "col-lg-2 col-md-3 col-sm-4 col-xs-5" };
 
-var buttons = [{ key: "delete", restful: "delete", title: { text: "Delete :replace", replace: "headline" }, delete_msg: { text: "Are you sure you want to delete - :replace ?", replace: "headline" }, icon: "delete", text: "", options: { button_type: "danger", placement: "top" } }, { key: "edit", title: { text: "Edit :replace", replace: "headline" }, icon: "edit", text: "", options: { button_type: "default", placement: "top" } }];
+var buttons = [{ key: "delete", restful: "delete", title: { text: "Delete :replace", replace: "headline" }, delete_msg: { text: "Are you sure you want to delete - :replace ?", replace: "title" }, icon: "delete", text: "", options: { button_type: "danger", placement: "top" } }, { key: "edit", title: { text: "Edit :replace", replace: "title" }, icon: "edit", text: "", options: { button_type: "default", placement: "top" } }];
 
-var date_ranges = [{ key: "published", type: "date" }];
+var date_ranges = [];
 
 React.render(React.createElement(Generic, {
   buttons: buttons,
   columns: columns,
   css: css,
+  expandable: true,
   date_ranges: date_ranges,
-  dataApi: "/api/generic/feed_news.json",
-  filterApi: "/api/generic/filters_news.json"
+  dataApi: "/api/generic/legacy_feed.json",
+  filterApi: "/api/generic/legacy_filters.json"
 }), document.getElementById('search'));
 
 },{"../../index":1,"babelify/polyfill":125,"react/addons":308}]},{},[482]);
