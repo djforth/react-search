@@ -151,9 +151,13 @@ describe("DataItem", function() {
     let dateSpy
     beforeEach(()=>{
       spyOn(dataitem, "getFmt").and.returnValue("%d/%m/%Y");
+      spyOn(dataitem, "rawMarkup").and.callFake((d)=>{
+        return d
+      })
     })
 
     it("should return data in key if string", function() {
+
       let dd = dataitem.displayData(data, {key:"foo"});
       expect(dd).toEqual("Phil");
 

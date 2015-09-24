@@ -59,7 +59,7 @@ class DataItem extends React.Component {
       return data.formatDate(fmt);
     }
 
-    return <span dangerouslySetInnerHTML={this.rawMarkup(data)} />;
+    return this.rawMarkup(data);
   }
 
   renderColumn(col, item){
@@ -71,7 +71,7 @@ class DataItem extends React.Component {
   }
 
   rawMarkup(data) {
-    return { __html: data };
+    return <span dangerouslySetInnerHTML={ {__html: data} } />;
   }
 
   renderTd(){
