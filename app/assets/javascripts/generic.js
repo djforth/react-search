@@ -368,7 +368,7 @@ var ActionButtons = (function (_React$Component) {
     value: function renderButtons() {
       var _this2 = this;
 
-      if (this.props.data) {
+      if (this.props.data && this.state.config) {
         var btns = _.map(this.state.config, function (config) {
           if (config.path === "" || _.isNull(config.path)) {
             return "";

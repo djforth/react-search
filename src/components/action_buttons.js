@@ -31,6 +31,7 @@ class ActionButtons extends React.Component {
 
 
   componentWillMount(){
+
     let config = _.map(this.props.config, (conf)=>{
       if(!this.props.data.get("buttons").has(conf.key)){
         return "";
@@ -57,7 +58,7 @@ class ActionButtons extends React.Component {
   }
 
   renderButtons(){
-    if(this.props.data){
+    if(this.props.data && this.state.config){
       let btns = _.map(this.state.config, (config)=>{
         if(config.path === "" || _.isNull(config.path)){
           return "";
