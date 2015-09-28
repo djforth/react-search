@@ -1,4 +1,4 @@
-should remove item// require("babelify/polyfill");
+// require("babelify/polyfill");
 
 const sinon     = require("sinon");
 const _         = require("lodash");

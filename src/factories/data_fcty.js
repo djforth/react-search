@@ -254,7 +254,9 @@ class DataFcty extends DataManager {
 
         if(v.indexOf){
           let i = v.indexOf(del);
-          v = v.delete(i);
+          if(i > -1) {
+            v = v.delete(i);
+          }
         }
         return v;
       });
