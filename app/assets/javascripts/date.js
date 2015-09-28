@@ -1405,6 +1405,7 @@ module.exports = FiltersChecks;
 
 
 },{"./check_box":6,"react/addons":308}],13:[function(require,module,exports){
+(function (global){
 //Libraries
 "use strict";
 
@@ -1456,9 +1457,9 @@ var _ = require("lodash");
 var FilterActions = require("../actions/filter_actions");
 
 var injectTapEventPlugin = require("react-tap-event-plugin");
-
-var Calendar = require("material-ui/lib/date-picker");
-var DatePicker = Calendar.DatePicker;
+var isBrowser = typeof global === "undefined";
+var Calendar = isBrowser ? require("material-ui/lib/date-picker") : {};
+var DatePicker = isBrowser ? Calendar.DatePicker : {};
 
 // const ThemeManager = require('material-ui/lib/styles/theme-manager')();
 // console.log('ThemeManager', ThemeManager);
@@ -1485,9 +1486,18 @@ var FiltersDate = (function (_React$Component) {
   }
 
   _createClass(FiltersDate, [{
+    key: "componentWillMount",
+    value: function componentWillMount() {
+      console.log('Will mount');
+    }
+  }, {
     key: "componentDidMount",
     value: function componentDidMount() {
+      // ThemeManager  = new Styles.ThemeManager();
       injectTapEventPlugin();
+      // console.log("Mounting");
+      // this.context = {muiTheme: ThemeManager.getCurrentTheme()}
+      // this.context.muiTheme = ThemeManager.getCurrentTheme()
       this.setState({ mounted: true });
     }
   }, {
@@ -1499,6 +1509,7 @@ var FiltersDate = (function (_React$Component) {
     key: "getChildContext",
     value: function getChildContext() {
       ThemeManager = new Styles.ThemeManager();
+      // console.log("context")
       return {
         muiTheme: ThemeManager.getCurrentTheme()
       };
@@ -1553,6 +1564,7 @@ FiltersDate.childContextTypes = {
 module.exports = FiltersDate;
 
 
+}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 },{"../actions/filter_actions":4,"lodash":137,"material-ui/lib/date-picker":173,"material-ui/lib/styles":190,"morse-react-mixins":235,"react-tap-event-plugin":307,"react/addons":308}],14:[function(require,module,exports){
 //Libraries
 "use strict";
@@ -2914,8 +2926,16 @@ var DataFcty = (function (_DataManager) {
       var search = this.cache.fullSearch;
 
       if (del && search) {
-        var i = search.indexOf(del);
-        this.cache.fullSearch = search["delete"](i);
+        this.cache = _.mapValues(this.cache, function (v) {
+
+          if (v.indexOf) {
+            var i = v.indexOf(del);
+            if (i > -1) {
+              v = v["delete"](i);
+            }
+          }
+          return v;
+        });
       }
 
       return del;
@@ -3255,11 +3275,10 @@ var GenericExpander = (function (_DataExpander) {
       // console.log("props", this.props)
       return React.createElement("div", { className: "tr " + this.state.active }, React.createElement("div", { className: "clearfix" }, this.renderTd(), this.renderShowButton()), this.renderAdditional());
     }
-  }, {
-    key: "shouldComponentUpdate",
-    value: function shouldComponentUpdate(nextProps, nextState) {
-      return this.props.data !== nextProps.data || this.state.columns !== nextState.columns || this.state.removed !== nextState.removed;
-    }
+
+    // shouldComponentUpdate(nextProps, nextState){
+    //   return this.props.data !== nextProps.data || this.state.columns !== nextState.columns || this.state.removed !== nextState.removed;
+    // }
   }]);
 
   return GenericExpander;

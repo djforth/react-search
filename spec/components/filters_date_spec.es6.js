@@ -15,7 +15,7 @@ let spys = [
     fn:function(){
       return  (<div className="Calendar"> Calendar </div>);
     },
-    title:"Calendar"
+    title:"DatePiker"
   }
 ];
 

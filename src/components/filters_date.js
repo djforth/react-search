@@ -5,9 +5,9 @@ const _     = require("lodash");
 const FilterActions = require("../actions/filter_actions");
 
 var injectTapEventPlugin = require("react-tap-event-plugin");
-
-let Calendar     = require("material-ui/lib/date-picker");
-let DatePicker   = Calendar.DatePicker;
+var isBrowser = typeof global === "undefined";
+let Calendar     = (isBrowser) ? require("material-ui/lib/date-picker") : {};
+let DatePicker   = (isBrowser) ? Calendar.DatePicker : {};
 
 // const ThemeManager = require('material-ui/lib/styles/theme-manager')();
 // console.log('ThemeManager', ThemeManager);
@@ -29,11 +29,19 @@ class FiltersDate extends React.Component {
     date.setFullYear(year + 100);
     this.end   = _.clone(date);
     this.state = {start:this.start, end:this.end, mounted:false};
+
   }
 
+  componentWillMount(){
+    console.log('Will mount');
+  }
 
   componentDidMount(){
+    // ThemeManager  = new Styles.ThemeManager();
     injectTapEventPlugin();
+    // console.log("Mounting");
+    // this.context = {muiTheme: ThemeManager.getCurrentTheme()}
+    // this.context.muiTheme = ThemeManager.getCurrentTheme()
     this.setState({mounted:true});
   }
 
@@ -44,6 +52,7 @@ class FiltersDate extends React.Component {
 
   getChildContext() {
     ThemeManager  = new Styles.ThemeManager();
+    // console.log("context")
     return {
       muiTheme: ThemeManager.getCurrentTheme()
     };
