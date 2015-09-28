@@ -1470,10 +1470,11 @@ var textMixins = require("morse-react-mixins").text_mixins;
 var FiltersDate = (function (_React$Component) {
   _inherits(FiltersDate, _React$Component);
 
-  function FiltersDate(props) {
+  function FiltersDate(props, context) {
     _classCallCheck(this, FiltersDate);
 
-    _get(Object.getPrototypeOf(FiltersDate.prototype), "constructor", this).call(this, props);
+    _get(Object.getPrototypeOf(FiltersDate.prototype), "constructor", this).call(this, props, context);
+    // console.log(context)
     var date = new Date();
     var year = date.getFullYear();
     date.setFullYear(year - 100);
@@ -1484,10 +1485,9 @@ var FiltersDate = (function (_React$Component) {
   }
 
   _createClass(FiltersDate, [{
-    key: "componentWillMount",
-    value: function componentWillMount() {
+    key: "componentDidMount",
+    value: function componentDidMount() {
       injectTapEventPlugin();
-      ThemeManager = new Styles.ThemeManager();
       this.setState({ mounted: true });
     }
   }, {
@@ -1498,6 +1498,7 @@ var FiltersDate = (function (_React$Component) {
   }, {
     key: "getChildContext",
     value: function getChildContext() {
+      ThemeManager = new Styles.ThemeManager();
       return {
         muiTheme: ThemeManager.getCurrentTheme()
       };
@@ -1545,7 +1546,6 @@ var FiltersDate = (function (_React$Component) {
 })(React.Component);
 
 Object.assign(FiltersDate.prototype, textMixins);
-
 FiltersDate.childContextTypes = {
   muiTheme: React.PropTypes.object
 };
