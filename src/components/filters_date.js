@@ -5,12 +5,14 @@ const _     = require("lodash");
 const FilterActions = require("../actions/filter_actions");
 
 var injectTapEventPlugin = require("react-tap-event-plugin");
-injectTapEventPlugin();
 
 let Calendar     = require("material-ui/lib/date-picker");
 let DatePicker   = Calendar.DatePicker;
+
+// const ThemeManager = require('material-ui/lib/styles/theme-manager')();
+// console.log('ThemeManager', ThemeManager);
 let Styles       = require("material-ui/lib/styles");
-let ThemeManager = new Styles.ThemeManager();
+let ThemeManager; //  = new Styles.ThemeManager();
 
 const textMixins = require("morse-react-mixins").text_mixins;
 
@@ -25,8 +27,19 @@ class FiltersDate extends React.Component {
     this.start = _.clone(date);
     date.setFullYear(year + 100);
     this.end   = _.clone(date);
-    this.state = {start:this.start, end:this.end};
+    this.state = {start:this.start, end:this.end, mounted:false};
   }
+
+  componentWillMount(){
+    injectTapEventPlugin();
+    ThemeManager  = new Styles.ThemeManager();
+    this.setState({mounted:true});
+  }
+
+  componentWillUnMount(){
+    this.setState({mounted:false});
+  }
+
 
   getChildContext() {
     return {
@@ -35,21 +48,29 @@ class FiltersDate extends React.Component {
   }
 
   renderStart(){
-    return (
-      <div className="col-md-6 col-sm-6 col-xs-6">
-        <label>Start Date</label>
-        <DatePicker hintText="Select Start Date" onChange={this._handleFrom.bind(this)} autoOk={true} maxDate={this.state.end}  />
-      </div>
-    );
+    if(this.state.mounted) {
+      return (
+        <div className="col-md-6 col-sm-6 col-xs-6">
+          <label>Start Date</label>
+          <DatePicker hintText="Select Start Date" onChange={this._handleFrom.bind(this)} autoOk={true} maxDate={this.state.end}  />
+        </div>
+      );
+    }
+
+    return "";
   }
 
   renderEnd(){
-    return (
-      <div className="col-md-6 col-sm-6 col-xs-6">
-        <label>End Date</label>
-        <DatePicker hintText="Select End Date" onChange={this._handleTo.bind(this)} autoOk={true} minDate={this.state.start} />
-      </div>
-    );
+    if(this.state.mounted) {
+      return (
+          <div className="col-md-6 col-sm-6 col-xs-6">
+            <label>End Date</label>
+            <DatePicker hintText="Select End Date" onChange={this._handleTo.bind(this)} autoOk={true} minDate={this.state.start} />
+          </div>
+        );
+    }
+
+    return "";
   }
 
   render(){

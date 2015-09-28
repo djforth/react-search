@@ -1456,12 +1456,14 @@ var _ = require("lodash");
 var FilterActions = require("../actions/filter_actions");
 
 var injectTapEventPlugin = require("react-tap-event-plugin");
-injectTapEventPlugin();
 
 var Calendar = require("material-ui/lib/date-picker");
 var DatePicker = Calendar.DatePicker;
+
+// const ThemeManager = require('material-ui/lib/styles/theme-manager')();
+// console.log('ThemeManager', ThemeManager);
 var Styles = require("material-ui/lib/styles");
-var ThemeManager = new Styles.ThemeManager();
+var ThemeManager = undefined; //  = new Styles.ThemeManager();
 
 var textMixins = require("morse-react-mixins").text_mixins;
 
@@ -1478,10 +1480,22 @@ var FiltersDate = (function (_React$Component) {
     this.start = _.clone(date);
     date.setFullYear(year + 100);
     this.end = _.clone(date);
-    this.state = { start: this.start, end: this.end };
+    this.state = { start: this.start, end: this.end, mounted: false };
   }
 
   _createClass(FiltersDate, [{
+    key: "componentWillMount",
+    value: function componentWillMount() {
+      injectTapEventPlugin();
+      ThemeManager = new Styles.ThemeManager();
+      this.setState({ mounted: true });
+    }
+  }, {
+    key: "componentWillUnMount",
+    value: function componentWillUnMount() {
+      this.setState({ mounted: false });
+    }
+  }, {
     key: "getChildContext",
     value: function getChildContext() {
       return {
@@ -1491,12 +1505,20 @@ var FiltersDate = (function (_React$Component) {
   }, {
     key: "renderStart",
     value: function renderStart() {
-      return React.createElement("div", { className: "col-md-6 col-sm-6 col-xs-6" }, React.createElement("label", null, "Start Date"), React.createElement(DatePicker, { hintText: "Select Start Date", onChange: this._handleFrom.bind(this), autoOk: true, maxDate: this.state.end }));
+      if (this.state.mounted) {
+        return React.createElement("div", { className: "col-md-6 col-sm-6 col-xs-6" }, React.createElement("label", null, "Start Date"), React.createElement(DatePicker, { hintText: "Select Start Date", onChange: this._handleFrom.bind(this), autoOk: true, maxDate: this.state.end }));
+      }
+
+      return "";
     }
   }, {
     key: "renderEnd",
     value: function renderEnd() {
-      return React.createElement("div", { className: "col-md-6 col-sm-6 col-xs-6" }, React.createElement("label", null, "End Date"), React.createElement(DatePicker, { hintText: "Select End Date", onChange: this._handleTo.bind(this), autoOk: true, minDate: this.state.start }));
+      if (this.state.mounted) {
+        return React.createElement("div", { className: "col-md-6 col-sm-6 col-xs-6" }, React.createElement("label", null, "End Date"), React.createElement(DatePicker, { hintText: "Select End Date", onChange: this._handleTo.bind(this), autoOk: true, minDate: this.state.start }));
+      }
+
+      return "";
     }
   }, {
     key: "render",
