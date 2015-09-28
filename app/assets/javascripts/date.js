@@ -1134,6 +1134,7 @@ module.exports = DataItems;
 
 
 },{"../stores/data_store":30,"./data_item":9,"react/addons":308,"viewport-detection-es6":481}],11:[function(require,module,exports){
+(function (global){
 //Libraries
 "use strict";
 
@@ -1190,7 +1191,8 @@ var DataActions = require("../actions/data_actions");
 
 //components
 var FiltersCheck = require("./filters_check");
-var FiltersDate = require("./filters_date");
+var isBrowser = typeof global === "undefined";
+var FiltersDate = isBrowser ? require("./filters_date") : {};
 var FiltersSelect = require("./filters_select");
 var FiltersRadio = require("./filters_radio");
 
@@ -1308,6 +1310,7 @@ Object.assign(Filters.prototype, cssMixins);
 module.exports = Filters;
 
 
+}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 },{"../actions/data_actions":3,"../actions/filter_actions":4,"../stores/filter_store":31,"./filters_check":12,"./filters_date":13,"./filters_radio":14,"./filters_select":15,"./searchfilter":19,"lodash":137,"morse-react-mixins":235,"react/addons":308}],12:[function(require,module,exports){
 //Libraries
 "use strict";
