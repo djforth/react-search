@@ -246,12 +246,18 @@ class DataFcty extends DataManager {
 
   remove(id){
     // let del = this.findById(id);
-    let del =  super.remove(id);
-    let search        = this.cache.fullSearch;
+    let del    =  super.remove(id);
+    let search = this.cache.fullSearch;
 
     if(del && search){
-      let i             = search.indexOf(del);
-      this.cache.fullSearch = search.delete(i);
+      this.cache = _.mapValues(this.cache, (v)=>{
+
+        if(v.indexOf){
+          let i = v.indexOf(del);
+          v = v.delete(i);
+        }
+        return v;
+      });
 
     }
 
