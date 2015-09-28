@@ -55,9 +55,9 @@ class GenericExpander extends DataExpander {
     );
   }
 
-  shouldComponentUpdate(nextProps, nextState){
-    return this.props.data !== nextProps.data || this.state.columns !== nextState.columns || this.state.removed !== nextState.removed;
-  }
+  // shouldComponentUpdate(nextProps, nextState){
+  //   return this.props.data !== nextProps.data || this.state.columns !== nextState.columns || this.state.removed !== nextState.removed;
+  // }
 }
 
 module.exports = GenericExpander;
