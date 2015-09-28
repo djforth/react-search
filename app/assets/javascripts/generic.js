@@ -3255,6 +3255,11 @@ var GenericExpander = (function (_DataExpander) {
       // console.log("props", this.props)
       return React.createElement("div", { className: "tr " + this.state.active }, React.createElement("div", { className: "clearfix" }, this.renderTd(), this.renderShowButton()), this.renderAdditional());
     }
+  }, {
+    key: "shouldComponentUpdate",
+    value: function shouldComponentUpdate(nextProps, nextState) {
+      return this.props.data !== nextProps.data || this.state.columns !== nextState.columns || this.state.removed !== nextState.removed;
+    }
   }]);
 
   return GenericExpander;
