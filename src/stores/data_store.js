@@ -205,7 +205,7 @@ const store = {
     }
 
     let d = this.data.getAll();
-    this.itemNo = d.size;
+    this.itemNo = (d.size) ? d.size : 0;
 
     // simulate success callback
     DataAction.receiveAll(d);
