@@ -169,7 +169,6 @@ class DataFcty extends DataManager {
   }
 
 
-
   filterSearch(search, filters){
     this.cache.filters = filters;
 
