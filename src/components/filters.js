@@ -11,7 +11,7 @@ const DataActions   = require("../actions/data_actions");
 //components
 const FiltersCheck  = require("./filters_check");
 var isBrowser = typeof global === "undefined";
-const FiltersDate   = (isBrowser) ? require("./filters_date") : {};
+const FiltersDate   = require("./filters_date");
 const FiltersSelect = require("./filters_select");
 const FiltersRadio  = require("./filters_radio");
 

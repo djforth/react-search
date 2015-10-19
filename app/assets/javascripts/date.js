@@ -1192,7 +1192,7 @@ var DataActions = require("../actions/data_actions");
 //components
 var FiltersCheck = require("./filters_check");
 var isBrowser = typeof global === "undefined";
-var FiltersDate = isBrowser ? require("./filters_date") : {};
+var FiltersDate = require("./filters_date");
 var FiltersSelect = require("./filters_select");
 var FiltersRadio = require("./filters_radio");
 
@@ -1461,8 +1461,8 @@ var FilterActions = require("../actions/filter_actions");
 
 var injectTapEventPlugin = require("react-tap-event-plugin");
 var isBrowser = typeof global === "undefined";
-var Calendar = isBrowser ? require("material-ui/lib/date-picker") : {};
-var DatePicker = isBrowser ? Calendar.DatePicker : {};
+var Calendar = require("material-ui/lib/date-picker");
+var DatePicker = Calendar.DatePicker;
 
 // const ThemeManager = require('material-ui/lib/styles/theme-manager')();
 // console.log('ThemeManager', ThemeManager);
@@ -4060,7 +4060,7 @@ var store = {
     }
 
     var d = this.data.getAll();
-    this.itemNo = d.size;
+    this.itemNo = d.size ? d.size : 0;
 
     // simulate success callback
     DataAction.receiveAll(d);

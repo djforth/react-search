@@ -6,8 +6,8 @@ const FilterActions = require("../actions/filter_actions");
 
 var injectTapEventPlugin = require("react-tap-event-plugin");
 var isBrowser = typeof global === "undefined";
-let Calendar     = (isBrowser) ? require("material-ui/lib/date-picker") : {};
-let DatePicker   = (isBrowser) ? Calendar.DatePicker : {};
+let Calendar     = require("material-ui/lib/date-picker");
+let DatePicker   = Calendar.DatePicker;
 
 // const ThemeManager = require('material-ui/lib/styles/theme-manager')();
 // console.log('ThemeManager', ThemeManager);
