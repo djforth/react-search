@@ -54,7 +54,7 @@
     "karma-phantomjs-launcher": "^0.1.4",
     "karma-safari-launcher": "^0.1.1",
     "karma-story-reporter": "^0.3.1",
-    "node-sass": "^3.3.2",
+    "node-sass": "^3.3.3",
     "phantomjs": "^1.9.17",
     "react-jasmine": "git://github.com/djforth/react-jasmine.git",
     "react-tools": "^0.13.3",

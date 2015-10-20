@@ -917,7 +917,7 @@ var DataItem = (function (_React$Component) {
     value: function displayData(item, col) {
       var key = col.key;
       var data = item.get(col.key);
-
+      // console.log("data", data);
       if (_.isDate(data)) {
         data = item.get(key + "Df");
         var fmt = this.getFmt(col);
@@ -8950,13 +8950,21 @@ var DataManager = (function () {
     value: function manageDates(items) {
       var _this2 = this;
 
-      var date_keys = this.getDateKeys(_.first(items));
+      var date_keys = [];
+      var i = 0;
+      // Checks first 20 records
+      do {
+        date_keys = this.getDateKeys(items[i]);
+        i++;
+      } while (_.isEmpty(date_keys) && i < 20);
+
       if (_.isEmpty(date_keys)) {
         return items;
       }
 
       return _.map(items, function (item) {
-        return _this2.addDates(item, date_keys);
+        var keys = _this2.getDateKeys(item);
+        return _this2.addDates(item, keys);
       });
     }
   }, {

@@ -52,7 +52,7 @@ class DataItem extends React.Component {
   displayData(item, col){
     let key  = col.key;
     let data = item.get(col.key);
-
+    // console.log("data", data);
     if(_.isDate(data)){
       data = item.get(`${key}Df`);
       let fmt = this.getFmt(col);
