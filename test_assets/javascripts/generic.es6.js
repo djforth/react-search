@@ -15,10 +15,7 @@ let columns = [
   // {key:"actions", desktop:true, mobile:true, tablet:true}
   {key:"id"},
   {key:"title", desktop:true, mobile:true, tablet:true, searchable:true},
-  {key:"borough", searchable:true, show:true},
-  {key:"county", show:true, searchable:true},
-  {key:"postcode", show:true, searchable:true},
-  {key:"staff", desktop:true, mobile:false, tablet:false, searchable:true},
+  {key:"local_authority", desktop:true, mobile:false, tablet:false, searchable:true},
   {key:"actions", title:"Actions", desktop:true, mobile:true, tablet:true}
 ];
 
@@ -39,9 +36,9 @@ React.render(
     buttons     = {buttons}
     columns     = {columns}
     css         = {css}
-    expandable  = {true}
+    expandable  = {false}
     date_ranges = {date_ranges}
-    dataApi   = "/api/generic/legacy_feed.json"
+    dataApi   = "/api/generic/feed.json"
     filterApi = "/api/generic/legacy_filters.json"
   />,
   document.getElementById('search')

@@ -1,0 +1,179 @@
+[
+{
+"id": 88,
+"title": "Chef / Cook",
+"visible_from_date": "2015-10-15",
+"visible_until_date": "2015-12-01",
+"summary": "<p>Do you know your &lsquo;roo meat from your chook? An exciting opportunity awaits you at Walkabout, as part of the Intertain Limited. Become part of a growing chain of leisure venues, recognised across the UK.</p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure, ex quo ad tempora veritatis aliquam quisquam, hic doloremque, enim totam atque iusto numquam velit ab nemo labore accusamus, amet harum.</p>",
+"job_start_date": "2015-06-01",
+"average_hours": 40,
+"with_accommodation": false,
+"shift": "Anytime",
+"filters": {
+  "head_office_role": false,
+  "venue":23
+},
+"buttons": {
+"show": "/jobs/88"
+}
+},
+{
+"id": 43,
+"title": "Promotional Staff",
+"visible_from_date": "2015-07-18",
+"visible_until_date": "2019-12-31",
+"summary": "<p>An exciting opportunity awaits you at Walkabout, as part of the Intertain Limited. Become part of a growing chain of leisure venues, recognised across the UK.&nbsp;</p>",
+"head_office_role": false,
+"job_start_date": "2015-08-01",
+"average_hours": 8,
+"with_accommodation": false,
+"shift": "Weekend only",
+"filters": {
+  "head_office_role": false,
+  "venue":18
+},
+"buttons": {
+  "show": "/jobs/43"
+}
+},
+{
+"id": 94,
+"title": "Weekend floor seller",
+"visible_from_date": "2015-07-25",
+"visible_until_date": "2020-12-31",
+"summary": "<p>Got more skip and bounce than a kangaroo? We are looking for enthusiastic, outgoing, customer service focused Floor Team Members to help deliver the Walkabout brand experience.</p>",
+
+"job_start_date": "2015-08-01",
+"average_hours": 10,
+"with_accommodation": false,
+"shift": "Weekend only",
+"filters": {
+  "head_office_role": false,
+  "venue":18
+},
+"buttons": {
+"show": "/jobs/94"
+}
+},
+{
+"id": 26,
+"title": "Cast Member",
+"visible_from_date": "2014-03-11",
+"visible_until_date": "2015-12-25",
+"summary": "<p>An exciting opportunity awaits you at Walkabout, as part of the Intertain Limited. Become part of a growing chain of leisure venues, recognised across the UK.&nbsp;</p>",
+"job_start_date": "2015-08-10",
+"average_hours": null,
+"with_accommodation": false,
+"shift": "Anytime",
+"filters": {
+  "head_office_role": false,
+  "venue":11
+},
+"buttons": {
+"show": "/jobs/26"
+}
+},
+{
+"id": 107,
+"title": "Chef wanted for new Aussie Bar in Lichfield",
+"visible_from_date": "2015-09-28",
+"visible_until_date": "2015-10-28",
+"summary": "<p>Do you know your &lsquo;roo meat from your chook? An exciting opportunity awaits you at Walkabout, as part of the Intertain Limited. Become part of a growing chain of leisure venues, recognised across the UK.</p>",
+"job_start_date": "2015-09-28",
+"average_hours": 40,
+"with_accommodation": false,
+"shift": "Anytime",
+"filters": {
+  "head_office_role": false,
+  "venue":32
+},
+"buttons": {
+"show": "/jobs/107"
+}
+},
+{
+"id": 73,
+"title": "Bar team member",
+"visible_from_date": "2015-10-15",
+"visible_until_date": "2015-11-30",
+"summary": "<p>An exciting opportunity awaits you at Walkabout, as part of the Intertain Limited. Become part of a growing chain of leisure venues, recognised across the UK.&nbsp;</p>",
+"head_office_role": false,
+"path": "/jobs/73",
+"venue": {
+"id": 23,
+"title": "Reading"
+},
+"job_start_date": "2015-10-15",
+"average_hours": 20,
+"with_accommodation": false,
+"shift": "Night shifts",
+"filters": {
+  "head_office_role": false,
+  "venue":23
+},
+"buttons": {
+"show": "/jobs/73"
+}
+},
+{
+"id": 84,
+"title": "Floor Staff",
+"visible_from_date": "2015-10-15",
+"visible_until_date": "2015-11-30",
+"summary": "<p>Got more skip and bounce than a kangaroo? We are looking for enthusiastic, outgoing, customer service focused Floor Team Members to help deliver the Walkabout brand experience.</p>",
+"head_office_role": false,
+"job_start_date": "2015-10-15",
+"average_hours": 15,
+"with_accommodation": false,
+"shift": "Weekend only",
+"filters": {
+  "head_office_role": false,
+  "venue":23
+},
+"buttons": {
+"show": "/jobs/84"
+}
+},
+{
+"id": 87,
+"title": "Promo Team",
+"visible_from_date": "2015-10-15",
+"visible_until_date": "2015-11-30",
+"summary": "<p>An exciting opportunity awaits you at Walkabout, as part of the Intertain Limited. Become part of a growing chain of leisure venues, recognised across the UK.&nbsp;</p>",
+"job_start_date": "2015-10-15",
+"average_hours": 12,
+"with_accommodation": false,
+"shift": "Anytime",
+"filters": {
+  "head_office_role": false,
+  "venue":23
+},
+"buttons": {
+"show": "/jobs/87"
+}
+},
+{
+"id": 112,
+"title": "Trainee Assistant Manager",
+"visible_from_date": "2015-10-15",
+"visible_until_date": "2015-11-30",
+"summary": "<p>We are looking for a Trainee/Assistant Manager, who will be the life and soul of this vibrant venue.</p>\r\n<p>Trainee/Assistant Manager will support the Venue Manager in the day-to-day running of the business and gain valuable experience in all aspects of the business.</p>",
+"head_office_role": false,
+"path": "/jobs/112",
+"venue": {
+"id": 23,
+"title": "Reading"
+},
+"job_start_date": "2015-10-15",
+"average_hours": 45,
+"with_accommodation": false,
+"shift": "Anytime",
+"filters": {
+  "head_office_role": false,
+  "venue":23
+},
+"buttons": {
+"show": "/jobs/112"
+}
+}
+]

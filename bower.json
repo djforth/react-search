@@ -15,6 +15,9 @@
     "tests"
   ],
   "dependencies": {
-    "bourbon": "~4.2.4"
+    "bourbon": "~4.2.4",
+    "compass-breakpoint": "breakpoint-sass#~2.6.1",
+    "normalize-css": "~3.0.3",
+    "susy": "~2.2.6"
   }
 }

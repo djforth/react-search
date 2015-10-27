@@ -63083,7 +63083,7 @@ var columns = [
 // {key:"created", desktop:true, mobile:false, tablet:true},
 // {key:"status", desktop:true, mobile:true, tablet:true},
 // {key:"actions", desktop:true, mobile:true, tablet:true}
-{ key: "id" }, { key: "title", desktop: true, mobile: true, tablet: true, searchable: true }, { key: "borough", searchable: true, show: true }, { key: "county", show: true, searchable: true }, { key: "postcode", show: true, searchable: true }, { key: "staff", desktop: true, mobile: false, tablet: false, searchable: true }, { key: "actions", title: "Actions", desktop: true, mobile: true, tablet: true }];
+{ key: "id" }, { key: "title", desktop: true, mobile: true, tablet: true, searchable: true }, { key: "local_authority", desktop: true, mobile: false, tablet: false, searchable: true }, { key: "actions", title: "Actions", desktop: true, mobile: true, tablet: true }];
 
 var css = {
   title: "col-lg-4 col-md-4 col-sm-4 col-xs-4", staff: "col-lg-4 col-md-4 col-sm-4 col-xs-4",
@@ -63097,9 +63097,9 @@ React.render(React.createElement(Generic, {
   buttons: buttons,
   columns: columns,
   css: css,
-  expandable: true,
+  expandable: false,
   date_ranges: date_ranges,
-  dataApi: "/api/generic/legacy_feed.json",
+  dataApi: "/api/generic/feed.json",
   filterApi: "/api/generic/legacy_filters.json"
 }), document.getElementById('search'));
 

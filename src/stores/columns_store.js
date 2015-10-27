@@ -75,6 +75,22 @@ const store = {
     return {cols:[], visible:[]};
   },
 
+  getDateColumns(id){
+    let column = this.getColumn(id).cols;
+    let dates = _.chain(column)
+      .filter((col)=>(col.type === "date" || col.type === "dateTime"))
+      .map((col)=> this.reduceObj(col, ["key", "title", "type", "fmt"]))
+      .value();
+
+    return dates;
+  },
+
+  getHeadline(id){
+    return _.find(this.getColumn(id).visible, (col)=>{
+      return col.headline;
+    });
+  },
+
   getKeys(id){
     let visible = this.getColumn(id).visible;
     return _.pluck(visible, "key");
@@ -85,14 +101,16 @@ const store = {
     return _.map(visible, (col)=> this.reduceObj(col, ["key", "title"]));
   },
 
-  getDateColumns(id){
-    let column = this.getColumn(id).cols;
-    let dates = _.chain(column)
-      .filter((col)=>(col.type === "date" || col.type === "dateTime"))
-      .map((col)=> this.reduceObj(col, ["key", "title", "type", "fmt"]))
-      .value();
+  getLabeled(id){
+    return _.filter(this.getColumn(id).visible, (col)=>{
+      return col.label;
+    });
+  },
 
-    return dates;
+  getNonLabeled(id){
+    return _.filter(this.getColumn(id).visible, (col)=>{
+      return _.isBoolean(col.label) && !col.label
+    });
   },
 
   getSearchable(id){
@@ -146,6 +164,12 @@ const store = {
       return !_.includes(values, k);
     });
     return reduced;
+  },
+
+  removeCols(removeItems){
+    return _.reject(this.columns, (col)=>{
+      return _.includes(removeItems, col);
+    });
   },
 
   setVisibleColumns(cols){

@@ -1,0 +1,118 @@
+require("babelify/polyfill");
+
+const React   = require("react");
+const Search  = require("../../vanilla")
+const Tab = Search.Tab.Search;
+
+// Posted: Mar 11, 2014
+// Closing date: Dec 25, 2015
+// Live in: No
+// Shift: Anytime
+// Start Date: Aug 10, 2015
+
+// An exciting opportunity awaits you at Walkabout, as part of the Intertain Limited. Become part of a growing chain of leisure venues, recognised across the UK
+
+// {
+// "id": 88,
+// "title": "Chef / Cook",
+// "visible_from_date": "2015-10-15",
+// "visible_until_date": "2015-12-01",
+// "summary": "<p>Do you know your &lsquo;roo meat from your chook? An exciting opportunity awaits you at Walkabout, as part of the Intertain Limited. Become part of a growing chain of leisure venues, recognised across the UK.</p>",
+// "job_start_date": "2015-06-01",
+// "average_hours": 40,
+// "with_accommodation": false,
+// "shift": "Anytime",
+// "filters": {
+// "head_office_role": false,
+// "venue": 23
+// },
+// "buttons": {
+// "show": "/jobs/88"
+// }
+// },
+
+let columns = [
+  {key:"id"},
+  {key:"title", title:"Title"},
+  {key:"visible_from_date", title:"Posted", type:"date", fmt:"%b %d, %Y",},
+  {key:"visible_until_date", title:"Closing", type:"date", fmt:"%b %d, %Y"},
+  {key:"with_accommodation", title:"Live in"},
+  {key:"shift"},
+  {key:"job_start_date", title:"Start Date", type:"date", fmt:"%b %d, %Y"},
+  {key:"summary", type:"date", fmt:"%b %d, %Y"},
+  {key:"actions"}
+];
+
+columns = columns.map((c)=>{
+  if(c.key !== "id"){
+    c.desktop = true;
+    c.mobile  = true;
+    c.tablet  = true;
+    c.searchable = true;
+    c.show    = true;
+  }
+
+  switch(c.key){
+    case "id":
+      c.show = false
+    break;
+    case "title":
+      c.headline = true;
+    break;
+    case "summary":
+    case "actions":
+      c.label = false;
+    break;
+    default:
+      c.label = true;
+  }
+
+  return c;
+});
+
+
+let tabs = [
+  {title:"Search our Jobs", filterBy:{type:"all", filter:null}, filters:[], search:true, options:{css:"osw-r up-c gamma tab-btn", active:true}},
+  {title:"Head Office opportunities", filterBy:{type:"head_office_role", filter:null}, filters:["categories"], search:false, options:{css:"osw-r up-c gamma tab-btn", active:false}},
+  {title:"Venue opportunities", filterBy:{type:"venues", filter:null}, filters:["venues"], search:false, options:{css:"osw-r up-c gamma tab-btn", active:false}},
+]
+
+
+// console.log('foo', "bar");
+    //   col[:show] = case col[:key]
+    //     when "id" then false
+    //     when "requester_name" then false
+    //     when "expected_returned" then false
+    //     else true
+    //   end
+
+    //   col
+    // end
+
+let css = {default: "whatever"};
+
+let buttons = [
+  {key:"show", title:{text:"View :replace", replace:"title"}, text:"See details & apply", options:{ button_css: "button pop-l delta"}}
+]
+
+let date_ranges = [
+  {key:"required_by", type:"date"}
+]
+
+let intro = "Sinus corae nonserum utatur as ne plam rerfernatle stiatus aecatem aut fugias aut la cori quatatur acestiorum. Li sendem hor is; nentes sua imor hos caectors furei tus aus auc teredum nihica int. Habempondite pri, nocci porente menatium ne con verem adees inum perfent iquidemneris egilique que."
+
+React.render(
+  <Tab
+    buttons     = {buttons}
+    columns     = {columns}
+    css         = {css}
+    date_ranges = {date_ranges}
+    dataApi     = "/api/vanilla/feed.json"
+    expandable  = {true}
+    filterApi   = "/api/vanilla/filters.json"
+    intro       = {intro}
+    tabs        = {tabs}
+  />,
+  document.getElementById('search')
+);
+
