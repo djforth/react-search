@@ -89,7 +89,7 @@ let tabs = [
     //   col
     // end
 
-let css = {default: "whatever"};
+let css = {default: ""};
 
 let buttons = [
   {key:"show", title:{text:"View :replace", replace:"title"}, text:"See details & apply", options:{ button_css: "button pop-l delta"}}

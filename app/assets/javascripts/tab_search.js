@@ -47936,7 +47936,7 @@ var tabs = [{ title: "Search our Jobs", filterBy: { type: "all", filter: null },
 //   col
 // end
 
-var css = { "default": "whatever" };
+var css = { "default": "" };
 
 var buttons = [{ key: "show", title: { text: "View :replace", replace: "title" }, text: "See details & apply", options: { button_css: "button pop-l delta" } }];
 
