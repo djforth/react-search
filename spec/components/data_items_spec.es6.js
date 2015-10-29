@@ -1,4 +1,4 @@
-var React = window.React = require("react/addons");
+var React = window.React = require("react");
 
 const DataItems = require("../../src/components/data_items");
 

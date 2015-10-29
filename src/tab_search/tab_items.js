@@ -1,5 +1,5 @@
 //Libraries
-const React = require("react/addons");
+const React = require("react");
 
 //Morse Libraries
 // const ViewportDetect = require("viewport-detection-es6");

@@ -1,35 +1,10 @@
 require("babelify/polyfill");
-
 const React   = require("react");
+const ReactDOM   = require("react-dom");
 const Search  = require("../../vanilla")
 const Tab = Search.Tab.Search;
 
-// Posted: Mar 11, 2014
-// Closing date: Dec 25, 2015
-// Live in: No
-// Shift: Anytime
-// Start Date: Aug 10, 2015
-
-// An exciting opportunity awaits you at Walkabout, as part of the Intertain Limited. Become part of a growing chain of leisure venues, recognised across the UK
-
-// {
-// "id": 88,
-// "title": "Chef / Cook",
-// "visible_from_date": "2015-10-15",
-// "visible_until_date": "2015-12-01",
-// "summary": "<p>Do you know your &lsquo;roo meat from your chook? An exciting opportunity awaits you at Walkabout, as part of the Intertain Limited. Become part of a growing chain of leisure venues, recognised across the UK.</p>",
-// "job_start_date": "2015-06-01",
-// "average_hours": 40,
-// "with_accommodation": false,
-// "shift": "Anytime",
-// "filters": {
-// "head_office_role": false,
-// "venue": 23
-// },
-// "buttons": {
-// "show": "/jobs/88"
-// }
-// },
+console.log('WTF');
 
 let columns = [
   {key:"id"},
@@ -101,7 +76,7 @@ let date_ranges = [
 
 let intro = "Sinus corae nonserum utatur as ne plam rerfernatle stiatus aecatem aut fugias aut la cori quatatur acestiorum. Li sendem hor is; nentes sua imor hos caectors furei tus aus auc teredum nihica int. Habempondite pri, nocci porente menatium ne con verem adees inum perfent iquidemneris egilique que."
 
-React.render(
+ReactDOM.render(
   <Tab
     buttons     = {buttons}
     columns     = {columns}

@@ -1,5 +1,5 @@
 //Libraries
-const React = require("react/addons");
+const React = require("react");
 const _     = require("lodash");
 
 // const DataStore  = require("../stores/dataStore");

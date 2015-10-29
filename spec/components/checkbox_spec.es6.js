@@ -2,7 +2,7 @@
 // require("babelify/polyfill");
 
 var dropDown;
-var React        = window.React  = require("react/addons");
+var React        = window.React  = require("react");
 
 const CheckBox   = require("../../src/components/check_box");
 

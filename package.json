@@ -91,7 +91,7 @@
     "material-ui": "^0.11.1",
     "morse-bootstrap-react": "git://github.com/djforth/morse-bootstrap-react.git",
     "morse-react-mixins": "git://github.com/djforth/morse-react-mixins.git",
-    "react": "^0.13.3",
+    "react": "^0.14.1",
     "react-bootstrap": "^0.24.2",
     "react-date-range": "^0.1.7",
     "react-mixin": "^1.7.0",

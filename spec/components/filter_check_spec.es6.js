@@ -1,4 +1,4 @@
-var React = window.React  = require("react/addons");
+var React = window.React  = require("react");
 
 const FilterCheck   = require("../../src/components/filters_check");
 
