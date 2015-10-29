@@ -46,10 +46,10 @@ class Filters extends React.Component {
   }
 
   _renderSearch(){
-    // console.log(this.props.search)
+    // console.log(this.props.icon)
     if(this.state.search){
       return (
-        <SearchFilter key="SearchFilter" />
+        <SearchFilter key="SearchFilter" icon={this.props.icon} />
       );
     }
 

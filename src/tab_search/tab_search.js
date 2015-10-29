@@ -40,7 +40,7 @@ class TabSearch extends React.Component {
   }
 
   render() {
-    // console.log("tabs", this.state.tabsId)
+    // console.log("tabs", this.props.icon)
     return (
       <div className="search">
         <TabsHolder tabsId={this.state.tabsId} />

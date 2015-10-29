@@ -64,14 +64,7 @@ exports.Components = {
 // const GenericExpander  = require("./lib/generic_search/generic_expander");
 // const GenericItem   = require("./lib/generic_search/generic_item");
 // const GenericItems  = require("./lib/generic_search/generic_items");
-const VanillaSearch = require("./lib/vanilla_search/vanilla_search");
-
-exports.Generic = {
-  // Expander : GenericExpander,
-  // Items    : GenericItems,
-  // Item     : GenericItem,
-  Search   : VanillaSearch
-}
+//
 
 const TabSearch = require("./lib/tab_search/tab_search");
 

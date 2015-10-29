@@ -1,5 +1,6 @@
 //Libraries
 const React = require("react");
+console.log('WTF', React);
 const _     = require("lodash");
 
 
@@ -98,9 +99,10 @@ class Search extends React.Component{
   }
 
   render() {
+    // console.log('props', this.props.icon);
     return (
       <div>
-        <Filters filterApi={this.props.filterApi} date_ranges={this.props.date_ranges} key={"filters"} />
+        <Filters {...this.props} key={"filters"} />
         { this.props.children }
         {this.loading()}
 

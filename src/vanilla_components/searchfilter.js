@@ -17,6 +17,8 @@ class SearchFilters extends React.Component{
     super(props);
     this.dropdown =  ["input-group-btn", {"open":false}];
 
+
+
     this.state = {
       dropdown:this.getClasses(this.dropdown),
       expanded:"false",
@@ -100,7 +102,7 @@ class SearchFilters extends React.Component{
   render() {
     return (
       <form onSubmit={this._preventSubmit.bind(this)} className="search-filter">
-        <input alt="Search" type="image" src="/assets/images/search.png" />
+        <input alt="Search" type="image" src={this.props.icon} />
         <div className="fields-container">
           <input type="text" name="querystr" id="querystr" placeholder="Search" value={this.state.searchVal} onChange={this._onChange.bind(this)} />
         </div>

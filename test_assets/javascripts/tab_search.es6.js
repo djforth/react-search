@@ -86,6 +86,7 @@ ReactDOM.render(
     expandable  = {true}
     filterApi   = "/api/vanilla/filters.json"
     intro       = {intro}
+    icon        = "/assets/images/search.png"
     search      = "chef"
     tabs        = {tabs}
     noresults   = "We currently don’t have any available vacancies but please check back soon."
