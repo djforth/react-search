@@ -1,6 +1,6 @@
 require("babelify/polyfill");
-const React   = require("react");
-const ReactDOM   = require("react-dom");
+const React    = require("react");
+const ReactDOM = require("react-dom");
 const Search  = require("../../vanilla")
 const Tab = Search.Tab.Search;
 
