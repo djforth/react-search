@@ -3,7 +3,8 @@ const React = require("react/addons")
 
 const cssMixins  = require("morse-react-mixins").css_mixins;
 
-// const DataStore    = require("../stores/data_store");
+const TabActions  = require("../actions/tabs_actions");
+const TabStore    = require("../stores/tabs_store");
 
 // const Search       = require("../vanilla_components/search");
 // const TabItems = require("./tab_items");
@@ -15,10 +16,18 @@ class TabButton extends React.Component {
 
   constructor(props) {
     super(props);
-    let opts = props.tab.options
+    let opts = props.tab.options;
     this.tabCSS = opts.css.split(" ");
     this.tabCSS.push({active:opts.active});
-    this.state = {css:this.getClasses(this.tabCSS)}
+    this.state = {css:this.getClasses(this.tabCSS)};
+  }
+
+  componentWillMount() {
+    TabStore.addChangeListener("tab_change", this._tabChange.bind(this));
+  }
+
+  componentWillUnmount() {
+   TabStore.removeChangeListener("tab_change", this._tabChange);
   }
 
   render(){
@@ -29,10 +38,23 @@ class TabButton extends React.Component {
     );
   }
 
+  _tabChange(){
+    let active = TabStore.isActive(this.props.tabsId, this.props.tab.id);
+    this.tabCSS = _.map(this.tabCSS, (t)=>{
+      if(_.isObject(t)){
+        t.active = active;
+      }
+
+      return t;
+    });
+
+    this.setState({css:this.getClasses(this.tabCSS)});
+  }
+
   _tabClick(e){
     e.preventDefault();
-    // let elm = React.findDOMNode(e.target);
-    console.log("CLICK >>>> ", this.props.tab)
+
+    TabActions.changeTab(this.props.tabsId, this.props.tab.id);
   }
 
 }

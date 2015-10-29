@@ -32,9 +32,9 @@ class FiltersDate extends React.Component {
 
   }
 
-  componentWillMount(){
-    console.log('Will mount');
-  }
+  // componentWillMount(){
+  //   console.log('Will mount');
+  // }
 
   componentDidMount(){
     // ThemeManager  = new Styles.ThemeManager();

@@ -25,7 +25,7 @@ class DataItems extends React.Component {
     const detect = new ViewportDetect();
     let device   = detect.getDevice();
     // this.size  = detect.windowSize();
-
+    // console.log("mountee")
     this.setState({
       device:device,
       visible:this.props[device]
@@ -68,7 +68,7 @@ class DataItems extends React.Component {
             );
          }
 
-      }.bind(this));
+      });
 
       return items;
     }

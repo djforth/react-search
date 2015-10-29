@@ -1,9 +1,9 @@
 @import url(normalize.css);
-/* line 10, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/base/_breakpoints.scss */
+/* line 10, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/base/_breakpoints.scss */
 .wrap {
   padding: 0 10px; }
   @media (max-width: 767px) {
-    /* line 10, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/base/_breakpoints.scss */
+    /* line 10, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/base/_breakpoints.scss */
     .wrap {
       max-width: 767px;
       margin-left: auto;
@@ -14,7 +14,7 @@
         display: block;
         clear: both; } }
   @media (min-width: 768px) and (max-width: 991px) {
-    /* line 10, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/base/_breakpoints.scss */
+    /* line 10, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/base/_breakpoints.scss */
     .wrap {
       max-width: 991px;
       margin-left: auto;
@@ -25,7 +25,7 @@
         display: block;
         clear: both; } }
   @media (min-width: 992px) {
-    /* line 10, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/base/_breakpoints.scss */
+    /* line 10, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/base/_breakpoints.scss */
     .wrap {
       max-width: 1200px;
       margin-left: auto;
@@ -38,55 +38,55 @@
 
 /* 16px */
 /* 24px based on 16px body font size */
-/* line 6, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/base/_typography.scss */
+/* line 6, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/base/_typography.scss */
 h1 {
   font-size: 4.063em;
   /* 65px */
   line-height: 1em; }
 
-/* line 11, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/base/_typography.scss */
+/* line 11, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/base/_typography.scss */
 h2 {
   font-size: 2.813em;
   /* 45px */
   line-height: 1em; }
 
-/* line 16, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/base/_typography.scss */
+/* line 16, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/base/_typography.scss */
 h3 {
   font-size: 2em;
   /* 32px */
   line-height: 1.2em; }
 
-/* line 21, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/base/_typography.scss */
+/* line 21, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/base/_typography.scss */
 h4 {
   font-size: 1.5em;
   /* 24px */
   line-height: 1em; }
 
-/* line 26, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/base/_typography.scss */
+/* line 26, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/base/_typography.scss */
 h5 {
   font-size: 1.250em;
   /* 20px */
   line-height: 1em; }
 
-/* line 31, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/base/_typography.scss */
+/* line 31, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/base/_typography.scss */
 h6 {
   font-size: 1em;
   /* 16px */
   line-height: 1em; }
 
-/* line 36, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/base/_typography.scss */
+/* line 36, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/base/_typography.scss */
 .eta {
   font-size: 0.875em;
   /* 14px */
   line-height: 1em; }
 
-/* line 41, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/base/_typography.scss */
+/* line 41, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/base/_typography.scss */
 .eta {
   font-size: 0.875em;
   /* 14px */
   line-height: 1em; }
 
-/* line 46, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/base/_typography.scss */
+/* line 46, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/base/_typography.scss */
 li, p {
   color: #231f20;
   font-size: 1em;
@@ -94,189 +94,189 @@ li, p {
   line-height: 1.5em;
   /* 24px / 16px */ }
 
-/* line 52, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/base/_typography.scss */
+/* line 52, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/base/_typography.scss */
 p {
   margin-bottom: 20px; }
 
-/* line 56, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/base/_typography.scss */
+/* line 56, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/base/_typography.scss */
 strong {
   font-weight: bold; }
 
-/* line 61, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/base/_typography.scss */
+/* line 61, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/base/_typography.scss */
 ul.bullets {
   list-style: disc inside; }
-  /* line 64, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/base/_typography.scss */
+  /* line 64, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/base/_typography.scss */
   ul.bullets li {
     margin-bottom: 10px; }
 
-/* line 70, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/base/_typography.scss */
+/* line 70, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/base/_typography.scss */
 .bold {
   font-weight: bold; }
 
-/* line 75, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/base/_typography.scss */
+/* line 75, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/base/_typography.scss */
 .osw-l, .osw-r {
   font-family: "Oswald", sans-serif; }
 
-/* line 80, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/base/_typography.scss */
+/* line 80, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/base/_typography.scss */
 .osw-l {
   font-weight: 300; }
-  /* line 83, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/base/_typography.scss */
+  /* line 83, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/base/_typography.scss */
   .osw-l.alpha {
     font-size: 2em;
     /* 32px */
     line-height: 1em; }
-  /* line 88, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/base/_typography.scss */
+  /* line 88, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/base/_typography.scss */
   .osw-l.beta {
     font-size: 1.375em;
     /* 22px */
     line-height: 1em; }
-  /* line 93, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/base/_typography.scss */
+  /* line 93, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/base/_typography.scss */
   .osw-l.gamma {
     font-size: 1em;
     /* 16px */
     line-height: 1em; }
-  /* line 100, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/base/_typography.scss */
+  /* line 100, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/base/_typography.scss */
   .osw-l.up-c.alpha {
     font-size: 2.188em;
     /* 35px */
     line-height: 1em; }
-  /* line 105, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/base/_typography.scss */
+  /* line 105, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/base/_typography.scss */
   .osw-l.up-c.beta {
     font-size: 1.563em;
     /* 25px */
     line-height: 1em; }
-  /* line 110, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/base/_typography.scss */
+  /* line 110, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/base/_typography.scss */
   .osw-l.up-c.gamma {
     font-size: 1.250em;
     /* 20px */
     line-height: 1em; }
 
-/* line 118, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/base/_typography.scss */
+/* line 118, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/base/_typography.scss */
 .osw-r {
   font-weight: 400; }
-  /* line 121, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/base/_typography.scss */
+  /* line 121, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/base/_typography.scss */
   .osw-r.alpha {
     font-size: 2em;
     /* 32px */
     line-height: 1em; }
-  /* line 126, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/base/_typography.scss */
+  /* line 126, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/base/_typography.scss */
   .osw-r.beta {
     font-size: 1.5em;
     /* 24px */
     line-height: 1em; }
-  /* line 131, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/base/_typography.scss */
+  /* line 131, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/base/_typography.scss */
   .osw-r.gamma {
     font-size: 1.25em;
     /* 20px */
     line-height: 1em; }
-  /* line 136, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/base/_typography.scss */
+  /* line 136, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/base/_typography.scss */
   .osw-r.delta {
     font-size: 1em;
     /* 16px */
     line-height: 1em; }
-  /* line 141, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/base/_typography.scss */
+  /* line 141, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/base/_typography.scss */
   .osw-r.epsilon {
     font-size: 0.875em;
     /* 14px */
     line-height: 1em; }
 
-/* line 148, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/base/_typography.scss */
+/* line 148, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/base/_typography.scss */
 .pop-l {
   font-family: "PopulaireLight", sans-serif; }
 
-/* line 154, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/base/_typography.scss */
+/* line 154, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/base/_typography.scss */
 .pop-l.alpha, .pop-r.alpha {
   font-size: 4.063em;
   /* 65px */
   line-height: 1em; }
 
-/* line 159, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/base/_typography.scss */
+/* line 159, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/base/_typography.scss */
 .pop-l.beta, .pop-r.beta {
   font-size: 3.438em;
   /* 55px */
   line-height: 1em; }
 
-/* line 164, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/base/_typography.scss */
+/* line 164, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/base/_typography.scss */
 .pop-l.gamma, .pop-r.gamma {
   font-size: 2.813em;
   /* 45px */
   line-height: 1em; }
 
-/* line 169, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/base/_typography.scss */
+/* line 169, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/base/_typography.scss */
 .pop-l.delta, .pop-r.delta {
   font-size: 2.125em;
   /* 34px */
   line-height: 1em; }
 
-/* line 174, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/base/_typography.scss */
+/* line 174, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/base/_typography.scss */
 .pop-l.epsilon, .pop-r.epsilon {
   font-size: 1.875em;
   /* 30px */
   line-height: 1em; }
 
-/* line 179, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/base/_typography.scss */
+/* line 179, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/base/_typography.scss */
 .pop-l.zeta, .pop-r.zeta {
   font-size: 1.563em;
   /* 25px */
   line-height: 1em; }
 
-/* line 186, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/base/_typography.scss */
+/* line 186, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/base/_typography.scss */
 .pop-r {
   font-family: "PopulaireRegular", sans-serif; }
 
-/* line 196, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/base/_typography.scss */
+/* line 196, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/base/_typography.scss */
 .shadow {
   text-shadow: 1px 1px rgba(255, 255, 255, 0.6); }
 
-/* line 201, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/base/_typography.scss */
+/* line 201, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/base/_typography.scss */
 .tinymce em {
   font-style: italic; }
 
-/* line 205, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/base/_typography.scss */
+/* line 205, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/base/_typography.scss */
 .tinymce h1, .tinymce h2, .tinymce h3, .tinymce h4, .tinymce h5, .tinymce h6 {
   color: #000 !important;
   font-family: "Oswald", sans-serif;
   font-weight: 300;
   text-transform: uppercase; }
 
-/* line 212, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/base/_typography.scss */
+/* line 212, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/base/_typography.scss */
 .tinymce ol {
   list-style: decimal inside none; }
 
-/* line 216, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/base/_typography.scss */
+/* line 216, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/base/_typography.scss */
 .tinymce ol, .tinymce ul {
   margin-bottom: 1.5em; }
 
-/* line 220, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/base/_typography.scss */
+/* line 220, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/base/_typography.scss */
 .tinymce strong {
   font-weight: bold; }
 
-/* line 224, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/base/_typography.scss */
+/* line 224, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/base/_typography.scss */
 .tinymce ul {
   list-style: disc inside none; }
 
-/* line 229, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/base/_typography.scss */
+/* line 229, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/base/_typography.scss */
 .up-c {
   text-transform: uppercase; }
 
-/* line 1, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/base/_global.scss */
+/* line 1, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/base/_global.scss */
 body {
   position: relative;
   right: 0;
   background: url('/assets/images/body.jpg') center center repeat fixed; }
 
-/* line 10, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/base/_global.scss */
+/* line 10, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/base/_global.scss */
 .clearfix {
   *zoom: 1; }
-  /* line 4, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/utils/_mixins.scss */
+  /* line 4, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/utils/_mixins.scss */
   .clearfix:before, .clearfix:after {
     content: "";
     display: table; }
-  /* line 9, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/utils/_mixins.scss */
+  /* line 9, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/utils/_mixins.scss */
   .clearfix:after {
     clear: both; }
 
-/* line 14, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/base/_global.scss */
+/* line 14, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/base/_global.scss */
 .hidden {
   height: 1px;
   overflow: hidden;
@@ -285,84 +285,104 @@ body {
   left: -10000px;
   width: 1px; }
 
-/* line 19, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/base/_global.scss */
+/* line 19, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/base/_global.scss */
 .wrap.main {
   box-sizing: border-box;
   padding: 40px;
   background-color: #fff; }
 
+/* line 4, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/base/_forms.scss */
+.search-filter label {
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  top: auto;
+  left: -10000px;
+  width: 1px; }
+
+/* line 8, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/base/_forms.scss */
+.search-filter select {
+  background-color: #fff;
+  font-size: 20px;
+  outline: 0;
+  padding: 9px 6px 4px;
+  border: 0 none;
+  margin: 0;
+  width: 100%;
+  height: 45px; }
+
 @media (max-width: 767px) {
-  /* line 4, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/components/footer/_footer_responsive.scss */
+  /* line 4, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/components/footer/_footer_responsive.scss */
   footer.main small {
     width: 47.36842%;
     float: right;
     margin-right: 0; }
-  /* line 9, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/components/footer/_footer_responsive.scss */
+  /* line 9, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/components/footer/_footer_responsive.scss */
   footer.main ul.primary {
     width: 47.36842%;
     float: left;
     margin-right: 5.26316%; }
-  /* line 13, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/components/footer/_footer_responsive.scss */
+  /* line 13, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/components/footer/_footer_responsive.scss */
   footer.main ul.secondary {
     width: 47.36842%;
     float: right;
     margin-right: 0; } }
 
 @media (min-width: 768px) and (max-width: 991px) {
-  /* line 25, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/components/footer/_footer_responsive.scss */
+  /* line 25, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/components/footer/_footer_responsive.scss */
   footer.main li {
     float: left; }
-    /* line 28, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/components/footer/_footer_responsive.scss */
+    /* line 28, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/components/footer/_footer_responsive.scss */
     footer.main li a {
       margin-right: 10px;
       padding-right: 10px;
       border-right: 2px solid #fff; }
-    /* line 38, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/components/footer/_footer_responsive.scss */
+    /* line 38, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/components/footer/_footer_responsive.scss */
     footer.main li:last-child a {
       border-right: 0 none; } }
 
 @media (min-width: 992px) {
-  /* line 51, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/components/footer/_footer_responsive.scss */
+  /* line 51, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/components/footer/_footer_responsive.scss */
   footer.main li {
     float: left; }
-    /* line 54, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/components/footer/_footer_responsive.scss */
+    /* line 54, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/components/footer/_footer_responsive.scss */
     footer.main li a {
       margin-right: 10px;
       padding-right: 10px;
       border-right: 2px solid #fff; }
-    /* line 64, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/components/footer/_footer_responsive.scss */
+    /* line 64, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/components/footer/_footer_responsive.scss */
     footer.main li:last-child a {
       border-right: 0 none; }
-  /* line 70, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/components/footer/_footer_responsive.scss */
+  /* line 70, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/components/footer/_footer_responsive.scss */
   footer.main small {
     float: left;
     margin-right: 10px; } }
 
-/* line 2, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/components/footer/_footer.scss */
+/* line 2, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/components/footer/_footer.scss */
 footer.main {
   *zoom: 1;
   padding: 12px 0; }
-  /* line 4, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/utils/_mixins.scss */
+  /* line 4, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/utils/_mixins.scss */
   footer.main:before, footer.main:after {
     content: "";
     display: table; }
-  /* line 9, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/utils/_mixins.scss */
+  /* line 9, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/utils/_mixins.scss */
   footer.main:after {
     clear: both; }
-  /* line 6, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/components/footer/_footer.scss */
+  /* line 6, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/components/footer/_footer.scss */
   footer.main a {
     text-decoration: none; }
-    /* line 9, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/components/footer/_footer.scss */
+    /* line 9, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/components/footer/_footer.scss */
     footer.main a:hover {
       text-decoration: underline; }
-  /* line 14, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/components/footer/_footer.scss */
+  /* line 14, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/components/footer/_footer.scss */
   footer.main li, footer.main ul {
     margin: 0;
     padding: 0;
     vertical-align: baseline;
     border: 0;
     list-style: none; }
-  /* line 18, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/components/footer/_footer.scss */
+  /* line 18, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/components/footer/_footer.scss */
   footer.main small {
     line-height: 22px;
     color: #fff;
@@ -370,29 +390,29 @@ footer.main {
     font-size: 12px;
     font-weight: 300;
     text-transform: uppercase; }
-  /* line 31, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/components/footer/_footer.scss */
+  /* line 31, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/components/footer/_footer.scss */
   footer.main ul a {
     color: #fff;
     font-family: "Oswald", sans-serif;
     text-transform: uppercase; }
-  /* line 37, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/components/footer/_footer.scss */
+  /* line 37, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/components/footer/_footer.scss */
   footer.main ul.primary {
     *zoom: 1; }
-    /* line 4, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/utils/_mixins.scss */
+    /* line 4, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/utils/_mixins.scss */
     footer.main ul.primary:before, footer.main ul.primary:after {
       content: "";
       display: table; }
-    /* line 9, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/utils/_mixins.scss */
+    /* line 9, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/utils/_mixins.scss */
     footer.main ul.primary:after {
       clear: both; }
-    /* line 40, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/components/footer/_footer.scss */
+    /* line 40, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/components/footer/_footer.scss */
     footer.main ul.primary a {
       font-size: 1em;
       /* 16px */
       font-weight: 400;
       line-height: 1.5em;
       /* 24px / 16px */ }
-  /* line 48, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/components/footer/_footer.scss */
+  /* line 48, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/components/footer/_footer.scss */
   footer.main ul.secondary a {
     font-size: 0.813em;
     /* 13px */
@@ -400,61 +420,61 @@ footer.main {
     line-height: 1.84615em;
     /* 24px / 13px */ }
 
-/* line 58, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/components/footer/_footer.scss */
+/* line 58, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/components/footer/_footer.scss */
 .footer-container {
   margin-top: 12px;
   background-color: #af2628; }
 
-/* line 66, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/components/footer/_footer.scss */
+/* line 66, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/components/footer/_footer.scss */
 .logo-footer {
   margin-bottom: 5px; }
 
 @media (max-width: 767px) {
-  /* line 4, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/components/header/_header_responsive.scss */
+  /* line 4, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/components/header/_header_responsive.scss */
   header.main .logo {
     width: 47.36842%;
     float: left;
     margin-right: 5.26316%; } }
 
 @media (max-width: 991px) {
-  /* line 14, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/components/header/_header_responsive.scss */
+  /* line 14, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/components/header/_header_responsive.scss */
   header.main {
     margin-right: -10px;
     margin-left: -10px;
     padding-right: 10px;
     padding-left: 10px; }
-    /* line 17, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/components/header/_header_responsive.scss */
+    /* line 17, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/components/header/_header_responsive.scss */
     header.main .logo {
       float: left;
       margin-right: 2%;
       width: 43%; } }
 
 @media (min-width: 992px) {
-  /* line 33, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/components/header/_header_responsive.scss */
+  /* line 33, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/components/header/_header_responsive.scss */
   header.main .logo {
     float: left;
     margin-right: 2%;
     width: 24%; } }
 
-/* line 2, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/components/header/_header.scss */
+/* line 2, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/components/header/_header.scss */
 header.main {
   float: left;
   margin: 20px 0;
   position: relative;
   width: 100%; }
-  /* line 9, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/components/header/_header.scss */
+  /* line 9, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/components/header/_header.scss */
   header.main .logo img {
     width: 100%; }
 
-/* line 16, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/components/header/_header.scss */
+/* line 16, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/components/header/_header.scss */
 .header-container {
   background-color: #af2628; }
 
-/* line 1, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/components/image_container/_image_container.scss */
+/* line 1, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/components/image_container/_image_container.scss */
 .image-container {
   height: 0;
   position: relative; }
-  /* line 5, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/components/image_container/_image_container.scss */
+  /* line 5, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/components/image_container/_image_container.scss */
   .image-container img {
     height: 100%;
     position: absolute;
@@ -462,65 +482,65 @@ header.main {
     left: 0;
     width: auto; }
 
-/* line 1, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/components/panels/_panels.scss */
+/* line 1, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/components/panels/_panels.scss */
 .panel {
   margin: 12px 0; }
-  /* line 4, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/components/panels/_panels.scss */
+  /* line 4, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/components/panels/_panels.scss */
   .panel img {
     height: auto;
     max-height: 100%;
     max-width: 100%;
     vertical-align: bottom; }
 
-/* line 12, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/components/panels/_panels.scss */
+/* line 12, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/components/panels/_panels.scss */
 .panel-content {
   *zoom: 1;
   padding: 20px; }
-  /* line 4, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/utils/_mixins.scss */
+  /* line 4, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/utils/_mixins.scss */
   .panel-content:before, .panel-content:after {
     content: "";
     display: table; }
-  /* line 9, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/utils/_mixins.scss */
+  /* line 9, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/utils/_mixins.scss */
   .panel-content:after {
     clear: both; }
 
 @media (max-width: 767px) {
-  /* line 4, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/components/primary_nav/_primary_nav_responsive.scss */
+  /* line 4, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/components/primary_nav/_primary_nav_responsive.scss */
   body.nav-open #primary-nav-list {
     width: 66.66667%; }
-  /* line 10, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/components/primary_nav/_primary_nav_responsive.scss */
+  /* line 10, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/components/primary_nav/_primary_nav_responsive.scss */
   #primary-nav-list {
     right: -66.66667%;
     width: 66.66667%; } }
 
 @media (max-width: 991px) {
-  /* line 19, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/components/primary_nav/_primary_nav_responsive.scss */
+  /* line 19, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/components/primary_nav/_primary_nav_responsive.scss */
   body.nav-open #primary-nav-list {
     right: 0; }
-  /* line 25, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/components/primary_nav/_primary_nav_responsive.scss */
+  /* line 25, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/components/primary_nav/_primary_nav_responsive.scss */
   #primary-nav-list {
     position: fixed;
     top: 0;
     -webkit-transition: right 0.2s ease-in-out;
     transition: right 0.2s ease-in-out;
     background-color: #af2628; }
-    /* line 34, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/components/primary_nav/_primary_nav_responsive.scss */
+    /* line 34, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/components/primary_nav/_primary_nav_responsive.scss */
     #primary-nav-list a {
       padding: 15px; }
-      /* line 37, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/components/primary_nav/_primary_nav_responsive.scss */
+      /* line 37, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/components/primary_nav/_primary_nav_responsive.scss */
       #primary-nav-list a:hover {
         background-color: #9a2123; }
-    /* line 42, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/components/primary_nav/_primary_nav_responsive.scss */
+    /* line 42, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/components/primary_nav/_primary_nav_responsive.scss */
     #primary-nav-list li {
       float: left;
       width: 100%; }
-    /* line 47, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/components/primary_nav/_primary_nav_responsive.scss */
+    /* line 47, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/components/primary_nav/_primary_nav_responsive.scss */
     #primary-nav-list .dropdown {
       display: none; }
-    /* line 52, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/components/primary_nav/_primary_nav_responsive.scss */
+    /* line 52, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/components/primary_nav/_primary_nav_responsive.scss */
     #primary-nav-list .dropdown-parent > a {
       position: relative; }
-      /* line 55, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/components/primary_nav/_primary_nav_responsive.scss */
+      /* line 55, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/components/primary_nav/_primary_nav_responsive.scss */
       #primary-nav-list .dropdown-parent > a:after {
         content: "\25b6";
         position: absolute;
@@ -529,13 +549,13 @@ header.main {
         -webkit-transition: color 0.2s ease-in-out;
         transition: color 0.2s ease-in-out;
         color: #e7bcbb; }
-      /* line 68, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/components/primary_nav/_primary_nav_responsive.scss */
+      /* line 68, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/components/primary_nav/_primary_nav_responsive.scss */
       #primary-nav-list .dropdown-parent > a:hover:after {
         color: #fdb813; }
-      /* line 74, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/components/primary_nav/_primary_nav_responsive.scss */
+      /* line 74, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/components/primary_nav/_primary_nav_responsive.scss */
       #primary-nav-list .dropdown-parent > a.open:after {
         content: "\25bc"; }
-  /* line 82, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/components/primary_nav/_primary_nav_responsive.scss */
+  /* line 82, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/components/primary_nav/_primary_nav_responsive.scss */
   #primary-nav-toggle {
     display: block;
     float: right;
@@ -543,31 +563,31 @@ header.main {
     top: 0; } }
 
 @media (min-width: 768px) and (max-width: 991px) {
-  /* line 93, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/components/primary_nav/_primary_nav_responsive.scss */
+  /* line 93, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/components/primary_nav/_primary_nav_responsive.scss */
   body.nav-open #primary-nav-list {
     width: 50%; }
-  /* line 99, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/components/primary_nav/_primary_nav_responsive.scss */
+  /* line 99, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/components/primary_nav/_primary_nav_responsive.scss */
   #primary-nav-list {
     right: -50%;
     width: 50%; } }
 
 @media (min-width: 992px) {
-  /* line 106, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/components/primary_nav/_primary_nav_responsive.scss */
+  /* line 106, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/components/primary_nav/_primary_nav_responsive.scss */
   #primary-nav {
     float: right;
     margin-top: 10px;
     width: 70%; }
-    /* line 111, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/components/primary_nav/_primary_nav_responsive.scss */
+    /* line 111, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/components/primary_nav/_primary_nav_responsive.scss */
     #primary-nav a {
       margin-right: 40px; }
-      /* line 114, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/components/primary_nav/_primary_nav_responsive.scss */
+      /* line 114, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/components/primary_nav/_primary_nav_responsive.scss */
       #primary-nav a.last {
         margin-right: 0; }
-  /* line 120, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/components/primary_nav/_primary_nav_responsive.scss */
+  /* line 120, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/components/primary_nav/_primary_nav_responsive.scss */
   #primary-nav-list {
     float: right;
     margin-top: 4px; }
-    /* line 124, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/components/primary_nav/_primary_nav_responsive.scss */
+    /* line 124, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/components/primary_nav/_primary_nav_responsive.scss */
     #primary-nav-list .dropdown {
       display: none;
       overflow: hidden;
@@ -577,44 +597,44 @@ header.main {
       z-index: 2;
       -webkit-transition: opacity 0.2s ease-in-out;
       transition: opacity 0.2s ease-in-out; }
-      /* line 136, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/components/primary_nav/_primary_nav_responsive.scss */
+      /* line 136, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/components/primary_nav/_primary_nav_responsive.scss */
       #primary-nav-list .dropdown:hover {
         background-color: #fff; }
-      /* line 140, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/components/primary_nav/_primary_nav_responsive.scss */
+      /* line 140, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/components/primary_nav/_primary_nav_responsive.scss */
       #primary-nav-list .dropdown li {
         clear: both;
         white-space: nowrap;
         width: 100%;
         background-color: #e6e6e6; }
-    /* line 151, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/components/primary_nav/_primary_nav_responsive.scss */
+    /* line 151, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/components/primary_nav/_primary_nav_responsive.scss */
     #primary-nav-list .dropdown-parent {
       position: relative;
       -webkit-transition: background-color 0.2s ease-in-out;
       transition: background-color 0.2s ease-in-out; }
-      /* line 159, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/components/primary_nav/_primary_nav_responsive.scss */
+      /* line 159, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/components/primary_nav/_primary_nav_responsive.scss */
       #primary-nav-list .dropdown-parent:hover .dropdown {
         display: block !important;
         /* Needs !important to override JS */ }
-    /* line 165, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/components/primary_nav/_primary_nav_responsive.scss */
+    /* line 165, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/components/primary_nav/_primary_nav_responsive.scss */
     #primary-nav-list .duplicate {
       display: none; }
-  /* line 170, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/components/primary_nav/_primary_nav_responsive.scss */
+  /* line 170, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/components/primary_nav/_primary_nav_responsive.scss */
   .primary-nav-header, #primary-nav-toggle {
     display: none; } }
 
-/* line 1, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/components/primary_nav/_primary_nav.scss */
+/* line 1, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/components/primary_nav/_primary_nav.scss */
 .primary-nav-header {
   border-bottom: 1px solid #fff !important; }
-  /* line 4, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/components/primary_nav/_primary_nav.scss */
+  /* line 4, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/components/primary_nav/_primary_nav.scss */
   .primary-nav-header a {
     float: right;
     padding: 0 5px 0 0 !important;
     position: relative;
     top: 10px; }
-    /* line 10, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/components/primary_nav/_primary_nav.scss */
+    /* line 10, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/components/primary_nav/_primary_nav.scss */
     .primary-nav-header a:hover {
       background-color: transparent !important; }
-  /* line 15, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/components/primary_nav/_primary_nav.scss */
+  /* line 15, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/components/primary_nav/_primary_nav.scss */
   .primary-nav-header h1 {
     margin: 0;
     padding: 0;
@@ -625,7 +645,7 @@ header.main {
     padding: 10px;
     color: #fff; }
 
-/* line 28, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/components/primary_nav/_primary_nav.scss */
+/* line 28, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/components/primary_nav/_primary_nav.scss */
 #primary-nav-list {
   margin: 0;
   padding: 0;
@@ -633,40 +653,40 @@ header.main {
   border: 0;
   list-style: none;
   *zoom: 1; }
-  /* line 4, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/utils/_mixins.scss */
+  /* line 4, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/utils/_mixins.scss */
   #primary-nav-list:before, #primary-nav-list:after {
     content: "";
     display: table; }
-  /* line 9, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/utils/_mixins.scss */
+  /* line 9, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/utils/_mixins.scss */
   #primary-nav-list:after {
     clear: both; }
-  /* line 34, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/components/primary_nav/_primary_nav.scss */
+  /* line 34, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/components/primary_nav/_primary_nav.scss */
   #primary-nav-list a {
     display: block;
     -webkit-transition: all 0.2s ease-in-out;
     transition: all 0.2s ease-in-out;
     color: #e7bcbb;
     text-decoration: none; }
-    /* line 43, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/components/primary_nav/_primary_nav.scss */
+    /* line 43, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/components/primary_nav/_primary_nav.scss */
     #primary-nav-list a:hover {
       color: #fdb813; }
-  /* line 48, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/components/primary_nav/_primary_nav.scss */
+  /* line 48, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/components/primary_nav/_primary_nav.scss */
   #primary-nav-list li {
     float: left;
     font-size: 0.875em;
     /* 14px */ }
-  /* line 56, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/components/primary_nav/_primary_nav.scss */
+  /* line 56, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/components/primary_nav/_primary_nav.scss */
   #primary-nav-list li, #primary-nav-list ul {
     margin: 0;
     padding: 0;
     vertical-align: baseline;
     border: 0;
     list-style: none; }
-  /* line 62, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/components/primary_nav/_primary_nav.scss */
+  /* line 62, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/components/primary_nav/_primary_nav.scss */
   #primary-nav-list .dropdown-parent:hover {
     background-color: #e6e6e6; }
 
-/* line 69, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/components/primary_nav/_primary_nav.scss */
+/* line 69, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/components/primary_nav/_primary_nav.scss */
 .primary-nav-header span, #primary-nav-toggle span {
   height: 1px;
   overflow: hidden;
@@ -676,46 +696,46 @@ header.main {
   width: 1px; }
 
 @media (max-width: 767px) {
-  /* line 2, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/components/search_toolbar/_search_toolbar_responsive.scss */
+  /* line 2, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/components/search_toolbar/_search_toolbar_responsive.scss */
   .search-toolbar {
     padding: 10px 5%; }
-    /* line 5, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/components/search_toolbar/_search_toolbar_responsive.scss */
+    /* line 5, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/components/search_toolbar/_search_toolbar_responsive.scss */
     .search-toolbar .browse, .search-toolbar .search {
       width: 100%;
       float: left;
       margin-left: 0; }
-    /* line 9, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/components/search_toolbar/_search_toolbar_responsive.scss */
+    /* line 9, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/components/search_toolbar/_search_toolbar_responsive.scss */
     .search-toolbar form {
       width: 47.36842%;
       float: left;
       margin-left: 0; }
-    /* line 13, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/components/search_toolbar/_search_toolbar_responsive.scss */
+    /* line 13, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/components/search_toolbar/_search_toolbar_responsive.scss */
     .search-toolbar img {
       width: 47.36842%;
       float: left;
       margin-right: 5.26316%; } }
 
 @media (max-width: 991px) {
-  /* line 20, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/components/search_toolbar/_search_toolbar_responsive.scss */
+  /* line 20, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/components/search_toolbar/_search_toolbar_responsive.scss */
   .browse {
     margin-bottom: 20px;
     text-align: center; } }
 
 @media (min-width: 768px) and (max-width: 991px) {
-  /* line 27, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/components/search_toolbar/_search_toolbar_responsive.scss */
+  /* line 27, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/components/search_toolbar/_search_toolbar_responsive.scss */
   .search-toolbar {
     padding: 10px 10%; }
-    /* line 30, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/components/search_toolbar/_search_toolbar_responsive.scss */
+    /* line 30, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/components/search_toolbar/_search_toolbar_responsive.scss */
     .search-toolbar .browse, .search-toolbar .search {
       width: 100%;
       float: left;
       margin-left: 0; }
-    /* line 34, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/components/search_toolbar/_search_toolbar_responsive.scss */
+    /* line 34, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/components/search_toolbar/_search_toolbar_responsive.scss */
     .search-toolbar form {
       width: 38.77551%;
       float: left;
       margin-left: 0; }
-    /* line 38, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/components/search_toolbar/_search_toolbar_responsive.scss */
+    /* line 38, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/components/search_toolbar/_search_toolbar_responsive.scss */
     .search-toolbar img {
       width: 38.77551%;
       float: left;
@@ -723,39 +743,39 @@ header.main {
       margin-left: 10.20408%; } }
 
 @media (min-width: 992px) {
-  /* line 46, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/components/search_toolbar/_search_toolbar_responsive.scss */
+  /* line 46, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/components/search_toolbar/_search_toolbar_responsive.scss */
   .search-toolbar {
     padding: 10px 6%; }
-    /* line 49, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/components/search_toolbar/_search_toolbar_responsive.scss */
+    /* line 49, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/components/search_toolbar/_search_toolbar_responsive.scss */
     .search-toolbar a {
       margin-right: 10px; }
-    /* line 53, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/components/search_toolbar/_search_toolbar_responsive.scss */
+    /* line 53, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/components/search_toolbar/_search_toolbar_responsive.scss */
     .search-toolbar a, .search-toolbar form, .search-toolbar img {
       float: left; }
-    /* line 57, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/components/search_toolbar/_search_toolbar_responsive.scss */
+    /* line 57, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/components/search_toolbar/_search_toolbar_responsive.scss */
     .search-toolbar form {
       width: 23.72881%;
       float: left;
       margin-left: 0; }
-    /* line 61, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/components/search_toolbar/_search_toolbar_responsive.scss */
+    /* line 61, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/components/search_toolbar/_search_toolbar_responsive.scss */
     .search-toolbar img {
       margin: -10px 25px -10px 0; }
-    /* line 65, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/components/search_toolbar/_search_toolbar_responsive.scss */
+    /* line 65, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/components/search_toolbar/_search_toolbar_responsive.scss */
     .search-toolbar .browse {
       white-space: nowrap; } }
 
-/* line 1, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/components/search_toolbar/_search_toolbar.scss */
+/* line 1, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/components/search_toolbar/_search_toolbar.scss */
 .search-toolbar {
   box-sizing: border-box;
   float: left;
   width: 100%;
   background-color: #af2628;
   box-shadow: inset 0 15px 20px -10px rgba(0, 0, 0, 0.2); }
-  /* line 11, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/components/search_toolbar/_search_toolbar.scss */
+  /* line 11, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/components/search_toolbar/_search_toolbar.scss */
   .search-toolbar a {
     color: #fff;
     text-decoration: none; }
-    /* line 15, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/components/search_toolbar/_search_toolbar.scss */
+    /* line 15, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/components/search_toolbar/_search_toolbar.scss */
     .search-toolbar a:after {
       content: "";
       display: inline-block;
@@ -766,7 +786,7 @@ header.main {
       height: 30px;
       width: 15px; }
 
-/* line 33, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/components/search_toolbar/_search_toolbar.scss */
+/* line 33, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/components/search_toolbar/_search_toolbar.scss */
 form.search-filter {
   margin: 0;
   padding: 0;
@@ -774,61 +794,61 @@ form.search-filter {
   border: 0;
   list-style: none;
   background-color: #fff; }
-  /* line 40, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/components/search_toolbar/_search_toolbar.scss */
+  /* line 40, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/components/search_toolbar/_search_toolbar.scss */
   form.search-filter input {
     font-family: '.HelveticaNeueDeskInterface-Regular';
     font-size: 11px;
     font-size: 20px;
     outline: 0;
     padding: 9px 6px 4px; }
-    /* line 46, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/components/search_toolbar/_search_toolbar.scss */
+    /* line 46, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/components/search_toolbar/_search_toolbar.scss */
     form.search-filter input[type="image"] {
       float: right;
       position: relative;
       top: -2px;
       right: 10px;
       vertical-align: middle; }
-    /* line 54, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/components/search_toolbar/_search_toolbar.scss */
+    /* line 54, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/components/search_toolbar/_search_toolbar.scss */
     form.search-filter input[type="text"] {
       border: 0 none;
       margin: 0;
       width: 100%; }
-  /* line 61, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/components/search_toolbar/_search_toolbar.scss */
+  /* line 61, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/components/search_toolbar/_search_toolbar.scss */
   form.search-filter .fields-container {
     overflow: hidden; }
 
 @media (max-width: 991px) {
-  /* line 6, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/components/secondary_nav/_secondary_nav_responsive.scss */
+  /* line 6, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/components/secondary_nav/_secondary_nav_responsive.scss */
   #expandVenue {
     display: inline-block;
     float: right;
     margin: 4px;
     padding: 10px;
     border: 1px solid #fff; }
-    /* line 16, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/components/secondary_nav/_secondary_nav_responsive.scss */
+    /* line 16, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/components/secondary_nav/_secondary_nav_responsive.scss */
     #expandVenue:hover {
       background-color: rgba(255, 255, 255, 0.2); } }
 
 @media (min-width: 992px) {
-  /* line 27, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/components/secondary_nav/_secondary_nav_responsive.scss */
+  /* line 27, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/components/secondary_nav/_secondary_nav_responsive.scss */
   #expandVenue {
     display: none; }
-  /* line 31, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/components/secondary_nav/_secondary_nav_responsive.scss */
+  /* line 31, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/components/secondary_nav/_secondary_nav_responsive.scss */
   .secondary-nav {
     width: 100%;
     float: left;
     margin-left: 0;
     margin-right: 0; }
-    /* line 34, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/components/secondary_nav/_secondary_nav_responsive.scss */
+    /* line 34, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/components/secondary_nav/_secondary_nav_responsive.scss */
     .secondary-nav a {
       float: left;
       padding: 10px 20px;
       position: relative; }
-    /* line 40, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/components/secondary_nav/_secondary_nav_responsive.scss */
+    /* line 40, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/components/secondary_nav/_secondary_nav_responsive.scss */
     .secondary-nav li {
       float: left; } }
 
-/* line 1, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/components/secondary_nav/_secondary_nav.scss */
+/* line 1, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/components/secondary_nav/_secondary_nav.scss */
 .secondary-nav {
   margin: 0;
   padding: 0;
@@ -837,66 +857,66 @@ form.search-filter {
   list-style: none;
   box-sizing: border-box;
   padding: 0 20px; }
-  /* line 6, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/components/secondary_nav/_secondary_nav.scss */
+  /* line 6, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/components/secondary_nav/_secondary_nav.scss */
   .secondary-nav a {
     -webkit-transition: background-color 0.2s ease-in-out;
     transition: background-color 0.2s ease-in-out;
     color: #fff;
     text-decoration: none; }
-    /* line 11, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/components/secondary_nav/_secondary_nav.scss */
+    /* line 11, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/components/secondary_nav/_secondary_nav.scss */
     .secondary-nav a:hover, .secondary-nav a.active {
       background-color: #3a0d0e; }
-  /* line 16, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/components/secondary_nav/_secondary_nav.scss */
+  /* line 16, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/components/secondary_nav/_secondary_nav.scss */
   .secondary-nav li {
     margin: 0;
     padding: 0;
     vertical-align: baseline;
     border: 0;
     list-style: none; }
-    /* line 20, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/components/secondary_nav/_secondary_nav.scss */
+    /* line 20, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/components/secondary_nav/_secondary_nav.scss */
     .secondary-nav li:first-child a {
       margin-left: -20px;
       padding-left: 30px; }
 
-/* line 28, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/components/secondary_nav/_secondary_nav.scss */
+/* line 28, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/components/secondary_nav/_secondary_nav.scss */
 .secondary-nav-container {
   float: left;
   position: relative;
   width: 100%;
   background-color: #af2628; }
-  /* line 37, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/components/secondary_nav/_secondary_nav.scss */
+  /* line 37, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/components/secondary_nav/_secondary_nav.scss */
   .secondary-nav-container #expandVenue {
     color: #fff; }
-    /* line 40, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/components/secondary_nav/_secondary_nav.scss */
+    /* line 40, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/components/secondary_nav/_secondary_nav.scss */
     .secondary-nav-container #expandVenue:hover {
       background: none; }
-  /* line 45, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/components/secondary_nav/_secondary_nav.scss */
+  /* line 45, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/components/secondary_nav/_secondary_nav.scss */
   .secondary-nav-container .tip {
     float: left;
     margin-right: 10px; }
 
 @media (max-width: 767px) {
-  /* line 2, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/components/sections/_sections_responsive.scss */
+  /* line 2, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/components/sections/_sections_responsive.scss */
   .section-introduction {
     width: 100%;
     float: right;
     margin-right: 0; } }
 
 @media (min-width: 768px) and (max-width: 991px) {
-  /* line 8, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/components/sections/_sections_responsive.scss */
+  /* line 8, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/components/sections/_sections_responsive.scss */
   .section-introduction {
     width: 100%;
     float: right;
     margin-right: 0; } }
 
 @media (min-width: 992px) {
-  /* line 14, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/components/sections/_sections_responsive.scss */
+  /* line 14, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/components/sections/_sections_responsive.scss */
   .section-introduction {
     width: 66.10169%;
     float: left;
     margin-right: 1.69492%; } }
 
-/* line 2, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/components/sections/_sections.scss */
+/* line 2, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/components/sections/_sections.scss */
 .section-introduction h1 {
   margin: 0 0 10px 0;
   padding: 0;
@@ -905,7 +925,7 @@ form.search-filter {
   list-style: none;
   color: #af2628; }
 
-/* line 9, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/components/sections/_sections.scss */
+/* line 9, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/components/sections/_sections.scss */
 .section-introduction p {
   margin: 0 0 20px 0;
   padding: 0;
@@ -913,15 +933,15 @@ form.search-filter {
   border: 0;
   list-style: none; }
 
-/* line 2, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/pages/jobs_search/_jobs.scss */
+/* line 2, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/pages/jobs_search/_jobs.scss */
 .job-tabs .search-body {
   padding: 20px 0;
   background: url('/assets/images/jobs_bg.jpg'); }
 
-/* line 7, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/pages/jobs_search/_jobs.scss */
+/* line 7, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/pages/jobs_search/_jobs.scss */
 .job-tabs .job-item {
   position: relative; }
-  /* line 10, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/pages/jobs_search/_jobs.scss */
+  /* line 11, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/pages/jobs_search/_jobs.scss */
   .job-tabs .job-item:nth-of-type(odd):after {
     background: #C4A987;
     width: 1px;
@@ -932,25 +952,25 @@ form.search-filter {
     bottom: 0;
     right: 0; }
 
-/* line 23, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/pages/jobs_search/_jobs.scss */
-.job-tabs .search-filter {
+/* line 24, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/pages/jobs_search/_jobs.scss */
+.job-tabs .search-filter, .job-tabs .form-group {
   margin: 10px;
   width: 85%; }
 
-/* line 28, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/pages/jobs_search/_jobs.scss */
+/* line 29, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/pages/jobs_search/_jobs.scss */
 .job-tabs .actions {
   list-style-type: none;
   display: inline-block;
   margin: 0;
   padding: 0; }
-  /* line 34, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/pages/jobs_search/_jobs.scss */
+  /* line 35, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/pages/jobs_search/_jobs.scss */
   .job-tabs .actions a.button {
     padding: 10px 40px 10px 20px;
     background-color: #AA1A1E;
     color: #fff;
     text-decoration: none;
     box-shadow: inset 0px 5px 15px 0px rgba(50, 50, 50, 0.5); }
-    /* line 42, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/pages/jobs_search/_jobs.scss */
+    /* line 43, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/pages/jobs_search/_jobs.scss */
     .job-tabs .actions a.button:after {
       content: "";
       display: inline-block;
@@ -961,36 +981,36 @@ form.search-filter {
       height: 30px;
       width: 15px; }
 
-/* line 58, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/pages/jobs_search/_jobs.scss */
+/* line 59, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/pages/jobs_search/_jobs.scss */
 .job-tabs h1, .job-tabs .sub {
   color: #af2628; }
 
-/* line 62, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/pages/jobs_search/_jobs.scss */
+/* line 63, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/pages/jobs_search/_jobs.scss */
 .job-tabs .sub, .job-tabs .intro {
   margin: 20px; }
 
-/* line 66, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/pages/jobs_search/_jobs.scss */
+/* line 67, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/pages/jobs_search/_jobs.scss */
 .job-tabs .intro {
   width: 80%; }
 
-/* line 70, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/pages/jobs_search/_jobs.scss */
+/* line 71, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/pages/jobs_search/_jobs.scss */
 .job-tabs .description {
   padding: 0;
   margin: 0;
   list-style-type: none; }
-  /* line 75, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/pages/jobs_search/_jobs.scss */
+  /* line 76, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/pages/jobs_search/_jobs.scss */
   .job-tabs .description li strong {
     padding-right: 10px; }
 
-/* line 82, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/pages/jobs_search/_jobs.scss */
+/* line 83, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/pages/jobs_search/_jobs.scss */
 .job-tabs .tabs {
   padding: 0;
   margin: 0;
   list-style-type: none; }
-  /* line 87, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/pages/jobs_search/_jobs.scss */
+  /* line 88, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/pages/jobs_search/_jobs.scss */
   .job-tabs .tabs li {
     display: inline; }
-    /* line 90, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/pages/jobs_search/_jobs.scss */
+    /* line 91, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/pages/jobs_search/_jobs.scss */
     .job-tabs .tabs li a.tab-btn {
       display: inline-block;
       padding: 15px 25px 15px;
@@ -998,23 +1018,23 @@ form.search-filter {
       text-decoration: none;
       color: #fff;
       background-color: #9D8556; }
-      /* line 99, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/pages/jobs_search/_jobs.scss */
+      /* line 100, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/pages/jobs_search/_jobs.scss */
       .job-tabs .tabs li a.tab-btn.active {
         padding: 15px 25px 20px;
         margin: 0 3px 0 3px;
         background: url('/assets/images/jobs_bg.jpg');
         color: #631718; }
-    /* line 109, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/pages/jobs_search/_jobs.scss */
+    /* line 110, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/pages/jobs_search/_jobs.scss */
     .job-tabs .tabs li:first-child a.tab-btn {
       margin-left: 0; }
 
-/* line 119, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/pages/jobs_search/_jobs.scss */
+/* line 120, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/pages/jobs_search/_jobs.scss */
 .flexbox .jobs-search .items-list {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex; }
-  /* line 123, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/pages/jobs_search/_jobs.scss */
+  /* line 124, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/pages/jobs_search/_jobs.scss */
   .flexbox .jobs-search .items-list .job-item {
     padding: 20px;
     -webkit-box-flex: 0;
@@ -1023,54 +1043,67 @@ form.search-filter {
             flex: 0 0 calc(100% - 40px); }
 
 @media (max-width: 767px) {
-  /* line 4, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/pages/jobs_search/_jobs_responsive.scss */
+  /* line 3, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/pages/jobs_search/_jobs_responsive.scss */
+  .csscalc .job-tabs .tabs li {
+    display: block; }
+    /* line 6, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/pages/jobs_search/_jobs_responsive.scss */
+    .csscalc .job-tabs .tabs li a.tab-btn {
+      margin: 0;
+      width: calc(100% - 50px); } }
+
+/* line 18, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/pages/jobs_search/_jobs_responsive.scss */
+.csscalc .job-tabs .job-item:after {
+  background: transparent; }
+
+@media (max-width: 767px) {
+  /* line 28, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/pages/jobs_search/_jobs_responsive.scss */
   .no-csscalc .jobs-search .job-item {
     width: 100%;
     float: right;
     margin-right: 0; } }
 
 @media (min-width: 768px) and (max-width: 991px) {
-  /* line 10, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/pages/jobs_search/_jobs_responsive.scss */
+  /* line 34, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/pages/jobs_search/_jobs_responsive.scss */
   .no-csscalc .jobs-search .job-item {
     width: 48.97959%;
     float: left;
     margin-right: 2.04082%; }
-  /* line 14, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/pages/jobs_search/_jobs_responsive.scss */
+  /* line 38, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/pages/jobs_search/_jobs_responsive.scss */
   .no-csscalc .jobs-search .job-item:nth-of-type(even) {
     width: 48.97959%;
     float: right;
     margin-right: 0; } }
 
 @media (min-width: 992px) {
-  /* line 20, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/pages/jobs_search/_jobs_responsive.scss */
+  /* line 44, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/pages/jobs_search/_jobs_responsive.scss */
   .no-csscalc .jobs-search .job-item {
     width: 49.15254%;
     float: left;
     margin-right: 1.69492%; }
-  /* line 24, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/pages/jobs_search/_jobs_responsive.scss */
+  /* line 48, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/pages/jobs_search/_jobs_responsive.scss */
   .no-csscalc .jobs-search .job-item:nth-of-type(even) {
     width: 49.15254%;
     float: right;
     margin-right: 0; } }
 
 @media (max-width: 767px) {
-  /* line 33, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/pages/jobs_search/_jobs_responsive.scss */
+  /* line 57, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/pages/jobs_search/_jobs_responsive.scss */
   .csscalc.no-flexbox .jobs-search .job-item {
     width: calc(100% - 40px); } }
 
 @media (min-width: 768px) {
-  /* line 40, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/pages/jobs_search/_jobs_responsive.scss */
+  /* line 64, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/pages/jobs_search/_jobs_responsive.scss */
   .csscalc.no-flexbox .jobs-search .job-item {
     float: left;
     width: calc(50% - 40px); } }
 
 @media (max-width: 767px) {
-  /* line 49, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/pages/jobs_search/_jobs_responsive.scss */
+  /* line 73, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/pages/jobs_search/_jobs_responsive.scss */
   .flexbox .jobs-search .items-list {
     -webkit-flex-flow: column wrap;
         -ms-flex-flow: column wrap;
             flex-flow: column wrap; }
-    /* line 52, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/pages/jobs_search/_jobs_responsive.scss */
+    /* line 76, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/pages/jobs_search/_jobs_responsive.scss */
     .flexbox .jobs-search .items-list .job-item {
       -webkit-box-flex: 0;
       -webkit-flex: 0 0 calc(100% - 40px);
@@ -1078,18 +1111,18 @@ form.search-filter {
               flex: 0 0 calc(100% - 40px); } }
 
 @media (min-width: 768px) {
-  /* line 49, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/pages/jobs_search/_jobs_responsive.scss */
+  /* line 73, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/pages/jobs_search/_jobs_responsive.scss */
   .flexbox .jobs-search .items-list {
     -webkit-flex-flow: row wrap;
         -ms-flex-flow: row wrap;
             flex-flow: row wrap; }
-    /* line 59, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla/pages/jobs_search/_jobs_responsive.scss */
+    /* line 83, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla/pages/jobs_search/_jobs_responsive.scss */
     .flexbox .jobs-search .items-list .job-item {
       -webkit-box-flex: 0;
       -webkit-flex: 0 0 calc(50% - 40px);
           -ms-flex: 0 0 calc(50% - 40px);
               flex: 0 0 calc(50% - 40px); } }
 
-/* line 27, /Users/djforth/websites/modules/react-search/test_assets/stylesheets/vanilla.scss */
+/* line 28, /Users/terry/sites/adrian/react-search/test_assets/stylesheets/vanilla.scss */
 .foo {
   opacity: 0.1; }  /*# sourceMappingURL=vanilla.css.map */

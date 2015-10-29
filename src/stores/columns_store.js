@@ -109,7 +109,7 @@ const store = {
 
   getNonLabeled(id){
     return _.filter(this.getColumn(id).visible, (col)=>{
-      return _.isBoolean(col.label) && !col.label
+      return _.isBoolean(col.label) && !col.label;
     });
   },
 

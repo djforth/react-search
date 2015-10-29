@@ -6,6 +6,7 @@
 
   .job-item {
     position: relative;
+    // border:2px solid red;
 
     &:nth-of-type(odd):after{
       background:$jobs-divider;
@@ -20,7 +21,7 @@
   }
 
   // Filters
-  .search-filter {
+  .search-filter, .form-group {
     margin:10px;
     width:85%;
   }

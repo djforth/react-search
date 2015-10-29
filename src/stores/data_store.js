@@ -141,8 +141,13 @@ const store = {
   },
 
   getAll() {
-    this.cache = this.data.getAll();
-    return this.cache.slice(0, this.pagination - 1);
+    if(!_.isEmpty(this.searchVal)){
+      return this.getSearchData();
+    } else {
+      this.cache = this.data.getAll();
+      return this.cache.slice(0, this.pagination - 1);
+    }
+
   },
 
   getFlash(){
@@ -187,11 +192,18 @@ const store = {
     let keys       = FilterStore.getSelectedKeys();
     let filters    = FilterStore.getFilters();
     let dateRanges = FilterStore.getDates();
+
+    // console.log('filters', filters);
+    // console.log('filters', dateRanges);
     let search = this.data.search(this.searchVal, keys, filters, dateRanges );
     this.itemNo = search.size;
     this.cache  = search;
     // console.log("search", search.size)
     return search.slice(0, this.pagination - 1);
+  },
+
+  getSearchVal(){
+    return this.searchVal;
   },
 
   paginationData(){

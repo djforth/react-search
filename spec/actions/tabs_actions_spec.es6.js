@@ -9,10 +9,11 @@ describe("TabsAction", function() {
     {
       action:"addingTabs",
       handler:"handleAddingTabs",
-      args:["foo"],
+      args:["foo", 1],
       dispactchArgs:{
         type : "ADDING_TABS",
-        tabs : "foo"
+        tabs : "foo",
+        id   : 1
       }
     },
     {
@@ -27,13 +28,16 @@ describe("TabsAction", function() {
     {
       action:"changeTab",
       handler:"handleChangeTab",
-      args:["foo"],
+      args:[1, "foo"],
       dispactchArgs:{
-        type : "CHANGE_TABS",
+        type : "CHANGE_TAB",
+        id   : 1,
         tab  : "foo"
       }
     },
   ];
+
+
 
   actionHelper(TabsAction, "TabsDispatcher", options);
 

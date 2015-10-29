@@ -32,6 +32,12 @@ class Search extends React.Component{
     this.state = {data:[], keys:[], visible:[], device:"desktop"};
   }
 
+  componentWillMount(){
+    if(this.props.search){
+      DataStore.setSearchVal(this.props.search);
+    }
+  }
+
 
   componentDidMount() {
     // console.log("Search mounting")
@@ -64,6 +70,9 @@ class Search extends React.Component{
 
     this.setLoading();
     DataStore.addChangeListener("fetched", this._onLoaded.bind(this));
+
+
+
   }
 
   componentWillUnmount() {

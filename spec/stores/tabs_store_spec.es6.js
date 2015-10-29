@@ -18,12 +18,9 @@ describe('TabsStore', function() {
       {title:"Venue opportunities", filterBy:{type:"venues", filter:null}, filters:["venues"], search:false, options:{css:"osw-r up-c gamma tab-btn", active:false}}
     ];
 
-    final = _.map(_.cloneDeep(mockdata), (col)=>{
-      if(!_.has(col, "title")){
-        _.set(col, "title", col.key.replace(/^./, (match)=> match.toUpperCase()))
-      }
-
-      return col
+    final = _.map(_.cloneDeep(mockdata), (tab, i)=>{
+      tab.id = i;
+      return tab;
     });
 
     tablet = _.where(final, {tablet:true});
@@ -47,9 +44,20 @@ describe('TabsStore', function() {
         device:"mobile"
       },
       args:"mobile",
-      change:"change"
+      change:"device_change"
+    },
+    {
+      func:"changeTab",
+      action:{
+        type:"CHANGE_TAB",
+        id:1,
+        tab:"foo"
+      },
+      args:[1, "foo"],
+      change:"tab_change"
     }
   ];
+
 
   storeHelper.checkDispatcher(TabsStore, "registeredCallback", options)
 
@@ -57,163 +65,55 @@ describe('TabsStore', function() {
     return TabsStore.__get__("store");
   });
 
-  // describe('store functions', function() {
-  //   let store, columns
+  describe('store functions', function() {
+    let store, columns
 
-  //   beforeEach(()=>{
-  //     store  = TabsStore.__get__("store");
-  //   });
+    beforeEach(()=>{
+      store  = TabsStore.__get__("store");
+    });
 
-  //   describe('setting functions', function() {
+    describe('setting functions', function() {
+      let id;
 
-  //     it("should add columns to store", function() {
-  //       spyOn(store, "setVisibleColumns").and.returnValue(tablet);
-  //       spyOn(store, "setTitles").and.returnValue(final);
-  //       let id = store.addColumns(mockdata, 1);
+      beforeEach(()=>{
+        spyOn(store, "setIDs").and.returnValue(final);
+        id = store.addTabs(mockdata, 1);
+      })
 
-  //       expect(id).toEqual(1)
-  //       let column = store.columns[0]
-  //       expect(column.cols).toEqual(final);
-  //       expect(column.id).toEqual(1);
-  //       expect(column.visible).toEqual(tablet);
-  //       expect(store.setTitles).toHaveBeenCalledWith(mockdata);
-  //       expect(store.setVisibleColumns).toHaveBeenCalledWith(final);
-  //     });
-
-  //     it("should set device", function() {
-  //       store.columns = [
-  //         {
-  //           id:1,
-  //           cols:["foo", "bar"],
-  //           visible: ["bar"]
-  //         }
-  //       ]
-  //       spyOn(store, "setVisibleColumns").and.returnValue(["foo"]);
-  //       store.changeDevice("mobile");
-  //       expect(store.device).toEqual("mobile");
-  //       expect(store.columns[0].visible).toEqual(["foo"]);
-  //       expect(store.setVisibleColumns).toHaveBeenCalledWith(["foo", "bar"]);
-  //     });
-
-  //     it("should set visible columns", function() {
-  //       store.device = "tablet";
-  //       let visible = store.setVisibleColumns(final);
-  //       expect(visible).toEqual(tablet)
-  //     });
-
-  //     it("should set titles", function() {
-  //       let result = store.setTitles(mockdata);
-  //       expect(result).toEqual(final)
-  //     });
-
-  //     it("should take and object and return only relevant keys", function() {
-  //       let data = {key:"required_by", title:"Required by", type:"dateTime", fmt:"%d/%m/%Y %H:%M", desktop:true, mobile:true, tablet:true, searchable:true};
-
-  //       let obj = store.reduceObj(data, ["key", "title"])
-  //       expect(obj).toEqual({key:"required_by", title:"Required by"})
-  //     });
-  //   });
-
-  //   describe('get columns', function() {
-  //     beforeEach(function() {
-  //       store.columns = [
-  //         {
-  //           id:1,
-  //           cols:["foo", "bar"],
-  //           visible: ["bar"]
-  //         },
-  //         {
-  //           id:31,
-  //           cols:["foo", "bar", "phil"],
-  //           visible: ["foo"]
-  //         }
-  //       ]
-  //     });
-
-  //     it("should return first column if no ID is passed", function() {
-  //       let column = store.getColumn();
-  //       expect(column).toEqual(store.columns[0])
-  //     });
-
-  //     it("should return correct column if  ID is passed", function() {
-  //       let column = store.getColumn(31);
-  //       expect(column).toEqual(store.columns[1])
-  //     });
-  //   });
+      it("should add tabs to store", function() {
 
 
-  //   describe("get functions", function() {
-  //     beforeEach(function() {
-  //       store.columns = [
-  //         {
-  //           id:1,
-  //           cols:final,
-  //           visible:tablet
-  //         }
-  //       ]
-  //       spyOn(store, "getColumn").and.returnValue({
-  //         id:1,
-  //         cols:final,
-  //         visible:tablet
-  //       });
-  //       // store.columns         = final;
-  //       // store.visible_columns = tablet;
-  //     });
-
-  //     it("should get visible keys for correct device", function() {
-  //       let keys = store.getKeys(1);
-  //       expect(store.getColumn).toHaveBeenCalledWith(1);
-  //       expect(keys).toEqual(["requester_name", "required_by", "status", "actions"]);
-  //     });
-
-  //     it("should get visible titles for correct device", function() {
-  //       let titles = store.getTitles(1);
-  //       expect(store.getColumn).toHaveBeenCalledWith(1);
-  //       expect(titles).toEqual(["Requested By", "Required by", "Status", "Actions"]);
-  //     });
-
-  //     it("should return title for a specific key", function() {
-  //       let title = store.getTitleForKey("requester_name", 1);
-  //       expect(store.getColumn).toHaveBeenCalledWith(1);
-  //       expect(title).toEqual("Requested By")
-  //     });
+        expect(id).toEqual(1)
+        let tabs = store.tabs[0]
+        expect(tabs.items).toEqual(final);
+        expect(tabs.id).toEqual(1);
+        // expect(column.visible).toEqual(tablet);
+        expect(store.setIDs).toHaveBeenCalledWith(mockdata);
+        // expect(store.setVisibleColumns).toHaveBeenCalledWith(final);
+      });
 
 
-  //     it("should get date columns", function() {
-  //       let dates = store.getDateColumns(1);
-  //       expect(store.getColumn).toHaveBeenCalledWith(1);
-  //       expect(dates.length).toEqual(3)
-  //       expect(dates).toContain({key:"request_made", title:"Request made on", type:"date", fmt:"%d/%m/%Y"});
-  //       expect(dates).toContain({key:"required_by", title:"Required by", type:"dateTime", fmt:"%d/%m/%Y %H:%M"});
-  //       expect(dates).toContain({key:"expected_returned", title:"expected_returned", type:"dateTime", fmt:"%d/%m/%Y %H:%M"});
-  //     });
+      describe("changeTab", ()=>{
+        beforeEach(()=>{
+          spyOn(store, "getTabs").and.returnValue(final);
+          spyOn(store, "setTabs");
 
-  //     it("should return searchable keys", function() {
-  //       let searchable = store.getSearchable(1);
-  //       expect(store.getColumn).toHaveBeenCalledWith(1);
-  //       expect(searchable.length).toEqual(6);
-  //       let titles = _.pluck(searchable, "title");
-  //       expect(titles).toEqual(["Assigned to", "Region", "Requested By", "Request made on", "Required by", "expected_returned"]);
-  //       let keys = _.keys(searchable[0]);
-  //       expect(keys).toEqual(["key", "title"]);
-  //     });
+          store.changeTab(1,3)
 
-  //     it("should return showable columns", function() {
-  //       let showable = store.getShowable();
-  //       expect(showable.length).toEqual(1);
-  //       let titles = _.pluck(showable, "title");
-  //       expect(titles).toEqual(["Assigned to"]);
-  //       let keys = _.keys(showable[0]);
-  //       expect(keys).toEqual(["key", "title"]);
-  //     });
+        });
 
-  //      it("should return searchable keys", function() {
-  //       let sortable = store.getSortable(1);
-  //       expect(store.getColumn).toHaveBeenCalledWith(1);
-  //       expect(sortable.length).toEqual(1);
-  //       expect(sortable).toEqual([{key:"region_title", title:"Region"}])
-  //     });
-  //   });
+        it("should call getTabs", ()=>{
+          expect(store.getTabs).toHaveBeenCalledWith(1);
+        });
 
-  // })
+        // it('should set active tab', function() {
+        //   let items =  store.setTabs.calls.getArgs(0)
+        // });
+      })
+
+    });
+
+
+  });
+
 });

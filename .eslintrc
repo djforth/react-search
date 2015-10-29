@@ -31,7 +31,7 @@
     "key-spacing": [0],
     "quotes": [1],
     "new-cap": [0],
-    "no-console":[1],
+    "no-console":[2],
     "no-undef":[1], //Because of react work around
     "no-underscore-dangle":[0],
     "no-multi-spaces": [0],

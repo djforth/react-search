@@ -66,6 +66,14 @@ const FilterDispatcher = assign(new Dispatcher(), {
       action: action
     };
     this.dispatch(payload);
+  },
+
+  setTab:function(action){
+    var payload = {
+      source: "SET_TAB",
+      action: action
+    };
+    this.dispatch(payload);
   }
 
 

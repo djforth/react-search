@@ -53,5 +53,12 @@ module.exports = {
       type: "SET_KEYS",
       data: data
     });
+  },
+
+  setTab: (tab)=>{
+    FilterDispatcher.setTab({
+      type: "SET_TAB",
+      tab: tab
+    });
   }
 };

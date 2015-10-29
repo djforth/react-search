@@ -18,6 +18,7 @@ module.exports = function(config) {
       './node_modules/babelify/node_modules/babel-core/browser-polyfill.js',
       './node_modules/react-tools/src/test/phantomjs-shims.js',
       './spec/**/*_spec.es6.js',
+      './src/**/*.js'
     ],
 
 
@@ -29,7 +30,8 @@ module.exports = function(config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-        './spec/**/*_spec.es6.js' : [ 'browserify' ]
+      './spec/**/*_spec.es6.js' : [ 'browserify' ],
+      './src/**/*.js' : [ 'browserify' ]
 
     },
 

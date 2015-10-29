@@ -3,6 +3,7 @@ const React   = require("react/addons");
 const _ = require("lodash");
 
 const DataActions    = require("../actions/data_actions");
+const DataStore   = require("../stores/data_store");
 const FilterStore    = require("../stores/filter_store");
 const ColumnsStore   = require("../stores/columns_store");
 
@@ -19,11 +20,13 @@ class SearchFilters extends React.Component{
     this.state = {
       dropdown:this.getClasses(this.dropdown),
       expanded:"false",
-      selectedkey:"all"
+      selectedkey:"all",
+      searchVal:""
     };
   }
 
   componentDidMount() {
+
     this.quickSearch = (_.isBoolean(this.props.quickSearch)) ? this.props.quickSearch : true;
 
     if(FilterStore.isSelectedKey(this.props.item)){
@@ -31,6 +34,7 @@ class SearchFilters extends React.Component{
       this.setState({active:this.getClasses(this.active)});
     }
 
+    this.setState({searchVal:DataStore.getSearchVal()});
     // FilterStore.addChangeListener("change_key", this._openDropdown.bind(this));
     ColumnsStore.addChangeListener("adding", this._onAdd.bind(this));
   }
@@ -47,6 +51,7 @@ class SearchFilters extends React.Component{
   }
 
   _onChange(e){
+
     if(this.quickSearch){
       if(this.loop){
         window.clearTimeout(this.loop);
@@ -57,6 +62,8 @@ class SearchFilters extends React.Component{
           DataActions.searching(val);
         }
       }, 200, e.target.value);
+
+      this.setState({searchVal:e.target.value});
     }
 
     // _.defer((val)=>{
@@ -95,7 +102,7 @@ class SearchFilters extends React.Component{
       <form onSubmit={this._preventSubmit.bind(this)} className="search-filter">
         <input alt="Search" type="image" src="/assets/images/search.png" />
         <div className="fields-container">
-          <input type="text" name="querystr" id="querystr" placeholder="Search" onChange={this._onChange.bind(this)} />
+          <input type="text" name="querystr" id="querystr" placeholder="Search" value={this.state.searchVal} onChange={this._onChange.bind(this)} />
         </div>
 
       </form>

@@ -17,14 +17,13 @@ class FiltersFcty extends DataManager {
     this.keys     = null;
     this.cid      = _.uniqueId("filter");
 
-    this.details   = Immutable.fromJS({title:title, filterBy:filter_by, input_type:input_type});
+    this.details   = Immutable.fromJS({title:title, filterBy:filter_by, input_type:input_type, visible:true});
 
     this.defaults     = (input_type === "checkbox") ? {selected:true} : {selected:false};
 
     if (filter_opts) {
       this.add(filter_opts);
     }
-
   }
 
   getDetails(key){
@@ -48,7 +47,20 @@ class FiltersFcty extends DataManager {
       });
     }
 
+    if(selected.size === 0 && this.details.get("input_type") !== "checkbox"){
+      selected = this.data;
+    }
+
     return {filter_by: this.details.get("filterBy"), selected:selected, all:(selected.size === this.data.size)};
+  }
+
+  isVisible(){
+    return this.details.get('visible');
+  }
+
+  reset(){
+    this.data = this.data.map((d)=>this.addDefaults(d));
+    // console.log(this.data.toJS())
   }
 
   setApi(uri){
@@ -75,10 +87,13 @@ class FiltersFcty extends DataManager {
 
       return d;
     });
-
   }
 
-
+  setVisible(filters){
+    let filterBy = this.details.get('filterBy');
+    let vis      = _.includes(filters, filterBy);
+    this.details = this.details.set('visible', vis);
+  }
 
 }
 

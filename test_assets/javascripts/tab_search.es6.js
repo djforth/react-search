@@ -74,7 +74,7 @@ columns = columns.map((c)=>{
 let tabs = [
   {title:"Search our Jobs", filterBy:{type:"all", filter:null}, filters:[], search:true, options:{css:"osw-r up-c gamma tab-btn", active:true}},
   {title:"Head Office opportunities", filterBy:{type:"head_office_role", filter:null}, filters:["categories"], search:false, options:{css:"osw-r up-c gamma tab-btn", active:false}},
-  {title:"Venue opportunities", filterBy:{type:"venues", filter:null}, filters:["venues"], search:false, options:{css:"osw-r up-c gamma tab-btn", active:false}},
+  {title:"Venue opportunities", filterBy:{type:"venue", filter:null}, filters:["venue"], search:false, options:{css:"osw-r up-c gamma tab-btn", active:false}},
 ]
 
 
@@ -111,7 +111,9 @@ React.render(
     expandable  = {true}
     filterApi   = "/api/vanilla/filters.json"
     intro       = {intro}
+    search      = "chef"
     tabs        = {tabs}
+    noresults   = "We currently don’t have any available vacancies but please check back soon."
   />,
   document.getElementById('search')
 );

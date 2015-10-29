@@ -7,29 +7,6 @@ const defaultsHelper = require("react-jasmine").checkDefaults;
 const _         = require('lodash');
 const Immutable = require('immutable');
 
-// let mockdata = [
-//   {key:"id"},
-//   {key:"assigned_to_name", title:"Assigned to", searchable:true},
-//   {key:"region_title", title:"Region", searchable:true, sortable:true},
-//   {key:"requester_name", title:"Requested By", desktop:true, mobile:true, tablet:true, searchable:true},
-//   {key:"request_made", title:"Request made on", type:"date", fmt:"%d/%m/%Y", searchable:true},
-//   {key:"required_by", title:"Required by", type:"dateTime", fmt:"%d/%m/%Y %H:%M", desktop:true, mobile:true, tablet:true, searchable:true},
-//   {key:"expected_returned", title:"expected_returned", type:"dateTime", fmt:"%d/%m/%Y %H:%M", searchable:true},
-//   {key:"status", desktop:true, tablet:true},
-//   {key:"company_name", title:"Company", desktop:true},
-//   {key:"actions", title:"Actions", desktop:true, mobile:true, tablet:true}
-// ];
-
-// let final = _.map(_.cloneDeep(mockdata), (col)=>{
-//       if(!_.has(col, "title")){
-//         _.set(col, "title", col.key.replace(/^./, (match)=> match.toUpperCase()))
-//       }
-
-//       return col
-//     });
-
-// let tablet = _.where(final, {tablet:true});
-
 
 describe('ColumnsStore', function() {
   let mockdata, final, tablet

@@ -4,6 +4,10 @@ const React = require("react/addons");
 //Morse Libraries
 // const ViewportDetect = require("viewport-detection-es6");
 
+//Flux
+const TabsStore      = require("../stores/tabs_store");
+
+
 //Components
 const DataItems   = require("../vanilla_components/data_items");
 const TabItem     = require("./tab_item");
@@ -14,6 +18,17 @@ class TabItems extends DataItems {
 
   constructor(props) {
     super(props);
+  }
+
+  componentDidMount() {
+    super.componentDidMount();
+
+    TabsStore.addChangeListener("tab_change", this._onSearch.bind(this));
+  }
+
+  componentWillUnmount() {
+    super.componentWillUnmount();
+    TabsStore.removeChangeListener("tab_change", this._onSearch);
   }
 
   renderData(){
@@ -38,7 +53,7 @@ class TabItems extends DataItems {
     if(this.state.data.size <= 0){
       return (
         <div className="loader" key="loader">
-          <h5>Nothing Matches your search</h5>
+          <h5>{this.props.noresults}</h5>
         </div>
       );
     }

@@ -288,6 +288,7 @@ class DataFcty extends DataManager {
       return this.cache.fullSearch;
     }
     let search = this.data;
+
     //Runs filters over data
     if(!_.isEmpty(values.filters)){
       search = (cachedFltr) ? this.cache.filterSearch : this.filterSearch(search, values.filters);
@@ -297,7 +298,6 @@ class DataFcty extends DataManager {
     if(!_.isEmpty(values.dateRanges)){
       search = (cachedFltr && cachedDR) ? this.cache.dateRangesSearch : this.dateRangeSearch(search, values.dateRanges);
     }
-
     //Runs Search over data
     if(!_.isEmpty(values.text)){
       search =  this.getSearch(search, values.text, values.keys);

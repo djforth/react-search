@@ -54,6 +54,11 @@ const registeredCallback = function(payload) {
       FilterStore.setKeys(action.data);
       FilterStore.emitChange("setting_keys");
       break;
+
+    case "SET_TAB":
+      FilterStore.setTab(action.tab);
+      FilterStore.emitChange("set_tab");
+      break;
   }
 };
 
@@ -64,6 +69,7 @@ const store =  {
   filters      : [],
   changed      : true,
   cache        : null,
+  tabs         : [],
 
   emitChange(event) {
     this.emit(event);
@@ -121,6 +127,7 @@ const store =  {
   getFilters(){
     let data = this.cache;
     if(this.changed) {
+
       this.cache =  data = this.getSelectedFilters();
       this.changed = false;
     }
@@ -146,6 +153,12 @@ const store =  {
     }
   },
 
+  getVisible(){
+    return _.filter(this.filters, (f)=>{
+      return f.isVisible();
+    });
+  },
+
   isSelectedKey(k){
     return this.selectedKey === k;
   },
@@ -160,17 +173,37 @@ const store =  {
     } else {
       this.dates[dr.key].fn = dr.date;
     }
-    // console.log("dates", this.dates)
   },
 
   setKeys(ks){
     this.keys = ks;
   },
 
+  setTab(tab){
+
+    this.tab     = tab;
+    this.changed = true;
+    if(!_.isEmpty(this.filters)){
+      this.filters = _.map(this.filters, (filter)=>{
+
+        filter.reset();
+        filter.setVisible(tab.filters);
+        return filter;
+      });
+
+
+    }
+  },
+
   processFilters(data){
     return _.map(data, (d)=>{
       let fcty = new FiltersFcty(d.title, d.filter_by, d.filter_options, d.input_type);
       fcty.setSelected("all", true);
+
+      if(this.tab){
+        fcty.setVisible(this.tab.filters);
+      }
+
       return fcty;
     });
   },

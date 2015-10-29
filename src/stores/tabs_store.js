@@ -17,7 +17,12 @@ const registeredCallback = function(payload) {
 
     case "CHANGE_DEVICE":
       TabsStore.changeDevice(action.device);
-      TabsStore.emitChange("change");
+      TabsStore.emitChange("device_change");
+      break;
+
+    case "CHANGE_TAB":
+      TabsStore.changeTab(action.id, action.tab);
+      TabsStore.emitChange("tab_change");
       break;
     }
 };
@@ -43,9 +48,8 @@ const store = {
 
   addTabs(t, id){
     id   = id || _.uniqueId();
-    let tabs = this.setTitles(t);
-    this.tabs.push({id:id, tabs:tabs});
-
+    let tabs = this.setIDs(t);
+    this.tabs.push({id:id, items:tabs});
     return id;
   },
 
@@ -58,7 +62,35 @@ const store = {
 
   },
 
-  getTab(id){
+  changeTab(id, t){
+
+    let tabs = this.getTabs(id);
+    let items =  tabs.items;
+    items = _.map(items, (tab)=>{
+      tab.options.active = (tab.id === t);
+      return tab;
+    });
+
+    this.setTabs(id, items);
+  },
+
+  getActive(){
+    let tabs = this.getTabs();
+    let item = _.find(tabs.items, (t)=> t.options.active);
+    return item;
+  },
+
+  getFilters(){
+    let tab = this.getActive();
+    return {filters:tab.filters, filterBy:tab.filterBy};
+  },
+
+  getSearch(){
+    let tab = this.getActive();
+    return tab.search;
+  },
+
+  getTabs(id){
     let items;
     if(id){
       items =  _.find(this.tabs, (tab)=>{
@@ -67,39 +99,39 @@ const store = {
     } else {
       items = _.first(this.tabs);
     }
-
     if(items){
       return items;
     }
 
-    return {tabs:[]};
+    return {id:null, tabs:[]};
   },
 
+  isActive(tabsId, id){
+    let tabs = this.getTabs(tabsId);
+    let item = _.find(tabs.items, (t)=> t.id === id);
+    return item.options.active;
+  },
 
+  setIDs(tabs){
+    return _.map(tabs, (tab)=>{
+      tab.id = _.uniqueId();
+      return tab;
+    });
+  },
 
-  // getTitles(id){
-  //   let visible = this.getTab(id).visible;
-  //   return _.pluck(visible, "title");
-  // },
+  setTabs(id, items){
+    this.tabs = _.map(this.tabs, (tab)=>{
+      if(tab.id === id){
+        tab.items = items;
+      }
 
-  // getTitleForKey(key, id){
-  //   let tabumn = this.getTab(id).tabs;
-  //   let item = _.find(tabumn, (tab)=> tab.key === key );
-  //   return item.title;
-  // },
-
-
-  // reduceObj(obj, values){
-  //   let reduced = _.omit(obj, (v, k)=>{
-  //     return !_.includes(values, k);
-  //   });
-  //   return reduced;
-  // },
+      return tab;
+    });
+  },
 
 
   setTitles(tabs){
     tabs = _.map(tabs, function(tab){
-      // console.log(that.capitalize)
       if(!_.has(tab, "title")){
         let title = this.capitalize(tab.key);
         _.set(tab, "title", title);

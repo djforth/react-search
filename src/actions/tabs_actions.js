@@ -1,9 +1,10 @@
 const TabsDispatcher = require("../dispatcher/tabs_dispatcher");
 
 module.exports = {
-  addingTabs:(tabs)=>{
+  addingTabs:(tabs, id)=>{
     TabsDispatcher.handleAddingTabs({
       type : "ADDING_TABS",
+      id   : id,
       tabs : tabs
     });
   },
@@ -15,9 +16,10 @@ module.exports = {
     });
   },
 
-  changeTab:(tab)=>{
+  changeTab:(id, tab)=>{
     TabsDispatcher.handleChangeTab({
       type : "CHANGE_TAB",
+      id   : id,
       tab  : tab
     });
   }
