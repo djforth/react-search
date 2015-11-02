@@ -51351,7 +51351,7 @@ columns = columns.map(function (c) {
   return c;
 });
 
-var tabs = [{ title: "Search our Jobs", filterBy: { type: "all", filter: null }, filters: [], search: true, options: { css: "osw-r up-c gamma tab-btn", active: true } }, { title: "Head Office opportunities", filterBy: { type: "head_office_role", filter: null }, filters: ["categories"], search: false, options: { css: "osw-r up-c gamma tab-btn", active: false } }, { title: "Venue opportunities", filterBy: { type: "venue", filter: null }, filters: ["venue"], search: false, options: { css: "osw-r up-c gamma tab-btn", active: false } }];
+var tabs = [{ title: "Search our Jobs", filterBy: { type: "all", filter: null }, filters: [], search: true, options: { css: "osw-r up-c gamma tab-btn", active: true } }, { title: "Head Office opportunities", filterBy: { type: "head_office_role", filter: null }, filters: ["jobs_template"], search: false, options: { css: "osw-r up-c gamma tab-btn", active: false } }, { title: "Venue opportunities", filterBy: { type: "venue", filter: null }, filters: ["venue"], search: false, options: { css: "osw-r up-c gamma tab-btn", active: false } }];
 
 // console.log('foo', "bar");
 //   col[:show] = case col[:key]

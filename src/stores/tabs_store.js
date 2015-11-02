@@ -7,25 +7,6 @@ const textMixins = require("morse-react-mixins").text_mixins;
 const TabsDispatcher = require("../dispatcher/tabs_dispatcher");
 
 
-const registeredCallback = function(payload) {
-  let action = payload.action;
-  switch(action.type) {
-    case "ADDING_TABS":
-      TabsStore.addTabs(action.tabs, action.id);
-      TabsStore.emitChange("adding");
-      break;
-
-    case "CHANGE_DEVICE":
-      TabsStore.changeDevice(action.device);
-      TabsStore.emitChange("device_change");
-      break;
-
-    case "CHANGE_TAB":
-      TabsStore.changeTab(action.id, action.tab);
-      TabsStore.emitChange("tab_change");
-      break;
-    }
-};
 
 const store = {
   device       : "mobile",
@@ -148,6 +129,27 @@ Object.assign(store, textMixins);
 
 
 const TabsStore = assign({}, EventEmitter.prototype, store);
+
+const registeredCallback = function(payload) {
+  let action = payload.action;
+  switch(action.type) {
+    case "ADDING_TABS":
+      TabsStore.addTabs(action.tabs, action.id);
+      TabsStore.emitChange("adding");
+      break;
+
+    case "CHANGE_DEVICE":
+      TabsStore.changeDevice(action.device);
+      TabsStore.emitChange("device_change");
+      break;
+
+    case "CHANGE_TAB":
+      TabsStore.changeTab(action.id, action.tab);
+      TabsStore.emitChange("tab_change");
+      break;
+    }
+};
+
 
 TabsStore.dispatchToken = TabsDispatcher.register(registeredCallback);
 TabsStore.setMaxListeners(0);

@@ -12,55 +12,7 @@ const FiltersFcty = require("../factories/filters_fcty");
 
 // let Masterfilters =  new FiltersFcty();
 
-const registeredCallback = function(payload) {
-  var action = payload.action;
-  switch(action.type) {
 
-    case "CHANGE_DATE":
-      FilterStore.setDate(action);
-      FilterStore.emitChange("change_date");
-      break;
-
-    case "CHANGE_KEY":
-      FilterStore.setSelected(action.data);
-      FilterStore.emitChange("change_key");
-      break;
-
-
-    case "CHECK_FILTER":
-      // _data = action.data;
-      FilterStore.checked(action.filterBy, action.id, action.value);
-      FilterStore.emitChange("filter_change");
-      break;
-
-    case "FETCH":
-      // FilterStore.setApi(action.api);
-      FilterStore.fetchData(action.api);
-      FilterStore.emitChange("fetching");
-      break;
-
-    case "RECEIVE_DATA":
-      // _data = action.data;
-      FilterStore.emitChange("fetched");
-      break;
-
-    case "SELECT_FILTER":
-      // _data = action.data;
-      FilterStore.selected(action.filterBy, action.id);
-      FilterStore.emitChange("filter_change");
-      break;
-
-    case "SET_KEYS":
-      FilterStore.setKeys(action.data);
-      FilterStore.emitChange("setting_keys");
-      break;
-
-    case "SET_TAB":
-      FilterStore.setTab(action.tab);
-      FilterStore.emitChange("set_tab");
-      break;
-  }
-};
 
 const store =  {
   keys         : [],
@@ -226,5 +178,57 @@ const store =  {
 
 const FilterStore = assign({}, EventEmitter.prototype, store);
 FilterStore.setMaxListeners(0);
+
+const registeredCallback = function(payload) {
+  var action = payload.action;
+  switch(action.type) {
+
+    case "CHANGE_DATE":
+      FilterStore.setDate(action);
+      FilterStore.emitChange("change_date");
+      break;
+
+    case "CHANGE_KEY":
+      FilterStore.setSelected(action.data);
+      FilterStore.emitChange("change_key");
+      break;
+
+
+    case "CHECK_FILTER":
+      // _data = action.data;
+      FilterStore.checked(action.filterBy, action.id, action.value);
+      FilterStore.emitChange("filter_change");
+      break;
+
+    case "FETCH":
+      // FilterStore.setApi(action.api);
+      FilterStore.fetchData(action.api);
+      FilterStore.emitChange("fetching");
+      break;
+
+    case "RECEIVE_DATA":
+      // _data = action.data;
+      FilterStore.emitChange("fetched");
+      break;
+
+    case "SELECT_FILTER":
+      // _data = action.data;
+      FilterStore.selected(action.filterBy, action.id);
+      FilterStore.emitChange("filter_change");
+      break;
+
+    case "SET_KEYS":
+      FilterStore.setKeys(action.data);
+      FilterStore.emitChange("setting_keys");
+      break;
+
+    case "SET_TAB":
+      FilterStore.setTab(action.tab);
+      FilterStore.emitChange("set_tab");
+      break;
+  }
+};
+
+
 FilterStore.dispatchToken = FilterDispatcher.register(registeredCallback);
 module.exports = FilterStore;

@@ -1,4 +1,4 @@
-var React = require("react");
+var React = require("react/addons");
 
 const FiltersDate = require("../../src/components/filters_date");
 

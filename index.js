@@ -1,9 +1,9 @@
 
 
 // Actions
-const ColumsActions = require("./lib/actions/columns_actions");
-const DataActions   = require("./lib/actions/data_actions");
-const FilterActions = require("./lib/actions/filter_actions");
+var ColumsActions = require("./lib/actions/columns_actions");
+var DataActions   = require("./lib/actions/data_actions");
+var FilterActions = require("./lib/actions/filter_actions");
 
 exports.Actions = {
   Columns : ColumsActions,
@@ -12,9 +12,9 @@ exports.Actions = {
 }
 
 // Dispatchers
-const ColumnsDispatcher   = require("./lib/dispatcher/columns_dispatcher");
-const DataDispatcher   = require("./lib/dispatcher/data_dispatcher");
-const FilterDispatcher = require("./lib/dispatcher/filter_dispatcher");
+var ColumnsDispatcher   = require("./lib/dispatcher/columns_dispatcher");
+var DataDispatcher   = require("./lib/dispatcher/data_dispatcher");
+var FilterDispatcher = require("./lib/dispatcher/filter_dispatcher");
 
 exports.Dispatcher = {
   Columns : ColumnsDispatcher,
@@ -23,8 +23,8 @@ exports.Dispatcher = {
 }
 
 // Factories
-const DataFactory   = require("./lib/factories/data_fcty");
-const FilterFactory = require("./lib/factories/filters_fcty");
+var DataFactory   = require("./lib/factories/data_fcty");
+var FilterFactory = require("./lib/factories/filters_fcty");
 
 exports.Factories = {
   Data    : DataFactory,
@@ -32,9 +32,9 @@ exports.Factories = {
 }
 
 // Stores
-const ColumnsStores = require("./lib/stores/columns_store");
-const DataStores    = require("./lib/stores/data_store");
-const FilterStores  = require("./lib/stores/filter_store");
+var ColumnsStores = require("./lib/stores/columns_store");
+var DataStores    = require("./lib/stores/data_store");
+var FilterStores  = require("./lib/stores/filter_store");
 
 exports.Stores = {
   Columns : ColumnsStores,
@@ -43,18 +43,18 @@ exports.Stores = {
 }
 
 // Compontents
-const CheckBox     = require("./lib/components/check_box");
-const DataHead     = require("./lib/components/data_head");
-const DataItem     = require("./lib/components/data_item");
-const DataItems    = require("./lib/components/data_items");
-const Filters      = require("./lib/components/filters");
-const FilterCheck  = require("./lib/components/filters_check");
-const FilterRadio  = require("./lib/components/filters_radio");
-const FilterSelect = require("./lib/components/filters_select");
-const Keys         = require("./lib/components/keys");
-const Pagination   = require("./lib/components/pagination");
-const Search       = require("./lib/components/search");
-const SearchFilter = require("./lib/components/searchfilter");
+var CheckBox     = require("./lib/components/check_box");
+var DataHead     = require("./lib/components/data_head");
+var DataItem     = require("./lib/components/data_item");
+var DataItems    = require("./lib/components/data_items");
+var Filters      = require("./lib/components/filters");
+var FilterCheck  = require("./lib/components/filters_check");
+var FilterRadio  = require("./lib/components/filters_radio");
+var FilterSelect = require("./lib/components/filters_select");
+var Keys         = require("./lib/components/keys");
+var Pagination   = require("./lib/components/pagination");
+var Search       = require("./lib/components/search");
+var SearchFilter = require("./lib/components/searchfilter");
 
 
 exports.Components = {
@@ -72,10 +72,10 @@ exports.Components = {
   SearchFilter : SearchFilter
 }
 
-const GenericExpander  = require("./lib/generic_search/generic_expander");
-const GenericItem   = require("./lib/generic_search/generic_item");
-const GenericItems  = require("./lib/generic_search/generic_items");
-const GenericSearch = require("./lib/generic_search/generic_search");
+var GenericExpander  = require("./lib/generic_search/generic_expander");
+var GenericItem   = require("./lib/generic_search/generic_item");
+var GenericItems  = require("./lib/generic_search/generic_items");
+var GenericSearch = require("./lib/generic_search/generic_search");
 
 exports.Generic = {
   Expander : GenericExpander,

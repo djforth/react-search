@@ -1,4 +1,4 @@
-var React        = window.React  = require("react");
+var React        = window.React  = require("react/addons");
 
 const DataHead   = require("../../src/components/data_head");
 

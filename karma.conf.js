@@ -15,7 +15,7 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-      './node_modules/babelify/node_modules/babel-core/browser-polyfill.js',
+      './node_modules/babel-polyfill/browser.js',
       './node_modules/react-tools/src/test/phantomjs-shims.js',
       './spec/**/*_spec.es6.js',
       './src/**/*.js'
@@ -37,7 +37,7 @@ module.exports = function(config) {
 
     browserify: {
       debug: false,
-      transform: ['babelify', ['rewireify', { ignore: 'moof' }]],
+      // transform: ['babelify', ['rewireify', { ignore: 'moof' }]],
       extensions: [ ".es6.js", ".js"],
       bundleDelay: 1000
     },

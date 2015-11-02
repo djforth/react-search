@@ -7,20 +7,7 @@ const textMixins = require("morse-react-mixins").text_mixins;
 const ColumnsDispatcher = require("../dispatcher/columns_dispatcher");
 
 
-const registeredCallback = function(payload) {
-  let action = payload.action;
-  switch(action.type) {
-    case "ADDING_COLUMNS":
-      ColumnsStore.addColumns(action.columns, action.id);
-      ColumnsStore.emitChange("adding");
-      break;
 
-    case "CHANGE_DEVICE":
-      ColumnsStore.changeDevice(action.device);
-      ColumnsStore.emitChange("change");
-      break;
-    }
-};
 
 const store = {
   device          : "desktop",
@@ -197,6 +184,21 @@ Object.assign(store, textMixins);
 
 
 const ColumnsStore = assign({}, EventEmitter.prototype, store);
+
+const registeredCallback = function(payload) {
+  let action = payload.action;
+  switch(action.type) {
+    case "ADDING_COLUMNS":
+      ColumnsStore.addColumns(action.columns, action.id);
+      ColumnsStore.emitChange("adding");
+      break;
+
+    case "CHANGE_DEVICE":
+      ColumnsStore.changeDevice(action.device);
+      ColumnsStore.emitChange("change");
+      break;
+    }
+};
 
 ColumnsStore.dispatchToken = ColumnsDispatcher.register(registeredCallback);
 ColumnsStore.setMaxListeners(0);

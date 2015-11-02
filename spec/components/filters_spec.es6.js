@@ -1,4 +1,4 @@
-var React = require("react");
+var React = require("react/addons");
 const _     = require("lodash");
 
 const Filter   = require("../../src/components/filters");

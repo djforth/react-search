@@ -223,7 +223,7 @@ class DataFcty extends DataManager {
     let regex = new RegExp(val, "i");
     let search = data.filter((d)=>{
       return this.searchTxt(regex, d, keys);
-    }.bind(this));
+    });
 
     this.cache.text   = val;
     this.cache.keys   = keys;
@@ -287,24 +287,24 @@ class DataFcty extends DataManager {
     if(cachedTxt && cachedFltr && cachedDR){
       return this.cache.fullSearch;
     }
-    let search = this.data;
+    let searchData = this.data;
 
     //Runs filters over data
     if(!_.isEmpty(values.filters)){
-      search = (cachedFltr) ? this.cache.filterSearch : this.filterSearch(search, values.filters);
+      searchData = (cachedFltr) ? this.cache.filterSearch : this.filterSearch(searchData, values.filters);
     }
 
     //Runs Date Range search
     if(!_.isEmpty(values.dateRanges)){
-      search = (cachedFltr && cachedDR) ? this.cache.dateRangesSearch : this.dateRangeSearch(search, values.dateRanges);
+      searchData = (cachedFltr && cachedDR) ? this.cache.dateRangesSearch : this.dateRangeSearch(searchData, values.dateRanges);
     }
     //Runs Search over data
     if(!_.isEmpty(values.text)){
-      search =  this.getSearch(search, values.text, values.keys);
+      searchData =  this.getSearch(searchData, values.text, values.keys);
     }
 
-    this.cache.fullSearch = search; // Caches search
-    return search;
+    this.cache.fullSearch = searchData; // Caches search
+    return searchData;
 
   }
 

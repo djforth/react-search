@@ -1,6 +1,6 @@
 //Libraries
 const React = require("react");
-console.log('WTF', React);
+// console.log('WTF', React);
 const _     = require("lodash");
 
 

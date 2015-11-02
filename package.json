@@ -1,8 +1,11 @@
 {
   "name": "react-search",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "React Bootstrap search for Morse CMS's",
   "main": "index.js",
+  "babel":{
+    "presets":["es2015", "react"]
+  },
   "scripts": {
     "bundle": "npm test && npm run build",
     "bundle:watch": "npm run test:watch & npm run build:watch",
@@ -28,6 +31,19 @@
     "test:ie10": "karma start --single-run --browsers \"IE10 - Win7\"",
     "test:mac": "karma start --single-run --browsers Chrome,Firefox,Safari,Opera"
   },
+  "browserify": {
+    "transform": [
+      [
+        "babelify",
+        {
+          "presets": [
+            "es2015",
+            "react"
+          ]
+        }
+      ]
+    ]
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/djforth/react-search.git"
@@ -40,14 +56,19 @@
   "homepage": "https://github.com/djforth/react-search#readme",
   "devDependencies": {
     "autoprefixer": "^6.0.3",
-    "babel": "^5.8.19",
-    "babel-eslint": "^4.0.5",
-    "babelify": "^6.1.3",
+    "babel": "^6.0.15",
+    "babel-cli": "^6.0.15",
+    "babel-eslint": "^4.1.3",
+    "babel-polyfill": "^6.0.16",
+    "babel-preset-es2015": "^6.0.15",
+    "babel-preset-react": "^6.0.15",
+    "babel-preset-stage-0": "^6.0.15",
+    "babelify": "^7.2.0",
     "browser-sync": "^2.9.3",
     "browserify": "^11.0.0",
     "chokidar-cli": "^1.1.0",
-    "eslint": "^0.24.1",
-    "eslint-plugin-react": "^3.1.0",
+    "eslint": "^1.8.0",
+    "eslint-plugin-react": "^3.6.3",
     "event-stream": "^3.3.2",
     "image-size": "^0.3.5",
     "imagemin": "^3.2.2",

@@ -20,59 +20,7 @@ const DataFcty = require("../factories/data_fcty");
 // var cache;
 // var selected = [];
 
-const registeredCallback = function(payload) {
-  var action = payload.action;
 
-  switch(action.type) {
-    case "ADD_DATE_RANGE":
-      DataStore.setDateRanges(action.key, action.st, action.fn);
-      DataStore.emitChange("search");
-      break;
-
-    case "DELETE_ITEM":
-      DataStore.deleteItem(action.id, action.flash);
-      DataStore.emitChange("delete");
-      break;
-
-    case "KEY_UPDATE":
-      DataStore.emitChange("search");
-      break;
-
-    case "FETCH_DATA":
-      DataStore.setApi(action.api);
-      DataStore.fetchData(action.progress);
-      DataStore.emitChange("fetching");
-      break;
-
-    case "FILTER_SEARCH":
-      DataStore.emitChange("search");
-      break;
-
-    case "PAGE_UPDATE":
-      DataStore.setPage(action.data);
-      DataStore.emitChange("pagination");
-      break;
-
-    case "RECEIVE_DATA":
-      DataStore.emitChange("fetched");
-      break;
-
-    case "REMOVE_DATE_RANGE":
-      DataStore.removeDateRange(action.key);
-      DataStore.emitChange("search");
-      break;
-
-    case "SEARCH_DATA":
-      DataStore.setSearchVal(action.data);
-      DataStore.emitChange("search");
-      break;
-
-    case "SET_SELECTED":
-      DataStore.setSelected(action.id, action.selected);
-      DataStore.emitChange("change");
-      break;
-  }
-};
 
 const store = {
 
@@ -273,6 +221,60 @@ const store = {
 
 const DataStore = assign({}, EventEmitter.prototype, store);
 DataStore.setMaxListeners(0);
+
+const registeredCallback = function(payload) {
+  var action = payload.action;
+
+  switch(action.type) {
+    case "ADD_DATE_RANGE":
+      DataStore.setDateRanges(action.key, action.st, action.fn);
+      DataStore.emitChange("search");
+      break;
+
+    case "DELETE_ITEM":
+      DataStore.deleteItem(action.id, action.flash);
+      DataStore.emitChange("delete");
+      break;
+
+    case "KEY_UPDATE":
+      DataStore.emitChange("search");
+      break;
+
+    case "FETCH_DATA":
+      DataStore.setApi(action.api);
+      DataStore.fetchData(action.progress);
+      DataStore.emitChange("fetching");
+      break;
+
+    case "FILTER_SEARCH":
+      DataStore.emitChange("search");
+      break;
+
+    case "PAGE_UPDATE":
+      DataStore.setPage(action.data);
+      DataStore.emitChange("pagination");
+      break;
+
+    case "RECEIVE_DATA":
+      DataStore.emitChange("fetched");
+      break;
+
+    case "REMOVE_DATE_RANGE":
+      DataStore.removeDateRange(action.key);
+      DataStore.emitChange("search");
+      break;
+
+    case "SEARCH_DATA":
+      DataStore.setSearchVal(action.data);
+      DataStore.emitChange("search");
+      break;
+
+    case "SET_SELECTED":
+      DataStore.setSelected(action.id, action.selected);
+      DataStore.emitChange("change");
+      break;
+  }
+};
 
 DataStore.dispatchToken = DataDispatcher.register(registeredCallback);
 

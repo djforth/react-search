@@ -1,4 +1,4 @@
-const React     = require("react");
+const React     = require("react/addons");
 const Immutable = require("immutable");
 
 const ActionButtons   = require("../../src/components/action_buttons");
