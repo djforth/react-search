@@ -62,15 +62,7 @@ class DataFcty extends DataManager {
     }
 
     return (tester)=>{
-      check = true;
-      _.forEach(items, (i)=>{
-        if(tester(i)){
-          check = false;
-          return false;
-        }
-      });
-
-      return check;
+      return tester(items);
     }
   }
 
@@ -140,10 +132,21 @@ class DataFcty extends DataManager {
       return checker;
     }
 
-    return checker((item)=>{
+    let checkTest = (item)=>{
       let cached = this.getFilterByKey("filter_by", item.filter_by);
-
       return !(item.selected.equals(cached.selected))
+    }
+
+    return checker((item)=>{
+      let check = true;
+      _.forEach(items, (i)=>{
+        if(checkTest(i)){
+          check = false;
+          return false;
+        }
+      });
+
+      return check;
     })
   }
 
