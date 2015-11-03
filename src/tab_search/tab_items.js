@@ -5,7 +5,8 @@ const React = require("react");
 // const ViewportDetect = require("viewport-detection-es6");
 
 //Flux
-const TabsStore      = require("../stores/tabs_store");
+const TabsStore = require("../stores/tabs_store")
+    , DataStore = require("../stores/data_store");
 
 
 //Components
@@ -23,12 +24,12 @@ class TabItems extends DataItems {
   componentDidMount() {
     super.componentDidMount();
 
-    TabsStore.addChangeListener("tab_change", this._onSearch.bind(this));
+    TabsStore.addChangeListener("tab_change", this._onTabChange.bind(this));
   }
 
   componentWillUnmount() {
     super.componentWillUnmount();
-    TabsStore.removeChangeListener("tab_change", this._onSearch);
+    TabsStore.removeChangeListener("tab_change", this._onTabChange);
   }
 
   renderData(){
@@ -58,6 +59,11 @@ class TabItems extends DataItems {
       );
     }
     return "";
+  }
+
+  _onTabChange(){
+    DataStore.setSearchVal("");
+    this.setState({data:DataStore.getSearchData()});
   }
 }
 

@@ -1,6 +1,6 @@
 {
   "name": "react-search",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "React Bootstrap search for Morse CMS's",
   "main": "index.js",
   "babel":{
@@ -14,7 +14,7 @@
     "compile": "npm run compile:date & npm run compile:generic",
     "compile:date": "watchify test_assets/javascripts/date.es6.js -t babelify  --stage 0 --extension=\"es6.js\" -o app/assets/javascripts/date.js",
     "compile:generic": "watchify test_assets/javascripts/generic.es6.js -t babelify  --stage 0 --extension=\"es6.js\" -o app/assets/javascripts/generic.js",
-    "compile:vanilla": "watchify test_assets/javascripts/tab_search.es6.js -t babelify  --stage 0 --extension=\"es6.js\" -o app/assets/javascripts/tab_search.js",
+    "compile:vanilla": "watchify test_assets/javascripts/tab_search.es6.js -t babelify  --stage 0 --extension=\"es6.js\" -o app/assets/javascripts/vanilla_tab_search.js",
     "lint": "eslint src/**",
     "lint:tests": "eslint spec/**",
     "prestart:vanilla": "npm run sass:vanilla",

@@ -19,7 +19,7 @@ let spys = [
   }
 ];
 
-describe("FilterCheck", function() {
+xdescribe("FilterCheck", function() {
   let filtercheck, cssMixins, spy, revert;
   let data = Immutable.fromJS([{name:"Phil Collins", id:1}, {name:"Mike Rutherford", id:2}]);
   let keys = ["foo", "bar"];

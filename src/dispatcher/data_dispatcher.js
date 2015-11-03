@@ -90,10 +90,6 @@ const DataDispatcher = assign(new Dispatcher(), {
 
     this.dispatch(payload);
   }
-
-
-
-
 });
 
 module.exports = DataDispatcher;

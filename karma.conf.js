@@ -37,7 +37,7 @@ module.exports = function(config) {
 
     browserify: {
       debug: false,
-      // transform: ['babelify', ['rewireify', { ignore: 'moof' }]],
+      transform: [['rewireify', { ignore: 'moof' }]],
       extensions: [ ".es6.js", ".js"],
       bundleDelay: 1000
     },

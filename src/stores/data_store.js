@@ -5,7 +5,7 @@ const _             = require("lodash");
 const DataDispatcher = require("../dispatcher/data_dispatcher");
 const DataAction     = require("../actions/data_actions");
 const FilterStore    = require("./filter_store");
-// const ColumnsStore   = require("./columns_store");
+const TabsStore      = require("./tabs_store");
 
 const DataFcty = require("../factories/data_fcty");
 
@@ -140,10 +140,8 @@ const store = {
     let keys       = FilterStore.getSelectedKeys();
     let filters    = FilterStore.getFilters();
     let dateRanges = FilterStore.getDates();
-
-    // console.log('filters', filters);
-    // console.log('filters', dateRanges);
-    let search = this.data.search(this.searchVal, keys, filters, dateRanges );
+    let tab        = TabsStore.getActive();
+    let search = this.data.search(this.searchVal, keys, filters, dateRanges, tab);
     this.itemNo = search.size;
     this.cache  = search;
     // console.log("search", search.size)

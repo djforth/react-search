@@ -42,29 +42,26 @@ exports.Stores = {
   Filters : FilterStores
 }
 
-var Filters      = require("./lib/vanilla_components/filters");
-var Search       = require("./lib/vanilla_components/search");
-var SearchFilter = require("./lib/vanilla_components/searchfilters");
-//
-exports.Components = {
-  // CheckBox     : CheckBox,
-  // DataHead     : DataHead,
-  // DataItem     : DataItem,
-  // DataItems    : DataItems,
-  Filters      : Filters,
-  // FilterCheck  : FilterCheck,
-  // FilterRadio  : FilterRadio,
-  // FilterSelect : FilterSelect,
-  // Keys         : Keys,
-  // Pagination   : Pagination,
-  Search       : Search,
-  SearchFilter : SearchFilter
-}
+// var Filters      = require("./lib/vanilla_components/filters");
+// var Search       = require("./lib/vanilla_components/search");
+// var SearchFilter = require("./lib/vanilla_components/searchfilters");
+// //
+// exports.Components = {
+//   // CheckBox     : CheckBox,
+//   // DataHead     : DataHead,
+//   // DataItem     : DataItem,
+//   // DataItems    : DataItems,
+//   Filters      : Filters,
+//   // FilterCheck  : FilterCheck,
+//   // FilterRadio  : FilterRadio,
+//   // FilterSelect : FilterSelect,
+//   // Keys         : Keys,
+//   // Pagination   : Pagination,
+//   Search       : Search,
+//   SearchFilter : SearchFilter
+// }
 
-// var GenericExpander  = require("./lib/generic_search/generic_expander");
-// var GenericItem   = require("./lib/generic_search/generic_item");
-// var GenericItems  = require("./lib/generic_search/generic_items");
-//
+
 
 var TabSearch = require("./lib/tab_search/tab_search");
 

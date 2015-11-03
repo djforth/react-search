@@ -458,7 +458,7 @@ describe("DataFcty", function() {
 
 	describe("main search", function() {
 		let cacheTxt, cacheFltr, cacheDR;
-		let val, keys, filters, dateRanges;
+		let val, keys, filters, tab, dateRanges;
 
 		beforeEach(()=>{
 			val = "Foo"
@@ -470,6 +470,9 @@ describe("DataFcty", function() {
 					fn:new Date(2015, 7, 31)
 				}
 			};
+
+			tab = {filterBy:"foo"};
+
 			spyOn(dataFcty, "checkCacheText").and.callFake(()=>{
 				return cacheTxt;
 			});
@@ -489,35 +492,37 @@ describe("DataFcty", function() {
 
 			it("should set text value if sting is passed", function() {
 				let vals = dataFcty.setValues(val);
-				expect(vals.text).toEqual(val);
+				expect(vals("text")).toEqual(val);
 			});
 
 			it("should set keys value if array of sting is passed", function() {
 				let vals = dataFcty.setValues(keys);
-				expect(vals.keys).toEqual(keys);
+				// console.log("vals", vals)
+				expect(vals("keys")).toEqual(keys);
 			});
 
 
 
 			it("should set filters value if array of objects is passed", function() {
 				let vals = dataFcty.setValues(filters);
-				expect(vals.filters).toEqual(filters);
+				expect(vals("filters")).toEqual(filters);
 
 			});
 
 			it("should set filters value if array of objects is passed", function() {
 
 				let vals = dataFcty.setValues(dateRanges);
-				expect(vals.dateRanges).toEqual(dateRanges);
+				expect(vals("dateRanges")).toEqual(dateRanges);
 
 			});
 
 			it("should set defaults", function() {
 				let vals = dataFcty.setValues();
-				expect(vals.text).toEqual("");
-				expect(vals.keys).toEqual([]);
-				expect(vals.filters).toEqual([]);
-				expect(vals.dateRanges).toEqual({});
+				expect(vals("text")).toEqual("");
+				expect(vals("keys")).toEqual([]);
+				expect(vals("filters")).toEqual([]);
+				expect(vals("dateRanges")).toEqual({});
+				expect(vals("tab")).toEqual({});
 			});
 		});
 
@@ -526,13 +531,24 @@ describe("DataFcty", function() {
 			let search;
 			beforeEach(()=>{
 				dataFcty.cache.fullSearch = fullSearch;
-				spyOn(dataFcty, "setValues").and.returnValue({
-					text       : val,
-					keys       : keys,
-					filters    : filters,
-					dateRanges : dateRanges
-				});
+				spyOn(dataFcty, "setValues").and.callFake(()=>{
+					let obj = {
+						text       : val,
+						keys       : keys,
+						filters    : filters,
+						dateRanges : dateRanges
+					}
 
+					return (k)=>{
+						return obj[k];
+					}
+				});
+				spyOn(dataFcty, "cachedChecker").and.callFake(()=>{
+					return ()=>{
+						return true;
+					}
+
+				});
 				cacheDR = cacheFltr = cacheTxt =  true;
 				search =  dataFcty.search(val, keys, filters, dateRanges)
 			});
@@ -542,9 +558,9 @@ describe("DataFcty", function() {
 			});
 
 			it("should call check cached functions", function() {
-				expect(dataFcty.checkCacheText).toHaveBeenCalledWith(val, keys);
-				expect(dataFcty.checkCacheFilters).toHaveBeenCalledWith(filters);
-				expect(dataFcty.checkCachedDateRanges).toHaveBeenCalledWith(dateRanges);
+				expect(dataFcty, "cachedChecker").toHaveBeenCalled();
+				// expect(dataFcty.checkCacheFilters).toHaveBeenCalledWith(filters);
+				// expect(dataFcty.checkCachedDateRanges).toHaveBeenCalledWith(dateRanges);
 			});
 
 			it("should return cached search if text, filter and date range are all cached", function() {
@@ -566,7 +582,16 @@ describe("DataFcty", function() {
 				dataFcty.cache.filterSearch     = filterSearch;
 				dataFcty.cache.dateRangesSearch = filterSearch;
 				spyOn(dataFcty, "setValues").and.callFake(()=>{
-					return values;
+					let obj = {
+						text       : val,
+						keys       : keys,
+						filters    : filters,
+						dateRanges : dateRanges
+					}
+
+					return (k)=>{
+						return obj[k];
+					}
 				});
 
 				spyOn(dataFcty, "filterSearch").and.returnValue(filterSearch);

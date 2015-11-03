@@ -10,7 +10,7 @@ const TestUtils       = React.addons.TestUtils;
 const componentHelper = require("react-jasmine").componentHelpers;
 const jasmineReactHelpers = require("react-jasmine");
 
-describe("FiltersRadio", function() {
+xdescribe("FiltersRadio", function() {
   let filtersradio, cssMixins, spy, action;
   let list = [{title:"Phil Collins", id:1}, {title:"Mike Rutherford", id:2}];
   let data = Immutable.fromJS([{title:"Phil Collins", id:1}, {title:"Mike Rutherford", id:2}]);

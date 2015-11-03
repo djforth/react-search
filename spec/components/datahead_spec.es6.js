@@ -13,7 +13,7 @@ const componentHelper = jasmineReactHelpers.componentHelpers;
 
 
 
-describe('DataHead', function() {
+xdescribe('DataHead', function() {
   let datahead, cssMixins, textMixins, ColumnsStore;
   let columns = [
     {key:"foo", title:"Foooo"},

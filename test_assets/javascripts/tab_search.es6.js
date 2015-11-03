@@ -1,10 +1,9 @@
-require("babelify/polyfill");
+require("babel-polyfill");
 const React    = require("react");
 const ReactDOM = require("react-dom");
-const Search  = require("../../vanilla")
-const Tab = Search.Tab.Search;
-
-console.log('WTF');
+const Search  = require("../../vanilla");
+const Tab = require("../../lib/tab_search/tab_search")
+//Search.Tab.Search;
 
 let columns = [
   {key:"id"},
@@ -48,7 +47,7 @@ columns = columns.map((c)=>{
 
 let tabs = [
   {title:"Search our Jobs", filterBy:{type:"all", filter:null}, filters:[], search:true, options:{css:"osw-r up-c gamma tab-btn", active:true}},
-  {title:"Head Office opportunities", filterBy:{type:"head_office_role", filter:null}, filters:["jobs_template"], search:false, options:{css:"osw-r up-c gamma tab-btn", active:false}},
+  {title:"Head Office opportunities", filterBy:{type:"head_office_role", filter:null}, filters:["job_template"], search:false, options:{css:"osw-r up-c gamma tab-btn", active:false}},
   {title:"Venue opportunities", filterBy:{type:"venue", filter:null}, filters:["venue"], search:false, options:{css:"osw-r up-c gamma tab-btn", active:false}},
 ]
 
@@ -75,6 +74,8 @@ let date_ranges = [
 ]
 
 let intro = "Sinus corae nonserum utatur as ne plam rerfernatle stiatus aecatem aut fugias aut la cori quatatur acestiorum. Li sendem hor is; nentes sua imor hos caectors furei tus aus auc teredum nihica int. Habempondite pri, nocci porente menatium ne con verem adees inum perfent iquidemneris egilique que."
+
+
 
 ReactDOM.render(
   <Tab

@@ -131,13 +131,17 @@ const store =  {
     this.keys = ks;
   },
 
+  // setTabFilter(tab){
+
+  // }
+
   setTab(tab){
 
     this.tab     = tab;
     this.changed = true;
     if(!_.isEmpty(this.filters)){
       this.filters = _.map(this.filters, (filter)=>{
-
+        // console.log('filters', tab.filters);
         filter.reset();
         filter.setVisible(tab.filters);
         return filter;
@@ -162,6 +166,7 @@ const store =  {
 
   selected(filterBy, id, val=true){
     let filter = this.get(filterBy);
+    // console.log(filterBy, id)
     filter.setSelected(id, val, true);
     this.changed  = true;
   },

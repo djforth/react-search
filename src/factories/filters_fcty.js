@@ -91,7 +91,9 @@ class FiltersFcty extends DataManager {
 
   setVisible(filters){
     let filterBy = this.details.get('filterBy');
+    // console.log(filters, filterBy)
     let vis      = _.includes(filters, filterBy);
+    // console.log('vis', vis);
     this.details = this.details.set('visible', vis);
   }
 

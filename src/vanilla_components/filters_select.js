@@ -30,25 +30,13 @@ class FiltersSelect extends React.Component {
       let opts  = this.props.filter.getAll();
 
       let items = opts.map(function(f){
-
-          if (this.state.selected === f.get("id")) {
-            return (<option
-              key={_.uniqueId()}
-              value={f.get("id")}
-              selected
-              >
-                {f.get("title")}
-              </option>
-            );
-          } else {
-            return (<option
-              key={_.uniqueId()}
-              value={f.get("id")}
-              >
-                {f.get("title")}
-              </option>
-            );
-          }
+        return (<option
+            key={_.uniqueId()}
+            value={f.get("id")}
+            >
+              {f.get("title")}
+            </option>
+          );
 
       }.bind(this));
 
@@ -62,7 +50,7 @@ class FiltersSelect extends React.Component {
     return (
       <div className="form-group">
         <label>{title}</label>
-        <select onChange={this._onChange.bind(this)} className="form-control">
+        <select onChange={this._onChange.bind(this)} className="form-control" value={this.state.selected}>
           <option value="all">All</option>
           {this.renderOptions()}
         </select>
