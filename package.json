@@ -72,7 +72,7 @@
     "lodash": "^3.10.0",
     "material-ui": "^0.11.1",
     "morse-bootstrap-react": "git://github.com/djforth/morse-bootstrap-react.git",
-    "morse-react-mixins": "git://github.com/djforth/morse-react-mixins.git",
+    "morse-react-mixins": "git://github.com/djforth/morse-react-mixins.git#v0.0.0",
     "react": "^0.13.3",
     "react-bootstrap": "^0.24.2",
     "react-mixin": "^1.7.0",
