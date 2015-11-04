@@ -5,7 +5,8 @@ const DataManager = require("datamanager");
 class DataFcty extends DataManager {
 
   init(){
-    this.cache = {};
+    this.cache = {}
+    this.cacheNew   = cacher();
     this.pagination = 50;
     this.page       = 1;
     this.itemNo     = 0;
@@ -20,7 +21,7 @@ class DataFcty extends DataManager {
       },
       get:(key)=>_.get(cache, key),
       set:(key, value)=>{
-        cache[key] = value;
+        _.set(cache, key, value);
       }
     }
   }
@@ -95,7 +96,7 @@ class DataFcty extends DataManager {
     }
 
     check = true;
-    let cacheDR = this.cache.dateRanges;
+    let cacheDR = this.cacheNew.get("dateRanges");
 
     _.forIn(dateRanges, (v, k)=>{
       let dr = cacheDR[k];
@@ -110,7 +111,7 @@ class DataFcty extends DataManager {
   }
 
   checkCacheFilters(filters){
-    let check = this.checkEmptyOrCached(filters, this.cache.filters);
+    let check = this.checkEmptyOrCached(filters, this.cacheNew.get("filters"));
 
     if(_.isBoolean(check)){
       return check;
@@ -130,26 +131,26 @@ class DataFcty extends DataManager {
   }
 
   checkTabsCache(tab){
-    let checkTabs = this.checkEmptyOrCached(tab, this.cache.tab);
+    let checkTabs = this.checkEmptyOrCached(tab, this.cacheNew.get("tab"));
     if (_.isBoolean(checkTabs)){
       return checkTabs;
     }
 
-    return this.cache.tabs === tab;
+    return this.cacheNew.get("tab") === tab;
   }
 
 
   checkCacheText(val, keys){
-    let checkKeys = this.checkEmptyOrCached(keys, this.cache.keys);
+    let checkKeys = this.checkEmptyOrCached(keys, this.cacheNew.get("keys"));
     if (_.isBoolean(checkKeys)){
       return checkKeys;
     }
 
-    if(!this.cache.text){
+    if(!this.cacheNew.get("text")){
       return false;
     }
 
-    return  this.cache.text === val && (_.difference(keys, this.cache.keys).length === 0);
+    return  this.cacheNew.get("text") === val && (_.difference(keys, this.cacheNew.get("keys").length === 0);
   }
 
 
@@ -185,7 +186,7 @@ class DataFcty extends DataManager {
   checkerFilters(data, check, values){
     let filters = this.checker(values("filters"),
       ()=>{ return check("filters") },
-      this.cache.filterSearch
+      this.cacheNew.get("filterSearch");
     );
 
     return (filters) ? filters(this.filterSearch, data) : data;
@@ -196,7 +197,7 @@ class DataFcty extends DataManager {
       ()=>{
         return check("filters") && check("dateRanges")
       },
-      this.cache.dateRangesSearch
+      this.cacheNew.get("dateRangesSearch");
     );
 
     return (dr) ? dr(this.dateRangeSearch, data) : data;
@@ -205,7 +206,7 @@ class DataFcty extends DataManager {
   checkerTabs(data, check, values){
     let tab = this.checker(values("tab"),
       ()=>{ return check("tab") },
-      this.cache.tabSearch
+      this.cacheNew.get("tabSearch");
     );
 
     return (tab) ? tab(this.tabSearch, data) : data;
@@ -240,7 +241,7 @@ class DataFcty extends DataManager {
 
 
   dateRangeSearch(search, dateRanges){
-    this.cache.dateRanges       = _.cloneDeep(dateRanges);
+    this.cacheNew.set("dateRanges", _.cloneDeep(dateRanges));
     if(!_.isEmpty(dateRanges)){
       search = search.filter((d)=>{
         let checked = false;
@@ -255,12 +256,12 @@ class DataFcty extends DataManager {
       });
     }
 
-    this.cache.dateRangesSearch = search;
+    this.cacheNew.set("dateRangesSearch",search);
     return search;
   }
 
   filterSearch(search, filters){
-    this.cache.filters = filters;
+    this.cacheNew.set("filters", filters);
 
     filters = _.where(filters, {all:false});
 
@@ -278,12 +279,12 @@ class DataFcty extends DataManager {
       });
     }
 
-    this.cache.filterSearch = search;
+    this.cacheNew.set("filterSearch", search);
     return search;
   }
 
   tabSearch(search, tab){
-    this.cache.tab = tab;
+    this.cacheNew.set("tab", tab);
 
 
     let findKey = (key, d)=>{
@@ -332,7 +333,7 @@ class DataFcty extends DataManager {
   }
 
   getFilterByKey(key, keyComp){
-    return _.find(this.cache.filters, (c)=>{
+    return _.find(this.cacheNew.get("filters"), (c)=>{
       return c[key] === keyComp;
     });
   }
@@ -352,9 +353,9 @@ class DataFcty extends DataManager {
       return this.searchTxt(regex, d, keys);
     });
 
-    this.cache.text   = val;
-    this.cache.keys   = keys;
-    this.cache.search = search;
+    this.cacheNew.set("text",val);
+    this.cacheNew.set("keys",keys);
+    this.cacheNew.set("search", search);
 
     return search;
   }
@@ -407,11 +408,12 @@ class DataFcty extends DataManager {
 
   search(...args){
     let values = this.setValues.apply(this, args);
-    console.log("tabs", values("tab"))
+
     //Cache Checks
     let check = this.cachedChecker(values)
 
     if(check("all")){
+      return this.cacheNew.get("fullSearch");
       return this.cache.fullSearch;
     }
     // console.log("cache", this.cache)
@@ -426,7 +428,7 @@ class DataFcty extends DataManager {
       searchData =  this.getSearch(searchData, values("text"), values("keys"));
     }
 
-    this.cache.fullSearch = searchData; // Caches search
+    this.cacheNew.set("fullSearch", searchData); //Caches search
     return searchData;
 
   }
