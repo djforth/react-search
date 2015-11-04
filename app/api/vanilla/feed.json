@@ -9,7 +9,7 @@
 "average_hours": null,
 "with_accommodation": false,
 "shift": "Anytime",
-"head_office_role": false,
+"head_office_role": true,
 "buttons": {
 "show": "/jobs/34"
 },
@@ -28,7 +28,7 @@
 "average_hours": 16,
 "with_accommodation": false,
 "shift": "Anytime",
-"head_office_role": false,
+"head_office_role": true,
 "buttons": {
 "show": "/jobs/74"
 },
