@@ -7,7 +7,7 @@ const Tab = require("../../lib/tab_search/tab_search")
 
 let columns = [
   {key:"id"},
-  {key:"title", title:"Title"},
+  {key:"json_title", title:"Title"},
   {key:"visible_from_date", title:"Posted", type:"date", fmt:"%b %d, %Y",},
   {key:"visible_until_date", title:"Closing", type:"date", fmt:"%b %d, %Y"},
   {key:"with_accommodation", title:"Live in"},
@@ -30,7 +30,7 @@ columns = columns.map((c)=>{
     case "id":
       c.show = false
     break;
-    case "title":
+    case "json_title":
       c.headline = true;
     break;
     case "summary":
@@ -88,7 +88,7 @@ ReactDOM.render(
     filterApi   = "/api/vanilla/filters.json"
     intro       = {intro}
     icon        = "/assets/images/search.png"
-    search      = "chef"
+    search      = ""
     tabs        = {tabs}
     noresults   = "We currently don’t have any available vacancies but please check back soon."
   />,

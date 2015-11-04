@@ -1324,7 +1324,9 @@ var store = {
   },
   getHeadline: function getHeadline(id) {
     return _.find(this.getColumn(id).visible, function (col) {
-      return col.headline;
+      console.log(col);
+
+      return col.headline ? col.headline : false;
     });
   },
   getKeys: function getKeys(id) {
@@ -2318,8 +2320,10 @@ var GenericItem = (function (_DataItem) {
   }, {
     key: "render",
     value: function render() {
-      var key = ColumnsStore.getHeadline().key;
-      var headline = this.props.data.get(key);
+      var h = ColumnsStore.getHeadline();
+      var key = h ? h.key : h;
+      // console.log("key", key)
+      var headline = key && this.props.data.has(key) ? this.props.data.get(key) : "";
 
       return React.createElement("article", { className: "job-item" }, React.createElement("h1", { className: "osw-r gamma up-c" }, headline), React.createElement("ul", { className: "description" }, this.renderLi()), this.renderAdditional());
     }
@@ -46343,7 +46347,7 @@ var Search = require("../../vanilla");
 var Tab = require("../../lib/tab_search/tab_search");
 //Search.Tab.Search;
 
-var columns = [{ key: "id" }, { key: "title", title: "Title" }, { key: "visible_from_date", title: "Posted", type: "date", fmt: "%b %d, %Y" }, { key: "visible_until_date", title: "Closing", type: "date", fmt: "%b %d, %Y" }, { key: "with_accommodation", title: "Live in" }, { key: "shift" }, { key: "job_start_date", title: "Start Date", type: "date", fmt: "%b %d, %Y" }, { key: "summary", type: "date", fmt: "%b %d, %Y" }, { key: "actions" }];
+var columns = [{ key: "id" }, { key: "json_title", title: "Title" }, { key: "visible_from_date", title: "Posted", type: "date", fmt: "%b %d, %Y" }, { key: "visible_until_date", title: "Closing", type: "date", fmt: "%b %d, %Y" }, { key: "with_accommodation", title: "Live in" }, { key: "shift" }, { key: "job_start_date", title: "Start Date", type: "date", fmt: "%b %d, %Y" }, { key: "summary", type: "date", fmt: "%b %d, %Y" }, { key: "actions" }];
 
 columns = columns.map(function (c) {
   if (c.key !== "id") {
@@ -46358,7 +46362,7 @@ columns = columns.map(function (c) {
     case "id":
       c.show = false;
       break;
-    case "title":
+    case "json_title":
       c.headline = true;
       break;
     case "summary":
@@ -46403,7 +46407,7 @@ ReactDOM.render(React.createElement(Tab, {
   filterApi: "/api/vanilla/filters.json",
   intro: intro,
   icon: "/assets/images/search.png",
-  search: "chef",
+  search: "",
   tabs: tabs,
   noresults: "We currently don’t have any available vacancies but please check back soon."
 }), document.getElementById('search'));

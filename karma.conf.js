@@ -17,6 +17,7 @@ module.exports = function(config) {
     files: [
       './node_modules/babel-polyfill/browser.js',
       './node_modules/react-tools/src/test/phantomjs-shims.js',
+      // './spec/factories/*_spec.es6.js'
       './spec/**/*_spec.es6.js',
       './src/**/*.js'
     ],

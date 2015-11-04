@@ -75,8 +75,10 @@ class GenericItem extends DataItem {
   }
 
   render() {
-    let key = ColumnsStore.getHeadline().key;
-    let headline = this.props.data.get(key);
+    let h   = ColumnsStore.getHeadline();
+    let key = (h) ? h.key : h
+    // console.log("key", key)
+    let headline = (key && this.props.data.has(key)) ? this.props.data.get(key) : "";
 
     return (
       <article className="job-item">

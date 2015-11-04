@@ -74,7 +74,9 @@ const store = {
 
   getHeadline(id){
     return _.find(this.getColumn(id).visible, (col)=>{
-      return col.headline;
+      console.log(col)
+
+      return (col.headline) ? col.headline : false;
     });
   },
 
