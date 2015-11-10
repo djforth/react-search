@@ -83,19 +83,118 @@ describe("DataFcty", function() {
 		 expect(test).toBeFalsy();
 
 	 });
+
+	 describe('cacheManager', function() {
+	 		it('return object of function', function() {
+	 			let cacher = dataFcty.cacher();
+	 			expect(_.isObject(cacher)).toBeTruthy();
+	 			_.forIn(cacher, (v, k)=>{
+
+	 				expect(_.isFunction(v)).toBeTruthy();
+	 				expect(["isEmpty", "get", "set", "keys"]).toContain(k)
+	 			})
+	 		});
+
+	 	 	it("should set presets & get foo", ()=>{
+	 	 		let cacher = dataFcty.cacher({foo:"bar"});
+	 	 		expect(cacher.get("foo")).toEqual("bar");
+	 	 	});
+
+	 	 	it('should check if key is empty', function() {
+	 	 		let cacher = dataFcty.cacher({foo:"bar"});
+	 	 		// console.log(cacher.isEmpty("foo"))
+	 	 		expect(cacher.isEmpty("foo")).toBeFalsy();
+	 	 		expect(cacher.isEmpty("bar")).toBeTruthy();
+	 	 	});
+
+	 	 	it('should set cache item', function() {
+	 	 		 let cacher = dataFcty.cacher();
+	 	 		 cacher.set("bar", "foo");
+	 	 		 expect(cacher.get("bar")).toEqual("foo");
+	 	 	});
+
+	 	 	it('should get keys', function() {
+	 	 		let cacher = dataFcty.cacher({foo:"bar", bar:"foo"});
+	 	 		expect(cacher.keys()).toEqual(["foo", "bar"])
+	 	 	});
+
+	 });
+
 	 describe("Utility functions",()=>{
+			describe('checkCache', function() {
+				it('should return boolean if emptyOrCached returns it', function() {
+					spyOn(dataFcty, "checkEmptyOrCached").and.returnValue(true)
+					let checker = dataFcty.checkCache(["foo"], ["foo"]);
+					expect(_.isBoolean(checker)).toBeTruthy();
+				});
+
+				describe('if function returned', function() {
+					let checker;
+					beforeEach(function() {
+						spyOn(dataFcty, "checkEmptyOrCached").and.returnValue(null)
+						checker = dataFcty.checkCache(["foo", "bar"], ["foo"]);
+					});
+
+					it('should return a function', function() {
+						expect(_.isFunction(checker)).toBeTruthy();
+					});
+
+					it('should return tester function', function() {
+						let tester = jasmine.createSpy("test").and.returnValue(true);
+						let check = checker(tester);
+						expect(check).toBeFalsy();
+						expect(tester).toHaveBeenCalledWith(["foo", "bar"]);
+					});
+
+					it('should set iterator forEach', function() {
+
+						let tester = jasmine.createSpy("test").and.callFake((i)=>{
+							// console.log('i', i);
+							return (i === "bar")
+						});
+						let check = checker(tester, "forEach");
+						expect(check).toBeFalsy();
+						expect(tester.calls.count()).toEqual(2);
+						let calls = tester.calls.argsFor(0);
+						console.log("calls", calls)
+						expect(calls.length).toEqual(3);
+
+						expect(calls).toContain("foo");
+					});
+
+					it('should set iterator forIn', function() {
+						checker = dataFcty.checkCache({"foo":"bar", "bar2":"foo2"}, ["foo"]);
+						let tester = jasmine.createSpy("test").and.callFake((v,k)=>{
+							// console.log(v, k);
+							return false
+						});
+						let check = checker(tester, "forIn");
+						expect(check).toBeTruthy();
+						expect(tester.calls.count()).toEqual(2);
+
+						let calls = tester.calls.argsFor(0);
+						// console.log("calls", calls)
+						expect(calls.length).toEqual(3);
+						expect(calls).toContain("foo");
+						expect(calls).toContain("bar");
+					});
+
+
+				});
+		  });
+
 			describe('checkEmptyOrCached', function() {
 				it("should return true if items empty", function() {
 					expect(dataFcty.checkEmptyOrCached([], "key")).toBeTruthy();
 				});
 
 				it("should return false if cache not set", function() {
-					expect(dataFcty.checkEmptyOrCached(["foo"], "key")).toBeFalsy();
+					expect(dataFcty.checkEmptyOrCached(["foo"])).toBeFalsy();
 				});
 
 				it("should return null if not empty and cache set", function() {
-					dataFcty.cache.key = ["foo"]
-					expect(dataFcty.checkEmptyOrCached(["foo"], "key")).toBeNull();
+					// dataFcty.cache.key = ["foo"]
+					expect(dataFcty.checkEmptyOrCached(["foo"], ["foo"])).toBeNull();
 				});
 			});
 	 })
@@ -104,59 +203,103 @@ describe("DataFcty", function() {
 	 describe("Filters functions", ()=>{
 		describe('getFilterByKey', function() {
 			beforeEach(()=>{
-				dataFcty.cache.filters = filters;
+				dataFcty.cacheNew.get = jasmine.createSpy().and.returnValue(filters);
 			});
 
 			it("should return the correct cache", function() {
 				let item = dataFcty.getFilterByKey("filter_by", "Genesis");
 				expect(item.filter_by).toEqual("Genesis");
 			});
+
+			it("should return the undefined if no cache", function() {
+				let item = dataFcty.getFilterByKey("filter_by", "bar");
+				expect(item).toBeUndefined();
+			});
 		});
 
 		describe('checkCacheFilters', function() {
-			let checked
+			let checked, spy, cache;
+
+			let checkStartSpys = ()=>{
+				expect(dataFcty.checkCache).toHaveBeenCalled();
+				expect(dataFcty.cacheNew.get).toHaveBeenCalledWith("filters")
+			}
+
+			let checkTestSpys = ()=>{
+				expect(spy).toHaveBeenCalled();
+				let calls = spy.calls.argsFor(0);
+				expect(_.isFunction(calls[0])).toBeTruthy();
+				expect(calls).toContain("forEach");
+
+				expect(dataFcty.getFilterByKey).toHaveBeenCalled();
+				calls = dataFcty.getFilterByKey.calls.argsFor(0);
+				expect(calls).toContain("filter_by");
+				expect(calls).toContain("color");
+			}
 
 			beforeEach(()=>{
-				checked = null;
-				spyOn(dataFcty, "checkEmptyOrCached").and.callFake(()=>{
-					return checked;
+				spy = jasmine.createSpy().and.callFake((tester, iterator)=>{
+					let check = true;
+					// console.log("items", this.items)
+	        _[iterator]([filters[0]], (...args)=>{
+	          if(tester.apply(this, args)){
+	            check = false;
+	            return false;
+	          }
+	        });
+					return check
+	      });
+
+				spyOn(dataFcty, "checkCache").and.callFake((d, c)=>{
+					if(d === c){
+						return true
+					}
+					return spy
 				});
 
+				spyOn(dataFcty.cacheNew, "get").and.callFake(()=>cache);
+
 				spyOn(dataFcty, "getFilterByKey").and.callFake((k, v)=>{
-					return filters[0]
+					return cache
 				})
 
 			});
 
-			it("should return checked value if checkEmptyOrCached returns boolean", ()=>{
-				checked = true;
+			it("should return checked value if checkCacheFilters returns boolean", ()=>{
+				cache = filters
 				let test = dataFcty.checkCacheFilters(filters);
 				expect(test).toBeTruthy();
-				expect(dataFcty.checkEmptyOrCached).toHaveBeenCalledWith(filters, "filters");
+				expect(dataFcty.checkCache).toHaveBeenCalledWith(filters, cache);
+				checkStartSpys();
+				expect(spy).not.toHaveBeenCalled()
 			});
 
 			it("return true if cached.filters equals filters", function() {
 
-				let items = [_.clone(filters[0])];
-				let val = dataFcty.checkCacheFilters(items);
-				expect(val).toBeTruthy()
+				cache = _.clone(filters[0]);
+				let tester = dataFcty.checkCacheFilters(filters[0]);
+				expect(_.isBoolean(tester)).toBeTruthy();
+				expect(tester).toBeTruthy();
+				checkStartSpys();
+				checkTestSpys()
 			});
 
 			it("return false if cached.filters does not equal filters", function() {
+				// cache         = [_.clone(filters[0])];
 				let item      = _.clone(filters[0])
-				item.selected = item.selected.push({
-					id:2,
-					title:"Purple",
-					selected:true
-				})
 
-				let items = [item];
-				let val = dataFcty.checkCacheFilters(items);
+				item.selected = item.selected.first().set("title", "Purple")
+
+				cache = item;
+
+				let val = dataFcty.checkCacheFilters(filters[0]);
 				expect(val).toBeFalsy()
+				checkStartSpys();
+				checkTestSpys();
 			});
 		});
 
-		describe('filterSearch', function() {
+		fdescribe('filterSearch', function() {
 			let dataIm;
 			let data = [
 				{

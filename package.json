@@ -3,8 +3,11 @@
   "version": "1.0.4",
   "description": "React Bootstrap search for Morse CMS's",
   "main": "index.js",
-  "babel":{
-    "presets":["es2015", "react"]
+  "babel": {
+    "presets": [
+      "es2015",
+      "react"
+    ]
   },
   "scripts": {
     "bundle": "npm test && npm run build",
@@ -74,6 +77,7 @@
     "imagemin": "^3.2.2",
     "jasmine-core": "^2.3.4",
     "jasmine-es6-promise-matchers": "^2.0.0",
+    "jasmine-focused": "^1.0.7",
     "karma": "^0.12.31",
     "karma-browserify": "^4.0.0",
     "karma-chrome-launcher": "^0.1.7",
@@ -92,6 +96,7 @@
     "node-sass-globbing": "0.0.23",
     "phantomjs": "^1.9.17",
     "postcss": "^5.0.10",
+    "react-addons-test-utils": "^0.14.2",
     "react-jasmine": "git://github.com/djforth/react-jasmine.git",
     "react-tools": "^0.13.3",
     "readdirp": "^2.0.0",

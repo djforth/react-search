@@ -1,4 +1,4 @@
-const React     = require("react/addons");
+const React     = require("react");
 const Immutable = require("immutable");
 
 const ActionButtons   = require("../../src/components/action_buttons");
@@ -6,7 +6,7 @@ const ActionButtons   = require("../../src/components/action_buttons");
 // const Immutable = require("immutable");
 
 // Test Helpers
-const TestUtils       = React.addons.TestUtils;
+const TestUtils       = require("react-addons-test-utils")
 const jasmineReactHelpers = require("react-jasmine");
 const componentHelper     = jasmineReactHelpers.componentHelpers;
 
