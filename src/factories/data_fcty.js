@@ -407,7 +407,7 @@ class DataFcty extends DataManager {
 
   search(...args){
     let values = this.setValues.apply(this, args);
-    console.log("tabs", values("tab"))
+    // console.log("tabs", values("tab"))
     //Cache Checks
     let check = this.cachedChecker(values)
 
