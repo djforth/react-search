@@ -3,8 +3,11 @@
   "version": "1.0.5",
   "description": "React Bootstrap search for Morse CMS's",
   "main": "index.js",
-  "babel":{
-    "presets":["es2015", "react"]
+  "babel": {
+    "presets": [
+      "es2015",
+      "react"
+    ]
   },
   "scripts": {
     "bundle": "npm test && npm run build",
@@ -106,6 +109,8 @@
     "ajax-es6-module": "git://github.com/djforth/ajax-es6-module.git",
     "classnames": "^2.1.3",
     "datamanager": "git://github.com/djforth/datamanager.git",
+    "date-formatter": "git://github.com/djforth/dateformatter.git",
+    "fbjs": "^0.4.0",
     "flux": "^2.0.3",
     "immutable": "^3.7.4",
     "lodash": "^3.10.0",
@@ -115,6 +120,7 @@
     "react": "^0.14.1",
     "react-bootstrap": "^0.27.3",
     "react-date-range": "^0.1.7",
+    "react-dom": "^0.14.2",
     "react-mixin": "^1.7.0",
     "react-tap-event-plugin": "^0.1.7",
     "viewport-detection-es6": "git://github.com/djforth/viewport-detection-es6.git"
